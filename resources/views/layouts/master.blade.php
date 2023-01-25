@@ -168,31 +168,13 @@
                                     </div>
                                     <button class="">Trouver un partenaire</button>
                                 </form>
-                                <ul class="social-list">
-                                    <li class="google">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/banner/google.png') }}" alt="img">
-                                            <span>Continuer avec Google</span>
-                                        </a>
-                                    </li>
-                                    <li class="facebook">
-                                        <a href="#">
-                                            <i class="icofont-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li class="twitter">
-                                        <a href="#">
-                                            <i class="icofont-twitter"></i>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="banner-thumb">
-                        <img src="{{ asset('assets/images/banner/01.png') }}" alt="img">
+                        <img src="{{ asset('assets/images/banner/01.svg') }}" alt="img">
                     </div>
                 </div>
             </div>
