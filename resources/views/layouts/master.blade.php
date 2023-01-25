@@ -38,14 +38,14 @@
         <div class="container">
             <div class="header-wrapper">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo/logo.png" alt="logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
                     </a>
                 </div>
                 <div class="menu-area">
                     <ul class="menu">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="#">Home</a>
                         </li>
 
                         <li>
