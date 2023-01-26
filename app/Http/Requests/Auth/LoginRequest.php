@@ -33,6 +33,20 @@ class LoginRequest extends FormRequest
     }
 
     /**
+     * Return the message validation to the user interface.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'email.required' => "L'adresse e-mail est requise",
+            'email.email' => "L'adresse e-mail entrée n'est pas une adresse e-mail valide.",
+            'password.required' => "Le mot de passe est requis",
+        ];
+    }
+
+    /**
      * Attempt to authenticate the request's credentials.
      *
      * @throws \Illuminate\Validation\ValidationException
