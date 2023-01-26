@@ -72,8 +72,14 @@
                         </li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
-                    <a href="login.html" class="login"><i class="icofont-user"></i> <span>LOG IN</span> </a>
-                    <a href="signup.html" class="signup"><i class="icofont-users"></i> <span>SIGN UP</span> </a>
+                    <a href="{{ route('login') }}" class="login">
+                        <i class="icofont-user"></i>
+                        <span>Se connecter</span>
+                    </a>
+                    <a href="{{ route('register') }}" class="signup ms-2">
+                        <i class="icofont-users"></i>
+                        <span>S'enregistrer</span>
+                    </a>
                     <div class="header-bar d-lg-none">
                         <span></span>
                         <span></span>
