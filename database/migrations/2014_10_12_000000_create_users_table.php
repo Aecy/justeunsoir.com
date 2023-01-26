@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigInteger('messages_left')->default(10);
+            $table->timestamp('last_reward_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
