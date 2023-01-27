@@ -242,15 +242,15 @@
                                                                 <p class="info-details">A faire</p>
                                                             </li>
                                                             <li>
-                                                                <p class="info-name">Spot des vacances</p>
+                                                                <p class="info-name">Fume</p>
                                                                 <p class="info-details">A faire</p>
                                                             </li>
                                                             <li>
-                                                                <p class="info-name">Fumeur(se)</p>
+                                                                <p class="info-name">Bois de l'alcool</p>
                                                                 <p class="info-details">A faire</p>
                                                             </li>
                                                             <li>
-                                                                <p class="info-name">Alcool</p>
+                                                                <p class="info-name">Sortie en boîte</p>
                                                                 <p class="info-details">A faire</p>
                                                             </li>
                                                         </ul>
