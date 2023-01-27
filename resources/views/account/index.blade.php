@@ -236,25 +236,44 @@
                                                         <h6>Style de vie</h6>
                                                     </div>
                                                     <div class="info-card-content">
-                                                        <ul class="info-list">
-                                                            <li>
-                                                                <p class="info-name">Intérêt pour</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                            <li>
-                                                                <p class="info-name">Fume</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                            <li>
-                                                                <p class="info-name">Bois de l'alcool</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                            <li>
-                                                                <p class="info-name">Sortie en boîte</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                        </ul>
-
+                                                        <form method="post" action="{{ route('account.update.interest') }}">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <div class="mb-3">
+                                                                <label for="interest_for" class="pb-2">Intérêt pour</label>
+                                                                <input type="text" name="interest_for" value="{{ old('interest_for', auth()->user()->interest_for) }}" class="form-control" placeholder="ex: les chiens, chats, vacances, ...">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="smoking" class="pb-2">Fumez-vous ?</label>
+                                                                <select name="smoking" id="smoking" class="form-control">
+                                                                    <option value="" selected disabled>Sélectionner une option</option>
+                                                                        <option value="PDT" {{ old('smoking', auth()->user()->smoking) === 'PDT' ? 'selected' : '' }}>Pas du tout</option>
+                                                                        <option value="OED" {{ old('smoking', auth()->user()->smoking) === 'OED' ? 'selected' : '' }}>On en discutera</option>
+                                                                        <option value="R" {{ old('smoking', auth()->user()->smoking) === 'R' ? 'selected' : '' }}>Rarement</option>
+                                                                        <option value="O" {{ old('smoking', auth()->user()->smoking) === 'O' ? 'selected' : '' }}>Occasionnellement</option>
+                                                                        <option value="RG" {{ old('smoking', auth()->user()->smoking) === 'RG' ? 'selected' : '' }}>Régulièrement</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="drinking" class="pb-2">Buvez-vous de l'alcool ?</label>
+                                                                <select name="drinking" id="drinking" class="form-control">
+                                                                    <option value="" selected disabled>Sélectionner une option</option>
+                                                                    <option value="PDT" {{ old('drinking', auth()->user()->drinking) === 'PDT' ? 'selected' : '' }}>Pas du tout</option>
+                                                                    <option value="OED" {{ old('drinking', auth()->user()->drinking) === 'OED' ? 'selected' : '' }}>On en discutera</option>
+                                                                    <option value="R" {{ old('drinking', auth()->user()->drinking) === 'R' ? 'selected' : '' }}>Rarement</option>
+                                                                    <option value="O" {{ old('drinking', auth()->user()->drinking) === 'O' ? 'selected' : '' }}>Occasionnellement</option>
+                                                                    <option value="RG" {{ old('drinking', auth()->user()->drinking) === 'RG' ? 'selected' : '' }}>Régulièrement</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="d-inline-flex align-items-center gap-4">
+                                                                <button type="submit" class="lab-btn">
+                                                                    <span>Sauvegarder</span>
+                                                                </button>
+                                                                @if (session('status') === 'interest-updated')
+                                                                    <p class="text-success">Votre style de vie est mis à jour.</p>
+                                                                @endif
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="info-card">

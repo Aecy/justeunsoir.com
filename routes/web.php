@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Account\AccountAboutController;
+use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,13 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/account', function () {
-    return view('account.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
-    Route::patch('/profile/about', [AccountAboutController::class, 'update'])->name('account.update.about');
-    Route::patch('/profile/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
+    Route::view('/account', 'account.index')->name('dashboard');
+    Route::patch('/account/about', [AccountAboutController::class, 'update'])->name('account.update.about');
+    Route::patch('/account/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
+    Route::patch('/account/interest', [AccountInterestController::class, 'update'])->name('account.update.interest');
 });
 
 Route::middleware('auth')->group(function () {

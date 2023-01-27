@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('martial')->nullable();
             $table->longText('about_me')->nullable();
             $table->longText('looking_for')->nullable();
+            $table->longText('interest_for')->nullable();
+            $table->string('smoking')->nullable();
+            $table->string('drinking')->nullable();
             $table->integer('age')->nullable();
             $table->string('address')->nullable();
             $table->bigInteger('messages_left')->default(10);
