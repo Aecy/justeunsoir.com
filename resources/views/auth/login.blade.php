@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <input type="email" placeholder="Adresse e-mail" name="email" autofocus>
                         @error("email")
-                            <div class="text-danger align-items-start" style="display: block">
+                            <div class="text-danger align-items-start pt-2" style="display: block">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <input type="password" placeholder="Mot de passe" name="password">
                         @error("password")
-                            <div class="text-danger align-items-start" style="display: block">
+                            <div class="text-danger align-items-start pt-2" style="display: block">
                                 {{ $message }}
                             </div>
                         @enderror

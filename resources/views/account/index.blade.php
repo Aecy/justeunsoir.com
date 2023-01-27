@@ -426,7 +426,7 @@
                                                                     <span>Sauvegarder</span>
                                                                 </button>
                                                                 @if (session('status') === 'password-updated')
-                                                                    <p class="text-success">Votre compte est mis à jour.</p>
+                                                                    <p class="text-success">Votre mot de passe est mis à jour.</p>
                                                                 @endif
                                                             </div>
                                                         </form>
