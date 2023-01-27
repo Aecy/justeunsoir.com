@@ -39,37 +39,17 @@
                                             <div class="right d-flex justify-content-between">
                                                 <div class="custom-select">
                                                     <select name="age-start" id="age">
-                                                        <option value="1">18</option>
-                                                        <option value="2">19</option>
-                                                        <option value="3">20</option>
-                                                        <option value="4">21</option>
-                                                        <option value="5">22</option>
-                                                        <option value="6">23</option>
-                                                        <option value="7">24</option>
-                                                        <option value="8">25</option>
-                                                        <option value="9">26</option>
-                                                        <option value="10">27</option>
-                                                        <option value="11">28</option>
-                                                        <option value="13">29</option>
-                                                        <option value="14">30</option>
+                                                        @foreach(range(18, 99) as $nub)
+                                                            <option value="{{ $nub }}">{{ $nub }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <span class="d-flex align-items-center me-2 ms-2">et</span>
                                                 <div class="custom-select">
                                                     <select name="age-end" id="age-two">
-                                                        <option value="1">18+</option>
-                                                        <option value="2">19</option>
-                                                        <option value="3">20</option>
-                                                        <option value="4">21</option>
-                                                        <option value="5">22</option>
-                                                        <option value="6">23</option>
-                                                        <option value="7">24</option>
-                                                        <option value="8">25</option>
-                                                        <option value="9">26</option>
-                                                        <option value="10">27</option>
-                                                        <option value="11">28</option>
-                                                        <option value="13">29</option>
-                                                        <option value="14">30</option>
+                                                        @foreach(range(18, 99) as $nub)
+                                                            <option value="{{ $nub }}">{{ $nub }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
