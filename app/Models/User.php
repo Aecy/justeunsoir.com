@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -13,18 +14,23 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Les attributs qui peuvent être remplis par l'User.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
+        'gender',
+        'martial',
+        'age',
+        'birth_at',
+        'address',
         'password',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Les attributs qui doivent être cachés pour la sérialisation.
      *
      * @var array<int, string>
      */
@@ -34,11 +40,43 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * The attributes that should be cast.
+     * Les attributs qui devraient être casts.
      *
      * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relation entre l'User et UserSelf.
+     */
+    public function about(): BelongsTo
+    {
+        return $this->belongsTo(UserSelf::class);
+    }
+
+    /**
+     * Relation entre l'User et UserLooking.
+     */
+    public function looking(): BelongsTo
+    {
+        return $this->belongsTo(UserLooking::class);
+    }
+
+    /**
+     * Relation entre l'User et UserLifeStyle.
+     */
+    public function lifeStyle(): BelongsTo
+    {
+        return $this->belongsTo(UserLifeStyle::class);
+    }
+
+    /**
+     * Relation entre l'User et UserPhysical.
+     */
+    public function physical(): BelongsTo
+    {
+        return $this->belongsTo(UserPhysical::class);
+    }
 }

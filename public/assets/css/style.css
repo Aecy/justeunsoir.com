@@ -4167,3 +4167,29 @@ textarea::placeholder {
 }
 
 /*Footer section End here*/
+
+/* my own style */
+.form-control {
+    color: white;
+    font-weight: 500;
+    background: #391965;
+    border: 1px solid transparent;
+    padding: 15px;
+}
+
+.form-control:focus {
+    color: white;
+    background: #391965;
+    border: 1px solid rgba(223, 49, 77, 0.5);
+    box-shadow: none;
+}
+
+button.lab-btn {
+    background: #df314d;
+    outline: none;
+    border: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 5px 5px rgb(223 49 77 / 30%);
+}

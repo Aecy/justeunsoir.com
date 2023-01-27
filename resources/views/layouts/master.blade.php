@@ -24,15 +24,6 @@
 
 </head>
 <body>
-    <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-
     <header class="header-section">
         <div class="header-bottom">
             <div class="container">
@@ -45,7 +36,7 @@
                     <div class="menu-area">
                         <ul class="menu">
                             <li>
-                                <a href="#">Accueil</a>
+                                <a href="{{ url('/') }}">Accueil</a>
                             </li>
 
                             <li>

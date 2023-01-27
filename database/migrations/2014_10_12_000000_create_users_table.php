@@ -19,9 +19,15 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->default('member');
+            $table->string('gender')->nullable();
+            $table->string('martial')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('address')->nullable();
             $table->bigInteger('messages_left')->default(10);
-            $table->timestamp('last_reward_at')->nullable();
             $table->rememberToken();
+            $table->date('birth_at')->nullable();
+            $table->timestamp('last_reward_at')->nullable();
             $table->timestamps();
         });
     }
