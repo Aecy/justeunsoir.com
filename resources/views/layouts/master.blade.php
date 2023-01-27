@@ -45,7 +45,7 @@
                     <div class="menu-area">
                         <ul class="menu">
                             <li>
-                                <a href="#">Home</a>
+                                <a href="#">Accueil</a>
                             </li>
 
                             <li>
@@ -70,16 +70,42 @@
                                     <li><a href="blog-single.html">Blog Single</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>
+                            @auth
+                                <li>
+                                    <a href="#" class="">
+                                        <i class="icofont-user"></i> {{ auth()->user()->name }}
+                                    </a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="{{ route('dashboard') }}">
+                                                Mon compte
+                                            </a>
+                                        </li>
+                                        <form class="hidden" method="POST" id="form-logout" action="{{ route('logout') }}">
+                                            @csrf
+                                        </form>
+                                        <li>
+                                            <a onclick="event.preventDefault(); document.getElementById('form-logout').submit()" href="#">
+                                                Se déconnecter
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endauth
                         </ul>
-                        <a href="{{ route('login') }}" class="login">
-                            <i class="icofont-user"></i>
-                            <span>Se connecter</span>
-                        </a>
-                        <a href="{{ route('register') }}" class="signup ms-2">
-                            <i class="icofont-users"></i>
-                            <span>S'enregistrer</span>
-                        </a>
+                        @guest
+                            <a href="{{ route('login') }}" class="login">
+                                <i class="icofont-user"></i>
+                                <span>Se connecter</span>
+                            </a>
+                            <a href="{{ route('register') }}" class="signup ms-2">
+                                <i class="icofont-users"></i>
+                                <span>S'enregistrer</span>
+                            </a>
+                        @endguest
                         <div class="header-bar d-lg-none">
                             <span></span>
                             <span></span>
