@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Account\AccountAboutController;
+use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,11 @@ Route::get('/', function () {
 Route::get('/account', function () {
     return view('account.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::patch('/profile/about', [AccountAboutController::class, 'update'])->name('account.update.about');
+    Route::patch('/profile/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

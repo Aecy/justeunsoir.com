@@ -184,7 +184,25 @@
                                                         <h6>A propos de moi</h6>
                                                     </div>
                                                     <div class="info-card-content">
-                                                        <p>{{ auth()->user()->myself ?? "N'a pas encore indiqué d'information..." }}</p>
+                                                        <form method="post" action="{{ route('account.update.about') }}">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <div class="mb-3">
+                                                                <label for="about_me" class="pb-2">A propos de vous</label>
+                                                                <textarea name="about_me" id="about_me" cols="30"
+                                                                          rows="5" class="form-control" placeholder="Je suis ...">{{ old('about_me', auth()->user()->about_me) }}</textarea>
+                                                            </div>
+                                                            <div class="d-inline-flex align-items-center gap-4">
+                                                                <button type="submit" class="lab-btn">
+                                                                    <span>Sauvegarder</span>
+                                                                </button>
+                                                                @if (session('status') === 'about-updated')
+                                                                    <p class="text-success">
+                                                                        Vos information a propos sont mis à jour.
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="info-card mb-20">
@@ -192,7 +210,25 @@
                                                         <h6>Recherche précise</h6>
                                                     </div>
                                                     <div class="info-card-content">
-                                                        <p>A faire</p>
+                                                        <form method="post" action="{{ route('account.update.looking') }}">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <div class="mb-3">
+                                                                <label for="looking_for" class="pb-2">Que recherchez-vous ?</label>
+                                                                <textarea name="looking_for" id="looking_for" cols="30"
+                                                                          rows="5" class="form-control" placeholder="Je recherche...">{{ old('looking_for', auth()->user()->looking_for) }}</textarea>
+                                                            </div>
+                                                            <div class="d-inline-flex align-items-center gap-4">
+                                                                <button type="submit" class="lab-btn">
+                                                                    <span>Sauvegarder</span>
+                                                                </button>
+                                                                @if (session('status') === 'looking-updated')
+                                                                    <p class="text-success">
+                                                                        Vos information de recherche sont mis à jour.
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="info-card mb-20">

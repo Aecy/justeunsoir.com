@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('role')->default('member');
             $table->string('gender')->nullable();
             $table->string('martial')->nullable();
+            $table->longText('about_me')->nullable();
+            $table->longText('looking_for')->nullable();
             $table->integer('age')->nullable();
             $table->string('address')->nullable();
             $table->bigInteger('messages_left')->default(10);

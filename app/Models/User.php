@@ -27,6 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'birth_at',
         'address',
         'password',
+        'about_me',
+        'looking_for',
     ];
 
     /**
@@ -47,22 +49,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Relation entre l'User et UserSelf.
-     */
-    public function about(): BelongsTo
-    {
-        return $this->belongsTo(UserSelf::class);
-    }
-
-    /**
-     * Relation entre l'User et UserLooking.
-     */
-    public function looking(): BelongsTo
-    {
-        return $this->belongsTo(UserLooking::class);
-    }
 
     /**
      * Relation entre l'User et UserLifeStyle.
