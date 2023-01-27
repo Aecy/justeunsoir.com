@@ -3,6 +3,7 @@
 use App\Http\Controllers\Account\AccountAboutController;
 use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
+use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/account/about', [AccountAboutController::class, 'update'])->name('account.update.about');
     Route::patch('/account/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
     Route::patch('/account/interest', [AccountInterestController::class, 'update'])->name('account.update.interest');
+    Route::patch('/account/physical', [AccountPhysicalController::class, 'update'])->name('account.update.physical');
 });
 
 Route::middleware('auth')->group(function () {

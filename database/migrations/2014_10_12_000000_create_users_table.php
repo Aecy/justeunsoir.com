@@ -27,6 +27,10 @@ return new class extends Migration
             $table->longText('interest_for')->nullable();
             $table->string('smoking')->nullable();
             $table->string('drinking')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('weight')->nullable();
+            $table->string('hair_color')->nullable();
+            $table->string('eye_color')->nullable();
             $table->integer('age')->nullable();
             $table->string('address')->nullable();
             $table->bigInteger('messages_left')->default(10);

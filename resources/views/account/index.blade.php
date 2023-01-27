@@ -281,25 +281,34 @@
                                                         <h6>Information physique</h6>
                                                     </div>
                                                     <div class="info-card-content">
-                                                        <ul class="info-list">
-                                                            <li>
-                                                                <p class="info-name">Taille</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                            <li>
-                                                                <p class="info-name">Poids</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                            <li>
-                                                                <p class="info-name">Couleur des cheveux</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                            <li>
-                                                                <p class="info-name">Couleur des yeux</p>
-                                                                <p class="info-details">A faire</p>
-                                                            </li>
-                                                        </ul>
-
+                                                        <form method="post" action="{{ route('account.update.physical') }}">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <div class="mb-3">
+                                                                <label for="height" class="pb-2">Votre taille (cm)</label>
+                                                                <input type="number" name="height" value="{{ old('height', auth()->user()->height) }}" class="form-control" placeholder="ex: 180">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="weight" class="pb-2">Votre poids (kg)</label>
+                                                                <input type="number" name="weight" value="{{ old('weight', auth()->user()->weight) }}" class="form-control" placeholder="ex: 72">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="hair_color" class="pb-2">Couleur de vos cheveux</label>
+                                                                <input type="text" name="hair_color" value="{{ old('hair_color', auth()->user()->hair_color) }}" class="form-control" placeholder="ex: Marron">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="eye_color" class="pb-2">Couleur de vos yeux</label>
+                                                                <input type="text" name="eye_color" value="{{ old('eye_color', auth()->user()->eye_color) }}" class="form-control" placeholder="ex: Bleu et gris">
+                                                            </div>
+                                                            <div class="d-inline-flex align-items-center gap-4">
+                                                                <button type="submit" class="lab-btn">
+                                                                    <span>Sauvegarder</span>
+                                                                </button>
+                                                                @if (session('status') === 'physical-updated')
+                                                                    <p class="text-success">Vos informations physique sont mis à jour.</p>
+                                                                @endif
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </article>
