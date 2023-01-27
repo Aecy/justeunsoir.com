@@ -4,7 +4,6 @@
 
 Des rencontres sans attaches, des moments inoubliables: Rejoignez notre communauté de personnes libres et ouvertes d'esprit pour des rencontres d'un soir.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
 - Inscription et connexion à un compte.
 - Vérification de l'adresse e-mail pour que le compte soit valide.
 - Continuer son "inscription" en modifiant son compte (tel que: ce qu'il recherche ect...)
