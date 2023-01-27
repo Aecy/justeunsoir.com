@@ -1909,13 +1909,13 @@ select {
     background-position: center !important;
     background-size: cover !important;
     border: none;
-    padding-top: 200px;
-    padding-bottom: 60px;
+    padding-top: 124px;
+    padding-bottom: 38px;
 }
 @media (min-width: 992px) {
     .page-header-section.style-1 {
-        padding-top: 280px;
-        padding-bottom: 100px;
+        padding-top: 124px;
+        padding-bottom: 38px;
     }
 }
 .page-header-section.style-1 .page-header-content .page-header-inner .breadcrumb li {

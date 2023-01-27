@@ -84,9 +84,7 @@
                                                 Mon compte
                                             </a>
                                         </li>
-                                        <form class="hidden" method="POST" id="form-logout" action="{{ route('logout') }}">
-                                            @csrf
-                                        </form>
+                                        <form class="hidden" method="POST" id="form-logout" action="{{ route('logout') }}">@csrf</form>
                                         <li>
                                             <a onclick="event.preventDefault(); document.getElementById('form-logout').submit()" href="#">
                                                 Se déconnecter
