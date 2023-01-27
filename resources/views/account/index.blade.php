@@ -240,11 +240,11 @@
                                                             @csrf
                                                             @method('patch')
                                                             <div class="mb-3">
-                                                                <label for="interest_for" class="pb-2">Intérêt pour</label>
+                                                                <label for="interest_for" class="pb-2">Quel(s) sont vos intérêt(s) ?</label>
                                                                 <input type="text" name="interest_for" value="{{ old('interest_for', auth()->user()->interest_for) }}" class="form-control" placeholder="ex: les chiens, chats, vacances, ...">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="smoking" class="pb-2">Fumez-vous ?</label>
+                                                                <label for="smoking" class="pb-2">Est-ce que vous fumez ?</label>
                                                                 <select name="smoking" id="smoking" class="form-control">
                                                                     <option value="" selected disabled>Sélectionner une option</option>
                                                                         <option value="PDT" {{ old('smoking', auth()->user()->smoking) === 'PDT' ? 'selected' : '' }}>Pas du tout</option>
@@ -255,7 +255,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="drinking" class="pb-2">Buvez-vous de l'alcool ?</label>
+                                                                <label for="drinking" class="pb-2">Est-ce que vous buvez de l'alcool ?</label>
                                                                 <select name="drinking" id="drinking" class="form-control">
                                                                     <option value="" selected disabled>Sélectionner une option</option>
                                                                     <option value="PDT" {{ old('drinking', auth()->user()->drinking) === 'PDT' ? 'selected' : '' }}>Pas du tout</option>

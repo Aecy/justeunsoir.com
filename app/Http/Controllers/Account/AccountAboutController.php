@@ -11,7 +11,6 @@ class AccountAboutController extends Controller
 {
     public function update(AccountAboutUpdateRequest $request): RedirectResponse
     {
-        dd($request->validated());
         $request->user()->fill($request->validated());
         $request->user()->save();
 
