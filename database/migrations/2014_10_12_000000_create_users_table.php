@@ -33,11 +33,12 @@ return new class extends Migration
             $table->string('eye_color')->nullable();
             $table->integer('age')->nullable();
             $table->string('address')->nullable();
-            $table->string('avatar')->default('');
+            $table->string('avatar')->default('default.jpg');
             $table->bigInteger('messages_left')->default(10);
             $table->rememberToken();
             $table->date('birth_at')->nullable();
             $table->timestamp('last_reward_at')->nullable();
+            $table->timestamp('last_seen')->nullable();
             $table->timestamps();
         });
     }

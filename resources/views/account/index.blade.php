@@ -48,8 +48,17 @@
                                 </div>
                             </div>
                             <div class="profile-name">
-                                <h4>{{ auth()->user()->name }}</h4>
-                                <p>Inscrit {{ auth()->user()->created_at->diffForHumans() }}</p>
+                                <h4>
+                                    @if(Cache::has('users_online-' . auth()->user()->id))
+                                        <i class="icofont-ui-press text-success text-sm circle pulse"></i>
+                                    @else
+                                        <i class="icofont-ui-press text-danger text-sm"></i>
+                                    @endif
+                                    {{ auth()->user()->name }}
+                                </h4>
+                                <div>
+                                    <span>Inscrit {{ auth()->user()->created_at->diffForHumans() }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
