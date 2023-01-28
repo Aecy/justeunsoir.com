@@ -36,6 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'weight',
         'hair_color',
         'eye_color',
+        'avatar',
     ];
 
     /**
@@ -58,18 +59,12 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Relation entre l'User et UserLifeStyle.
+     * Créer un attribut pour l'avatar de l'User.
+     *
+     * @return string
      */
-    public function lifeStyle(): BelongsTo
+    public function getAvatarUrlAttribute(): string
     {
-        return $this->belongsTo(UserLifeStyle::class);
-    }
-
-    /**
-     * Relation entre l'User et UserPhysical.
-     */
-    public function physical(): BelongsTo
-    {
-        return $this->belongsTo(UserPhysical::class);
+        return $this->avatar == 'default.jpg' ? asset('default.jpg') : asset('/storage/avatars/' . $this->avatar);
     }
 }

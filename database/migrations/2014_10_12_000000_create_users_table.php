@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('eye_color')->nullable();
             $table->integer('age')->nullable();
             $table->string('address')->nullable();
+            $table->string('avatar')->default('');
             $table->bigInteger('messages_left')->default(10);
             $table->rememberToken();
             $table->date('birth_at')->nullable();
