@@ -24,7 +24,6 @@
                 <p>Vous avez oublié votre mot de passe ? Aucun problème. Indiquez-nous simplement votre adresse électronique et nous vous enverrons un lien de réinitialisation du mot de passe qui vous permettra d'en choisir un nouveau.</p>
                 <form class="account-form" method="POST" action="{{ route('password.email') }}">
                     @csrf
-
                     <div class="form-group">
                         <input type="email" placeholder="Adresse e-mail" name="email" value="{{ old('email') }}" autofocus>
                         @error("email")
@@ -39,7 +38,7 @@
                         </button>
                     </div>
                 </form>
-                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <x-auth-session-status class="mb-4 text-green" :status="session('status')" />
             </div>
         </div>
     </div>
