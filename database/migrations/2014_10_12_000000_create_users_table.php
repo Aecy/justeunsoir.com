@@ -37,7 +37,7 @@ return new class extends Migration
             $table->bigInteger('messages_left')->default(10);
             $table->rememberToken();
             $table->date('birth_at')->nullable();
-            $table->timestamp('last_reward_at')->nullable();
+            $table->timestamp('last_reward')->nullable();
             $table->timestamp('last_seen')->nullable();
             $table->timestamps();
         });

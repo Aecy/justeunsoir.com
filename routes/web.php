@@ -11,6 +11,7 @@ use App\Http\Controllers\Account\AccountPictureController;
 use App\Http\Controllers\Avatar\AvatarUploadController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Reward\RewardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'welcome']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('/reward')->group(function() {
+        Route::get('/', [RewardController::class, 'index'])->name('reward.index');
+        Route::post('/', [RewardController::class, 'store'])->name('reward.store');
+    });
     Route::prefix('/account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('dashboard');
         Route::patch('/about', [AccountAboutController::class, 'update'])->name('account.update.about');

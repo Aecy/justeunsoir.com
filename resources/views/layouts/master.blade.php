@@ -42,7 +42,7 @@
                                 <a href="#">Recherches</a>
                             </li>
                             <li>
-                                <a href="#">Récompenses</a>
+                                <a href="{{ route('reward.index') }}">Récompenses</a>
                             </li>
                             <li>
                                 <a href="#">Tarifs</a>
