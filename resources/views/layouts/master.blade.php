@@ -38,31 +38,14 @@
                             <li>
                                 <a href="{{ url('/') }}">Accueil</a>
                             </li>
-
                             <li>
-                                <a href="#0">Features</a>
-                                <ul class="submenu">
-                                    <li><a href="members.html">All Members</a></li>
-                                    <li><a href="profile.html">Member Profile</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="signup.html">Sign Up</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-
-                                </ul>
+                                <a href="active-group.html">Recherches</a>
                             </li>
                             <li>
-                                <a href="active-group.html">Community</a>
+                                <a href="active-group.html">Tarifications</a>
                             </li>
                             <li>
-                                <a href="#0">Blog</a>
-                                <ul class="submenu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="active-group.html">Récompenses</a>
                             </li>
                             @auth
                                 <li>
@@ -75,13 +58,24 @@
                                                 Mon compte
                                             </a>
                                         </li>
-                                        <form class="hidden" method="POST" id="form-logout" action="{{ route('logout') }}">@csrf</form>
                                         <li>
+                                            <form class="d-none" method="POST" id="form-logout" action="{{ route('logout') }}">@csrf</form>
                                             <a onclick="event.preventDefault(); document.getElementById('form-logout').submit()" href="#">
                                                 Se déconnecter
                                             </a>
                                         </li>
                                     </ul>
+                                </li>
+                            @else
+                                <li class="d-lg-none">
+                                    <a href="{{ route('login') }}" class="">
+                                        Se connecter
+                                    </a>
+                                </li>
+                                <li class="d-lg-none">
+                                    <a href="{{ route('register') }}" class="">
+                                        S'enregistrer
+                                    </a>
                                 </li>
                             @endauth
                         </ul>
@@ -99,9 +93,6 @@
                             <span></span>
                             <span></span>
                             <span></span>
-                        </div>
-                        <div class="ellepsis-bar d-lg-none">
-                            <i class="icofont-info-square"></i>
                         </div>
                     </div>
                 </div>
