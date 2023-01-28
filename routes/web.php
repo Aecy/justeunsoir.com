@@ -9,6 +9,7 @@ use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Account\AccountPictureController;
 use App\Http\Controllers\Avatar\AvatarUploadController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'welcome']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/account')->group(function () {

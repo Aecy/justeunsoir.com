@@ -93,20 +93,18 @@
             </div>
             <div class="section-wrapper">
                 <div class="row justify-content-center g-3 g-md-4">
-                    @foreach(range(1, 6) as $member)
+                    @foreach($users->slice(0, 6) as $user)
                         <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                             <div class="lab-item member-item style-1">
                                 <div class="lab-inner">
                                     <div class="lab-thumb">
-                                        <img src="{{ asset('assets/images/member/0'.$member.'.jpg') }}" alt="member-img">
+                                        <img src="{{ $user->avatar_url }}" alt="member-img">
                                     </div>
                                     <div class="lab-content">
                                         <h6>
-                                            <a href="#">
-                                                Membre fictif
-                                            </a>
+                                            <a href="#">{{ $user->name }}</a>
                                         </h6>
-                                        <p>Inactive depuis 1 jour</p>
+                                        <p>Inscrit {{ $user->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +112,11 @@
                     @endforeach
                 </div>
                 <div class="member-button-group d-flex flex-wrap justify-content-center">
-                    <a href="#" class="lab-btn">
+                    <a href="{{ route('register') }}" class="lab-btn">
                         <i class="icofont-users"></i>
                         <span>Rejoignez-nous, gratuitement</span>
                     </a>
-                    <a href="#" class="lab-btn">
+                    <a href="{{ route('login') }}" class="lab-btn">
                         <i class="icofont-play-alt-1"></i>
                         <span>Connectez-vous dès maintenant</span>
                     </a>
@@ -139,11 +137,11 @@
                         <div class="lab-item about-item">
                             <div class="lab-inner text-center">
                                 <div class="lab-thumb">
-                                    <img src="assets/images/about/01.png" alt="img">
+                                    <img src="{{ asset('assets/images/about/01.png') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
-                                    <h2 class="counter">10,284</h2>
-                                    <p>Membres au total</p>
+                                    <h2 class="counter">{{ $users->count() }}</h2>
+                                    <p>Membre(s) au total</p>
                                 </div>
                             </div>
                         </div>
@@ -152,11 +150,11 @@
                         <div class="lab-item about-item">
                             <div class="lab-inner text-center">
                                 <div class="lab-thumb">
-                                    <img src="assets/images/about/02.png" alt="img">
+                                    <img src="{{ asset('assets/images/about/02.png') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
-                                    <h2 class="counter">8,960</h2>
-                                    <p>Membres connectés</p>
+                                    <h2 class="counter">{{ $onlineUsers->count() }}</h2>
+                                    <p>Membre(s) connecté(s)</p>
                                 </div>
                             </div>
                         </div>
@@ -165,11 +163,11 @@
                         <div class="lab-item about-item">
                             <div class="lab-inner text-center">
                                 <div class="lab-thumb">
-                                    <img src="assets/images/about/03.png" alt="img">
+                                    <img src="{{ asset('assets/images/about/03.png') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
-                                    <h2 class="counter">3,247</h2>
-                                    <p>Hommes connectés</p>
+                                    <h2 class="counter">{{ $onlineMens->count() }}</h2>
+                                    <p>Homme(s) connecté(s)</p>
                                 </div>
                             </div>
                         </div>
@@ -178,11 +176,11 @@
                         <div class="lab-item about-item">
                             <div class="lab-inner text-center">
                                 <div class="lab-thumb">
-                                    <img src="assets/images/about/04.png" alt="img">
+                                    <img src="{{ asset('assets/images/about/04.png') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
-                                    <h2 class="counter">5,713</h2>
-                                    <p>Femmes connectés</p>
+                                    <h2 class="counter">{{ $onlineWomans->count() }}</h2>
+                                    <p>Femme(s) connecté(s)</p>
                                 </div>
                             </div>
                         </div>
@@ -356,136 +354,23 @@
                 </ul>
 
                 <div class="grid-memberlist">
-                    <div class="grid-member filter-item girl">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/01.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Johanna</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item girl">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/03.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Selinae</a> </h6>
-                                    <p>Active 1 Day</p>
+                    @foreach($users->slice(0, 10) as $user)
+                        <div class="grid-member filter-item {{ $user->gender === 'F' ? 'girl' : 'boy' }}">
+                            <div class="lab-item member-item style-1 style-2">
+                                <div class="lab-inner">
+                                    <div class="lab-thumb">
+                                        <img src="{{ $user->avatar_url }}" alt="member-img">
+                                    </div>
+                                    <div class="lab-content">
+                                        <h6>
+                                            <a href="#">{{ $user->name }}</a>
+                                        </h6>
+                                        <p>Inscrit {{ $user->created_at->diffForHumans() }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid-member filter-item boy">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/02.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Andrea Guido</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item boy">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/04.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Rocky deo</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item girl">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/05.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Jhon doe</a> </h6>
-                                    <p>Active 5 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item boy">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/06.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Angelina</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item girl">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/07.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Andrea Guido</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item boy">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/08.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Jene Aiko</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item girl">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/09.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Anna haek</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-member filter-item boy">
-                        <div class="lab-item member-item style-1 style-2">
-                            <div class="lab-inner">
-                                <div class="lab-thumb">
-                                    <img src="assets/images/member/10.jpg" alt="member-img">
-                                </div>
-                                <div class="lab-content">
-                                    <h6><a href="profile.html">Andrean Puido</a> </h6>
-                                    <p>Active 1 Day</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
