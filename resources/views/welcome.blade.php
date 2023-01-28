@@ -207,15 +207,15 @@
                                     <div class="thumb-inner">
                                         <img src="{{ asset('assets/images/work/01.png') }}" alt="work-img">
                                         <div class="step">
-                                            <span>Étape</span>
+                                            <span>Step</span>
                                             <p>1</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="lab-content">
-                                    <h4>Créer votre profil</h4>
+                                    <h4>Créer votre compte</h4>
                                     <p>
-                                        En créant votre profil, vous accédez au reste des fonctionnalités de {{ config('app.name') }} !
+                                        En créant votre compte, vous accédez au reste des fonctionnalités de {{ config('app.name') }} !
                                         Vous n'êtes pas au bout de vos surprises.
                                     </p>
                                 </div>
@@ -229,7 +229,7 @@
                                     <div class="thumb-inner">
                                         <img src="{{ asset('assets/images/work/02.png') }}" alt="work-img">
                                         <div class="step">
-                                            <span>Étape</span>
+                                            <span>Step</span>
                                             <p>2</p>
                                         </div>
                                     </div>
@@ -250,7 +250,7 @@
                                     <div class="thumb-inner">
                                         <img src="{{ asset('assets/images/work/03.png') }}" alt="work-img">
                                         <div class="step">
-                                            <span>Étape</span>
+                                            <span>Step</span>
                                             <p>3</p>
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@
                                 <div class="lab-content">
                                     <h4>Commencer à rencontrer</h4>
                                     <p>
-                                        Pour cela il va falloir s'inscrire.
+                                        Une fois inscrit, l'e-mail vérifié. Vous serez apte à enfin commencer.
                                         Alors qu'attendez-vous ? Rejoignez {{ config('app.name') }} dès maintenant !
                                     </p>
                                 </div>
@@ -282,7 +282,7 @@
                         <div class="story-item lab-item">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <img src="{{ asset('assets/images/story/01.jpg') }}" alt="img">
+                                    <img src="{{ asset('assets/illustrations/social.svg') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
                                     <h4>
@@ -301,13 +301,11 @@
                         <div class="story-item lab-item">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <img src="assets/images/story/02.jpg" alt="img">
+                                    <img src="{{ asset('assets/illustrations/community.svg') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
                                     <h4>
-                                        <a href="blog-single.html">
-                                            Mêmes envies & intérêts
-                                        </a>
+                                        <a href="#">Mêmes envies & intérêts</a>
                                     </h4>
                                     <p>
                                         Une communauté de personnes libres et ouvertes d'esprit qui partagent les mêmes envies et les mêmes intérêts.
@@ -320,13 +318,11 @@
                         <div class="story-item lab-item">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <img src="assets/images/story/03.jpg" alt="img">
+                                    <img src="{{ asset('assets/illustrations/pleasure.svg') }}" alt="img">
                                 </div>
                                 <div class="lab-content">
                                     <h4>
-                                        <a href="blog-single.html">
-                                            Vivre des moments
-                                        </a>
+                                        <a href="#">Vivre des moments</a>
                                     </h4>
                                     <p>
                                         La possibilité de vivre des moments inoubliables sans aucune pression ni engagement à long terme.
@@ -495,157 +491,6 @@
         </div>
     </section>
 
-    <section class="group-section padding-tb bg-img">
-        <div class="container">
-            <div class="section-header">
-                <h4>Recently Active Groups</h4>
-                <h2>Turulav 4 Best Active Group</h2>
-            </div>
-            <div class="section-wrapper">
-                <div class="row g-4">
-                    <div class="col-xl-6 col-12">
-                        <div class="group-item lab-item">
-                            <div class="lab-inner d-flex flex-wrap align-items-center p-4">
-                                <div class="lab-thumb me-sm-4 mb-4 mb-sm-0">
-                                    <img src="assets/images/group/01.jpg" alt="img">
-                                </div>
-                                <div class="lab-content">
-                                    <h4>Active Group A1</h4>
-                                    <p>Colabors atively fabcate best breed and apcations through visionary value</p>
-                                    <ul class="img-stack d-flex">
-                                        <li><img src="assets/images/group/group-mem/01.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/02.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/03.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/04.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/05.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/06.png" alt="member-img"></li>
-                                        <li class="bg-theme">12+</li>
-                                    </ul>
-                                    <div class="test">
-                                        <a href="active-group.html" class="lab-btn">
-                                            <i class="icofont-users-alt-5"></i> View Group
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-12">
-                        <div class="group-item lab-item">
-                            <div class="lab-inner d-flex flex-wrap align-items-center p-4">
-                                <div class="lab-thumb me-sm-4 mb-4 mb-sm-0">
-                                    <img src="assets/images/group/02.jpg" alt="img">
-                                </div>
-                                <div class="lab-content">
-                                    <h4>Active Group A2</h4>
-                                    <p>Colabors atively fabcate best breed and
-                                        apcations through visionary value </p>
-                                    <ul class="img-stack d-flex">
-                                        <li><img src="assets/images/group/group-mem/01.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/02.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/03.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/04.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/05.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/06.png" alt="member-img"></li>
-                                        <li class="bg-theme">12+</li>
-                                    </ul>
-                                    <div class="test"> <a href="active-group.html" class="lab-btn"> <i
-                                                class="icofont-users-alt-5"></i>View Group</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-12">
-                        <div class="group-item lab-item">
-                            <div class="lab-inner d-flex flex-wrap align-items-center p-4">
-                                <div class="lab-thumb me-sm-4 mb-4 mb-sm-0">
-                                    <img src="assets/images/group/03.jpg" alt="img">
-                                </div>
-                                <div class="lab-content">
-                                    <h4>Active Group A3</h4>
-                                    <p>Colabors atively fabcate best breed and
-                                        apcations through visionary value </p>
-                                    <ul class="img-stack d-flex">
-                                        <li><img src="assets/images/group/group-mem/01.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/02.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/03.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/04.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/05.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/06.png" alt="member-img"></li>
-                                        <li class="bg-theme">12+</li>
-                                    </ul>
-                                    <div class="test"> <a href="active-group.html" class="lab-btn"> <i
-                                                class="icofont-users-alt-5"></i>View Group</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-12">
-                        <div class="group-item lab-item">
-                            <div class="lab-inner d-flex flex-wrap align-items-center p-4">
-                                <div class="lab-thumb me-sm-4 mb-4 mb-sm-0">
-                                    <img src="assets/images/group/04.jpg" alt="img">
-                                </div>
-                                <div class="lab-content">
-                                    <h4>Active Group A4</h4>
-                                    <p>Colabors atively fabcate best breed and
-                                        apcations through visionary value </p>
-                                    <ul class="img-stack d-flex">
-                                        <li><img src="assets/images/group/group-mem/01.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/02.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/03.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/04.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/05.png" alt="member-img"></li>
-                                        <li><img src="assets/images/group/group-mem/06.png" alt="member-img"></li>
-                                        <li class="bg-theme">12+</li>
-                                    </ul>
-                                    <div class="test"> <a href="active-group.html" class="lab-btn"> <i
-                                                class="icofont-users-alt-5"></i>View Group</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="clints-section padding-tb">
-        <div class="container">
-            <div class="section-header">
-                <h4 class="theme-color">Qu'est-ce que nos utilisateurs disent ?</h4>
-                <h2>Les dernières nouvelles de nos utilisateurs</h2>
-            </div>
-            <div class="section-wrapper">
-                <div class="clients">
-                    <div class="client-list">
-                        <div class="client-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, porro?</p>
-                            <div class="client-info">
-                                <div class="name-desi">
-                                    <h6>Marine Fourmwa</h6>
-                                    <span>Utilisatrice fréquente</span>
-                                </div>
-                                <div class="rating">
-                                    <ul>
-                                        <li><i class="icofont-star"></i></li>
-                                        <li><i class="icofont-star"></i></li>
-                                        <li><i class="icofont-star"></i></li>
-                                        <li><i class="icofont-star"></i></li>
-                                        <li><i class="icofont-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="client-thumb">
-                            <img src="assets/images/group/group-mem/02.png" alt="lab-clients">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="app-section bg-theme">
         <div class="container">
             <div class="section-wrapper padding-tb">
@@ -680,7 +525,7 @@
 
                 </div>
                 <div class="mobile-app">
-                    <img src="assets/images/app/mobile-view.png" alt="mbl-view">
+                    <img src="{{ asset('assets/illustrations/phone.svg') }}" alt="mbl-view">
                 </div>
             </div>
         </div>

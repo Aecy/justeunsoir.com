@@ -39,13 +39,13 @@
                                 <a href="{{ url('/') }}">Accueil</a>
                             </li>
                             <li>
-                                <a href="active-group.html">Recherches</a>
+                                <a href="#">Recherches</a>
                             </li>
                             <li>
-                                <a href="active-group.html">Tarifications</a>
+                                <a href="#">Récompenses</a>
                             </li>
                             <li>
-                                <a href="active-group.html">Récompenses</a>
+                                <a href="#">Tarifs</a>
                             </li>
                             @auth
                                 <li>
@@ -70,11 +70,6 @@
                                 <li class="d-lg-none">
                                     <a href="{{ route('login') }}" class="">
                                         Se connecter
-                                    </a>
-                                </li>
-                                <li class="d-lg-none">
-                                    <a href="{{ route('register') }}" class="">
-                                        S'enregistrer
                                     </a>
                                 </li>
                             @endauth
