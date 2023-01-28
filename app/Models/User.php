@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
     /**
      * Les attributs qui peuvent être remplis par l'User.
@@ -59,6 +61,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_seen' => 'datetime',
         'last_reward_at' => 'datetime',
     ];
+
+    /**
+     * Register the media collection of the users.
+     *
+     * @return void
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('medias');
+    }
 
     /**
      * Créer un attribut pour l'avatar de l'User.

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Account\AccountAboutController;
 use App\Http\Controllers\Account\AccountAvatarController;
+use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
+use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Account\AccountPictureController;
 use App\Http\Controllers\Avatar\AvatarUploadController;
@@ -25,14 +27,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/account')->group(function () {
-        Route::view('/', 'account.index')->name('dashboard');
+        Route::get('/', [AccountController::class, 'index'])->name('dashboard');
         Route::patch('/about', [AccountAboutController::class, 'update'])->name('account.update.about');
         Route::patch('/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
         Route::patch('/interest', [AccountInterestController::class, 'update'])->name('account.update.interest');
         Route::patch('/physical', [AccountPhysicalController::class, 'update'])->name('account.update.physical');
         Route::post('/avatar', [AccountAvatarController::class, 'update'])->name('account.upload.avatar');
+        Route::post('/media', [AccountMediaController::class, 'store'])->name('account.store.media');
     });
 });
 
