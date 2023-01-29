@@ -59,6 +59,11 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{{ url('/') }}">
+                                                Administratif
+                                            </a>
+                                        </li>
+                                        <li>
                                             <form class="d-none" method="POST" id="form-logout" action="{{ route('logout') }}">@csrf</form>
                                             <a onclick="event.preventDefault(); document.getElementById('form-logout').submit()" href="#">
                                                 Se déconnecter

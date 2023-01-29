@@ -63,6 +63,16 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     ];
 
     /**
+     * Vérifie si l'User est admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
      * Register the media collection of the users.
      *
      * @return void
