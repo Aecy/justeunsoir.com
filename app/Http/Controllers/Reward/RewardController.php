@@ -17,21 +17,30 @@ class RewardController extends Controller
 
     public function index(): View
     {
-        return view('rewards.index');
+        $user = $this->getUser();
+        $can = $this->rewardService->can($user);
+
+        return view('rewards.index', [
+            'user' => $user,
+            'can' => $can
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $user = $request->user();
-        if (now()->diffInHours($user->last_reward) >= 24 || is_null($user->last_reward)) {
+        if ($this->rewardService->can($user) || is_null($user->last_reward)) {
             $reward = $this->rewardService->getReward();
+            $user->last_reward = now();
+
             if ($reward > 0) {
                 $user->messages_left += $reward;
-                $user->last_reward = now();
                 $user->save();
 
                 return Redirect::back()->with('success', "Vous avez reçu {$reward} crédits.");
             }
+
+            $user->save();
 
             return Redirect::back()->with('success', "Vous n'avez pas reçu de crédits malheureusement.");
         }

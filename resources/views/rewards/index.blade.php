@@ -35,12 +35,19 @@
                             {{ session('danger') }}
                         </p>
                     @endif
-                    <form action="{{ route('reward.store') }}" method="post">
-                        @csrf
-                        <button type="submit" class="lab-btn">
-                            Récupérer votre récompense
-                        </button>
-                    </form>
+                    @if($can)
+                            <form action="{{ route('reward.store') }}" method="post">
+                                @csrf
+                                <button type="submit" class="lab-btn">
+                                    Récupérer votre récompense
+                                </button>
+                            </form>
+                    @else
+                        <h5 class="text-danger">
+                            <i class="icofont-exclamation-tringle text-xl"></i>
+                            Revenez {{ $user->last_reward->addHours(24)->diffForHumans() }} pour obtenir une récompense.
+                        </h5>
+                    @endif
                 </div>
             </div>
         </div>
