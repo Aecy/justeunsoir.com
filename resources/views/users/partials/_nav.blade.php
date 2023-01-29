@@ -1,0 +1,13 @@
+<nav class="profile-nav">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a href="{{ route('users.show', $user) }}" class="nav-link {{ $active === 'index' ? 'active' : '' }}">
+            Son compte
+        </a>
+        <a href="#" class="nav-link {{ $active === 'friends' ? 'active' : '' }}">
+            Ses amis <span class="item-number">158</span>
+        </a>
+        <a href="#" class="nav-link  {{ $active === 'medias' ? 'active' : '' }}">
+            Ses photos <span class="item-number">{{ $user->getMedia()->count() }}</span>
+        </a>
+    </div>
+</nav>

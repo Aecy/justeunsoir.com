@@ -58,6 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      * @var array<string, string>
      */
     protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'birth_at' => 'date',
         'email_verified_at' => 'datetime',
         'last_seen' => 'datetime',
         'last_reward' => 'datetime',

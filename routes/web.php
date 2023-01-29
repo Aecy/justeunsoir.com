@@ -11,12 +11,16 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
 use App\Http\Controllers\Search\SearchController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('membres')->group(function () {
+        Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
+    });
     Route::prefix('recherches')->group(function () {
         Route::get('/', [SearchController::class, 'index'])->name('search.index');
     });

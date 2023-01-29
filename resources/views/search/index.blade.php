@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="lab-content">
                                     <h6>
-                                        <a href="#">
+                                        <a href="{{ route('users.show', $user) }}">
                                             @if(Cache::has('users_online-' . $user->id))
                                                 <i class="icofont-ui-press text-success circle pulse"></i>
                                             @else

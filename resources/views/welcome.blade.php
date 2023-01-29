@@ -102,7 +102,12 @@
                                     </div>
                                     <div class="lab-content">
                                         <h6>
-                                            <a href="#">{{ $user->name }}</a>
+                                            @if(Cache::has('users_online-' . $user->id))
+                                                <i class="icofont-ui-press text-success text-sm circle pulse"></i>
+                                            @else
+                                                <i class="icofont-ui-press text-danger text-sm"></i>
+                                            @endif
+                                            <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
                                         </h6>
                                         <p>Inscrit {{ $user->created_at->diffForHumans() }}</p>
                                     </div>
@@ -363,7 +368,12 @@
                                     </div>
                                     <div class="lab-content">
                                         <h6>
-                                            <a href="#">{{ $user->name }}</a>
+                                            @if(Cache::has('users_online-' . $user->id))
+                                                <i class="icofont-ui-press text-success text-sm circle pulse"></i>
+                                            @else
+                                                <i class="icofont-ui-press text-danger text-sm"></i>
+                                            @endif
+                                            <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
                                         </h6>
                                         <p>Inscrit {{ $user->created_at->diffForHumans() }}</p>
                                     </div>

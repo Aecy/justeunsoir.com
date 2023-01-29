@@ -33,9 +33,7 @@
                 @endif
                 {{ $user->name }}
             </h4>
-            <div>
-                <span>Inscrit {{ $user->created_at->diffForHumans() }}</span>
-            </div>
+            <span>Inscrit {{ $user->created_at->diffForHumans() }}</span>
         </div>
     </div>
 </div>
