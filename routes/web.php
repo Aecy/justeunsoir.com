@@ -7,6 +7,7 @@ use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
+use App\Http\Controllers\Like\LikeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
@@ -20,6 +21,7 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('membres')->group(function () {
         Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
+        Route::get('/{user}/like', [LikeController::class, 'index'])->name('users.like');
     });
     Route::prefix('recherches')->group(function () {
         Route::get('/', [SearchController::class, 'index'])->name('search.index');

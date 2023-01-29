@@ -19,10 +19,14 @@
         </div>
         <ul class="profile-contact">
             <li>
-                <a href="#">
+                <a href="{{ route('users.like', $user) }}">
                     <div class="icon"><i class="icofont-heart"></i></div>
                     <div class="text">
-                        <p>Liker</p>
+                        @if(auth()->user()->hasLiked($user))
+                            <p>Je n'aime plus</p>
+                        @else
+                            <p>J'aime ce profile</p>
+                        @endif
                     </div>
                 </a>
             </li>
