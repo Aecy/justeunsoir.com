@@ -2,7 +2,7 @@
     <div class="footer-middle padding-tb" style="background-image: url({{ asset('assets/images/footer/bg.png') }});">
         <div class="container">
             <div class="row justify-content-around">
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="footer-middle-item-wrapper">
                         <div class="footer-middle-item mb-lg-0">
                             <div class="fm-item-title">
@@ -17,19 +17,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3"></div>
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="footer-middle-item-wrapper">
                         <div class="footer-middle-item mb-lg-0">
                             <div class="fm-item-title">
-                                <h4>Plan du site</h4>
+                                <h4>Informations</h4>
                             </div>
                             <div class="fm-item-content">
                                 <div class="fm-item-widget lab-item">
                                     <div class="lab-inner">
                                         <div class="lab-content">
                                             <h6>
-                                                <a href="#">Accueil</a>
+                                                <a href="{{ url('/') }}">Accueil</a>
                                             </h6>
                                         </div>
                                     </div>
@@ -38,7 +37,7 @@
                                     <div class="lab-inner">
                                         <div class="lab-content">
                                             <h6>
-                                                <a href="#">Accueil</a>
+                                                <a href="#">Recherches</a>
                                             </h6>
                                         </div>
                                     </div>
@@ -47,7 +46,63 @@
                                     <div class="lab-inner">
                                         <div class="lab-content">
                                             <h6>
-                                                <a href="#">Accueil</a>
+                                                <a href="{{ route('reward.index') }}">Récompenses</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fm-item-widget lab-item">
+                                    <div class="lab-inner">
+                                        <div class="lab-content">
+                                            <h6>
+                                                <a href="#">Tarifs</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="footer-middle-item-wrapper">
+                        <div class="footer-middle-item mb-lg-0">
+                            <div class="fm-item-title">
+                                <h4>Reste du site</h4>
+                            </div>
+                            <div class="fm-item-content">
+                                <div class="fm-item-widget lab-item">
+                                    <div class="lab-inner">
+                                        <div class="lab-content">
+                                            <h6>
+                                                <a href="{{ url('/') }}">Accueil</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fm-item-widget lab-item">
+                                    <div class="lab-inner">
+                                        <div class="lab-content">
+                                            <h6>
+                                                <a href="#">Recherches</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fm-item-widget lab-item">
+                                    <div class="lab-inner">
+                                        <div class="lab-content">
+                                            <h6>
+                                                <a href="{{ route('reward.index') }}">Récompenses</a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fm-item-widget lab-item">
+                                    <div class="lab-inner">
+                                        <div class="lab-content">
+                                            <h6>
+                                                <a href="#">Tarifs</a>
                                             </h6>
                                         </div>
                                     </div>

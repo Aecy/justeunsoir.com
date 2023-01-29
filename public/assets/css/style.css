@@ -4214,3 +4214,15 @@ button.lab-btn {
         box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
     }
 }
+
+.accordion-style:not(.collapsed) {
+    color: white !important;
+    background-color: #210053 !important;
+}
+
+.accordion-collapse-style {
+    color: white !important;
+    background-color: #210053 !important;
+    border: solid rgba(0,0,0,.125);
+    border-width: 0 1px;
+}

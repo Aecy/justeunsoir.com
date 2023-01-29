@@ -32,4 +32,9 @@ class PageController extends Controller
             'onlineWomans' => $onlineWomans
         ]);
     }
+
+    public function faq(): View
+    {
+        return view('faq');
+    }
 }

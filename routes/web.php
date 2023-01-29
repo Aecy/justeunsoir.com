@@ -7,8 +7,6 @@ use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
-use App\Http\Controllers\Account\AccountPictureController;
-use App\Http\Controllers\Avatar\AvatarUploadController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
@@ -26,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'welcome']);
+Route::get('/faq', [PageController::class, 'faq']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/reward')->group(function() {
