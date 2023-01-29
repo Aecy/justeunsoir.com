@@ -79,9 +79,7 @@
                     <li class="member-cat">
                         <div class="custom-select right w-100">
                             <select name="member" id="member-cat" class="">
-                                <option value="0">Inscrit récemment</option>
-                                <option value="1">Actuellement connecté</option>
-                                <option value="2">Actuellement déconnecté</option>
+                                <option value="0">Plus de filtre sont à venir...</option>
                             </select>
                         </div>
                     </li>
