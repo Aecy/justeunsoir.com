@@ -19,69 +19,17 @@
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
+                        @forelse($user->likes() as $liker)
                         <div class="col">
                             <div class="image-thumb">
                                 <a href="#">
-                                    <img src="assets/images/widget/01.jpg" alt="img">
+                                    <img src="{{ $liker->user->avatar_url }}" alt="img">
                                 </a>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/02.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/03.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/04.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/05.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/06.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/07.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/08.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-thumb">
-                                <a href="#">
-                                    <img src="assets/images/widget/09.jpg" alt="img">
-                                </a>
-                            </div>
-                        </div>
+                        @empty
+                            <p>Vous n'avez aucun likes.</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
