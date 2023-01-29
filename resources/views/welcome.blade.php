@@ -11,34 +11,34 @@
                                 <div class="intro-form-inner">
                                     <h3>{{ config('app.name') }}</h3>
                                     <p>Rencontrer sans engagement, ni attache dans la confidentialité la plus totale.</p>
-                                    <form action="/" class="banner-form">
+                                    <form action="{{ route('search.index') }}" method="get" class="banner-form">
                                         <div class="gender">
                                             <label for="gender" class="left">Je suis un(e)</label>
                                             <div class="custom-select right">
                                                 <select name="gender" id="gender" class="">
-                                                    <option value="0" disabled selected>Sélectionner votre genre</option>
-                                                    <option value="1">Homme</option>
-                                                    <option value="2">Femme</option>
-                                                    <option value="3">Non-binaire</option>
+                                                    <option value="" disabled selected>Sélectionner votre genre</option>
+                                                    <option value="H">Homme</option>
+                                                    <option value="A">Femme</option>
+                                                    <option value="F">Non-binaire</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="person">
-                                            <label for="gender-two" class="left">Je recherche</label>
+                                            <label for="looking" class="left">Je recherche</label>
                                             <div class="custom-select right">
-                                                <select name="gender" id="gender-two" class="">
-                                                    <option value="0" disabled selected>Sélectionner votre recherche</option>
-                                                    <option value="1">Homme</option>
-                                                    <option value="2">Femme</option>
-                                                    <option value="3">Autre</option>
+                                                <select name="looking" id="looking" class="">
+                                                    <option value="" disabled selected>Sélectionner votre recherche</option>
+                                                    <option value="H">Homme</option>
+                                                    <option value="F">Femme</option>
+                                                    <option value="A">Autre</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="age">
-                                            <label for="age" class="left">Âgé entre</label>
+                                            <label for="start_age" class="left">Âgé entre</label>
                                             <div class="right d-flex justify-content-between">
                                                 <div class="custom-select">
-                                                    <select name="age-start" id="age">
+                                                    <select name="start_age" id="start_age">
                                                         @foreach(range(18, 99) as $nub)
                                                             <option value="{{ $nub }}">{{ $nub }}</option>
                                                         @endforeach
@@ -46,7 +46,7 @@
                                                 </div>
                                                 <span class="d-flex align-items-center me-2 ms-2">et</span>
                                                 <div class="custom-select">
-                                                    <select name="age-end" id="age-two">
+                                                    <select name="end_age" id="end_age">
                                                         @foreach(range(18, 99) as $nub)
                                                             <option value="{{ $nub }}">{{ $nub }}</option>
                                                         @endforeach
@@ -56,10 +56,10 @@
 
                                         </div>
                                         <div class="city">
-                                            <label for="city" class="left">Dans la ville</label>
-                                            <input class="right" type="text" id="city" placeholder="Entrer votre ville...">
+                                            <label for="address" class="left">Dans la ville</label>
+                                            <input class="right" type="text" id="address" name="address" placeholder="Entrer votre ville...">
                                         </div>
-                                        <button class="">Trouver un partenaire</button>
+                                        <button type="submit" class="">Trouver un partenaire</button>
                                     </form>
                                 </div>
                             </div>
