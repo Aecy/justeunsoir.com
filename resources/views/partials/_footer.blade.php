@@ -37,7 +37,7 @@
                                     <div class="lab-inner">
                                         <div class="lab-content">
                                             <h6>
-                                                <a href="#">Recherches</a>
+                                                <a href="{{ route('search.index') }}">Recherches</a>
                                             </h6>
                                         </div>
                                     </div>

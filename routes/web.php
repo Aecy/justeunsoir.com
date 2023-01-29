@@ -10,13 +10,17 @@ use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
+use App\Http\Controllers\Search\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::prefix('/reward')->group(function() {
+    Route::prefix('recherches')->group(function () {
+        Route::get('/', [SearchController::class, 'index'])->name('search.index');
+    });
+    Route::prefix('/recompenses')->group(function() {
         Route::get('/', [RewardController::class, 'index'])->name('reward.index');
         Route::post('/', [RewardController::class, 'store'])->name('reward.store');
     });

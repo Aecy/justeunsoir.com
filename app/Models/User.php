@@ -91,4 +91,21 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->avatar == 'default.jpg' ? asset('default.jpg') : asset('/storage/avatars/' . $this->avatar);
     }
+
+    public function scopeFilter($query, $params)
+    {
+        if (isset($params['looking'])) {
+            $query->where('gender', $params['looking']);
+        }
+
+        if (isset($params['start_age']) && isset($params['end_age'])) {
+            $query->whereBetween('age', [$params['start_age'], $params['end_age']]);
+        }
+
+        if (isset($params['address'])) {
+            $query->where('address', 'LIKE', "%{$params['address']}%");
+        }
+
+        return $query;
+    }
 }

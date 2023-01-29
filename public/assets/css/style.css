@@ -4196,10 +4196,10 @@ button.lab-btn {
 
 .circle {
     background: green;
-    width: 35px;
-    height: 35px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    box-shadow: 0px 0px 1px 1px #0000001a;
+    box-shadow: 0px 0px 1px 1px green;
 }
 
 .pulse {
@@ -4208,10 +4208,10 @@ button.lab-btn {
 
 @keyframes pulse-animation {
     0% {
-        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0 0px rgba(0, 255, 0, 0.4);
     }
     100% {
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 6px rgba(0, 255, 0, 0);
     }
 }
 
@@ -4225,4 +4225,35 @@ button.lab-btn {
     background-color: #210053 !important;
     border: solid rgba(0,0,0,.125);
     border-width: 0 1px;
+}
+
+.page-item:first-child .page-link {
+     border-top-left-radius: 50%;
+     border-bottom-left-radius: 50%;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    color: #0d6efd;
+    text-decoration: none;
+    background-color: #fff;
+    border: none !important;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: white;
+    background-color: #e0344c;
+    border-color: #e0344c;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+
 }

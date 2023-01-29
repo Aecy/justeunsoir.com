@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => 'Accueil'])
+@extends('layouts.master', ['title' => "Foire aux questions"])
 
 @section('content')
     <section class="page-header-section style-1" style="background:url({{ asset('assets/images/page-header.jpg') }})">

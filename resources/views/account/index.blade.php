@@ -178,7 +178,7 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="address" class="pb-2">Je viens de</label>
-                                                                <input type="text" name="address" value="{{ old('address', $user->address) }}" class="form-control" placeholder="Indiquer votre adresse (ex: Paris, France)" autocomplete="address">
+                                                                <input type="text" name="address" value="{{ old('address', $user->address) }}" class="form-control" placeholder="Indiquez votre ville (ex: Bruxelles)" autocomplete="state">
                                                             </div>
                                                             <div class="mb-4">
                                                                 <label for="birth_at" class="pb-2">Je suis né(e) le</label>

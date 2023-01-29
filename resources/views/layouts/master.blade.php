@@ -39,7 +39,7 @@
                                 <a href="{{ url('/') }}">Accueil</a>
                             </li>
                             <li>
-                                <a href="#">Recherches</a>
+                                <a href="{{ route('search.index') }}">Recherches</a>
                             </li>
                             <li>
                                 <a href="{{ route('reward.index') }}">Récompenses</a>
