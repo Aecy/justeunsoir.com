@@ -18,4 +18,40 @@ class AccountController extends Controller
             'user' => $this->getUser()
         ]);
     }
+
+    /**
+     * Affiche la page de sécurité du compte.
+     *
+     * @return View
+     */
+    public function security(): View
+    {
+        return view('account.security', [
+            'user' => $this->getUser()
+        ]);
+    }
+
+    /**
+     * Affiche la page des amis du compte.
+     *
+     * @return View
+     */
+    public function friends(): View
+    {
+        return view('account.friends', [
+            'user' => $this->getUser()
+        ]);
+    }
+
+    /**
+     * Affiche la page des photos du compte.
+     *
+     * @return View
+     */
+    public function medias(): View
+    {
+        return view('account.medias', [
+            'user' => $this->getUser()
+        ]);
+    }
 }

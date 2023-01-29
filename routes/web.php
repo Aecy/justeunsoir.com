@@ -26,6 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
     Route::prefix('/account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('dashboard');
+        Route::get('security', [AccountController::class, 'security'])->name('account.security');
+        Route::get('friends', [AccountController::class, 'friends'])->name('account.friends');
+        Route::get('medias', [AccountController::class, 'medias'])->name('account.medias');
         Route::patch('/about', [AccountAboutController::class, 'update'])->name('account.update.about');
         Route::patch('/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
         Route::patch('/interest', [AccountInterestController::class, 'update'])->name('account.update.interest');

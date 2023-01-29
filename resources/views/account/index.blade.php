@@ -21,111 +21,13 @@
         <div class="container">
             <div class="section-wrapper">
                 <div class="member-profile">
-                    <div class="profile-item">
-                        <div class="profile-cover">
-                            <img src="{{ asset('assets/images/profile/cover.jpg') }}" alt="cover-pic">
-                            <div class="edit-photo custom-upload">
-                                <div class="file-btn"><i class="icofont-camera"></i>Modifier votre couverture</div>
-                                <input type="file">
-                            </div>
-                        </div>
-                        <div class="profile-information">
-                            <div class="profile-pic">
-                                <img src="{{ $user->avatar_url }}" alt="DP">
-                                <div class="custom-upload">
-                                    <div class="file-btn">
-                                        <span class="d-none d-lg-inline-block">
-                                            <i class="icofont-camera"></i> Modifier votre photo
-                                        </span>
-                                        <span class="d-lg-none mr-0">
-                                            <i class="icofont-plus"></i>
-                                        </span>
-                                    </div>
-                                    <form id="avatar-form" method="post" action="{{ route('account.upload.avatar') }}" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="file" name="avatar" onchange="event.preventDefault(); document.getElementById('avatar-form').submit()">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="profile-name">
-                                <h4>
-                                    @if(Cache::has('users_online-' . $user->id))
-                                        <i class="icofont-ui-press text-success text-sm circle pulse"></i>
-                                    @else
-                                        <i class="icofont-ui-press text-danger text-sm"></i>
-                                    @endif
-                                    {{ $user->name }}
-                                </h4>
-                                <div>
-                                    <span>Inscrit {{ $user->created_at->diffForHumans() }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-item d-none">
-                        <div class="lab-inner">
-                            <div class="lab-thumb">
-                                <a href="#"><img src="assets/images/profile/Profile.jpg" alt="profile"></a>
-                            </div>
-                            <div class="lab-content">
-                                <div class="profile-name">
-                                    <div class="p-name-content">
-                                        <h4>William Smith</h4>
-                                        <p>Active 02 Minutes Ago</p>
-                                    </div>
 
-                                    <div class="contact-button">
-                                        <button class="contact-btn">
-                                            <i class="icofont-info-circle"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <ul class="profile-contact">
-                                    <li>
-                                        <a href="#">
-                                            <div class="icon"><i class="icofont-user"></i></div>
-                                            <div class="text">
-                                                <p>Add Friends</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="icon"><i class="icofont-envelope"></i></div>
-                                            <div class="text">
-                                                <p>Publice Message</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="icon"><i class="icofont-envelope"></i></div>
-                                            <div class="text">
-                                                <p>Private Message</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @include('account.partials._profile')
+
                     <div class="profile-details">
-                        <nav class="profile-nav">
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                                    Compte
-                                </button>
-                                <button class="nav-link" id="nav-security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">
-                                    Sécurité
-                                </button>
-                                <button class="nav-link" id="nav-friends-tab" data-bs-toggle="tab" data-bs-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false">
-                                    Amis <span class="item-number">158</span>
-                                </button>
-                                <button class="nav-link" id="nav-photos-tab" data-bs-toggle="tab" data-bs-target="#photos" type="button" role="tab" aria-controls="photos" aria-selected="false">
-                                    Photos <span class="item-number">{{ $user->getMedia()->count() }}</span>
-                                </button>
-                            </div>
-                        </nav>
+
+                        @include('account.partials._nav', ['active' => "index"])
+
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane activity-page fade show active" id="profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <div>
@@ -142,7 +44,7 @@
                                                             @method('patch')
                                                             <div class="mb-3">
                                                                 <label for="name" class="pb-2">Nom</label>
-                                                                <input type="text" name="name" value="{{ old('name', $user->name) }}" class="form-control" autofocus autocomplete="name">
+                                                                <input type="text" name="name" value="{{ old('name', $user->name) }}" class="form-control" autocomplete="name">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="email" class="pb-2">Adresse e-mail</label>
@@ -331,84 +233,7 @@
                                         </div>
 
                                         <!-- Aside Part -->
-                                        <div class="col-xl-4">
-                                            <aside class="mt-5 mt-xl-0">
-                                                <div class="widget like-member">
-                                                    <div class="widget-inner">
-                                                        <div class="widget-title">
-                                                            <h5>Ces membres vous likes</h5>
-                                                        </div>
-                                                        <div class="widget-content">
-                                                            <div class="row row-cols-3 row-cols-sm-auto g-3">
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/01.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/02.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/03.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/04.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/05.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/06.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/07.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/08.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <div class="image-thumb">
-                                                                        <a href="#">
-                                                                            <img src="assets/images/widget/09.jpg" alt="img">
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </aside>
-                                        </div>
+                                        @include('account.partials._aside')
                                     </div>
                                 </div>
                             </div>

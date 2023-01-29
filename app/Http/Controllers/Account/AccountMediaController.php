@@ -15,7 +15,7 @@ class AccountMediaController extends Controller
         if ($request->hasFile('media')) {
             $user->addMedia($request->file('media'))->toMediaCollection();
 
-            return Redirect::back();
+            return Redirect::route('account.medias');
         }
     }
 }
