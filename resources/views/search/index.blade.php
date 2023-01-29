@@ -79,7 +79,7 @@
                     <li class="member-cat">
                         <div class="custom-select right w-100">
                             <select name="member" id="member-cat" class="">
-                                <option value="0">Plus de filtre sont à venir...</option>
+                                <option value="0">Inscrit récemment</option>
                             </select>
                         </div>
                     </li>
