@@ -103,7 +103,7 @@
                                             {{ $user->name }}
                                         </a>
                                     </h6>
-                                    <p>Inscrit {{ $user->created_at->diffForHumans() }}</p>
+                                    <p>{{ $user->age }} ans - {{ $user->address }}</p>
                                 </div>
                             </div>
                         </div>
