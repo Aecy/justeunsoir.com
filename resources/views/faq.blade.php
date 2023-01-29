@@ -21,7 +21,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="theme-color">Foire aux questions</h2>
-                <h4>Les questions fréquemments posées</h4>
+                <h4>Les questions fréquemment posées</h4>
             </div>
             <div class="section-wrapper mt-4">
                 <div class="pricing-plan-wrapper">
