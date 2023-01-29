@@ -7,7 +7,11 @@
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
-                        <p>Vous avez un total de <strong>{{ $user->messages_left }} crédits.</strong></p>
+                        @if($user->isAdmin())
+                            <p>Vous êtes crédits illimités.</p>
+                        @else
+                            <p>Vous avez un total de <strong>{{ $user->messages_left }} crédits.</strong></p>
+                        @endif
                     </div>
                 </div>
             </div>
