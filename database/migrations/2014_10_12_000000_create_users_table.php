@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('smoking')->nullable();
             $table->string('drinking')->nullable();
             $table->integer('height')->nullable();
-            $table->integer('weight')->nullable();
+            $table->string('morphology')->nullable();
             $table->string('hair_color')->nullable();
             $table->string('eye_color')->nullable();
             $table->integer('age')->nullable();

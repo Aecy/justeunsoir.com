@@ -14,10 +14,10 @@ class AccountPhysicalUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'height' => ['integer'],
-            'weight' => ['integer'],
-            'hair_color' => ['string'],
-            'eye_color' => ['string'],
+            'height' => ['nullable', 'integer'],
+            'morphology' => ['nullable', 'string', 'in:S,M,D,N,Q,R'],
+            'hair_color' => ['nullable', 'string'],
+            'eye_color' => ['nullable', 'string'],
         ];
     }
 }

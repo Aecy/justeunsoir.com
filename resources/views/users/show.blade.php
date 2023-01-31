@@ -115,8 +115,8 @@
                                                                 <p class="info-details">{{ $user->height ?? "0" }} cm</p>
                                                             </li>
                                                             <li>
-                                                                <p class="info-name">Poids</p>
-                                                                <p class="info-details">{{ $user->weight ?? "0" }} kg</p>
+                                                                <p class="info-name">Morphologie</p>
+                                                                <p class="info-details">{{ $user->morphologyName }}</p>
                                                             </li>
                                                             <li>
                                                                 <p class="info-name">Couleur des cheveux</p>

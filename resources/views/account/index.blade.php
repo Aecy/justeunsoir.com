@@ -207,8 +207,28 @@
                                                                 <input type="number" name="height" value="{{ old('height', $user->height) }}" class="form-control" placeholder="ex: 180">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="weight" class="pb-2">Votre poids (kg)</label>
-                                                                <input type="number" name="weight" value="{{ old('weight', $user->weight) }}" class="form-control" placeholder="ex: 72">
+                                                                <label for="morphology" class="pb-2">Votre morphologie</label>
+                                                                <select name="morphology" id="morphology" class="form-control">
+                                                                    <option value="" selected disabled>Sélectionner votre morphologie</option>
+                                                                    <option value="S" {{ old('morphology', $user->morphology) === 'S' ? 'selected' : '' }}>
+                                                                        Sportif(ve)
+                                                                    </option>
+                                                                    <option value="M" {{ old('morphology', $user->morphology) === 'M' ? 'selected' : '' }}>
+                                                                        Mince
+                                                                    </option>
+                                                                    <option value="D" {{ old('morphology', $user->morphology) === 'D' ? 'selected' : '' }}>
+                                                                        Délicate
+                                                                    </option>
+                                                                    <option value="N" {{ old('morphology', $user->morphology) === 'N' ? 'selected' : '' }}>
+                                                                        Normal
+                                                                    </option>
+                                                                    <option value="Q" {{ old('morphology', $user->morphology) === 'Q' ? 'selected' : '' }}>
+                                                                        Quelque kilos en trop
+                                                                    </option>
+                                                                    <option value="R" {{ old('morphology', $user->morphology) === 'R' ? 'selected' : '' }}>
+                                                                        Rond(e)
+                                                                    </option>
+                                                                </select>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="hair_color" class="pb-2">Couleur de vos cheveux</label>
