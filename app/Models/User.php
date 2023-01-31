@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\User\UserAttrTrait;
+use App\Traits\User\UserDrinkingTrait;
+use App\Traits\User\UserGenderTrait;
+use App\Traits\User\UserMartialTrait;
+use App\Traits\User\UserMorphologyTrait;
+use App\Traits\User\UserSmokingTrait;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
-use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     use InteractsWithMedia;
     use Likeable, Liker;
     use Favoriteability;
-    use UserAttrTrait;
+    use UserDrinkingTrait, UserGenderTrait, UserMartialTrait, UserMorphologyTrait, UserSmokingTrait;
 
     /**
      * Les attributs qui peuvent être remplis par l'User.
