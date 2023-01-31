@@ -2,13 +2,14 @@
     <aside class="mt-5 mt-xl-0">
         <div class="widget like-member">
             <div class="widget-inner">
-                <div class="widget-title">
+                <div class="d-flex justify-content-between widget-title">
                     <h5>Vos crédits</h5>
+                    <a href="#">Acheter des crédits</a>
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
                         @if($user->isAdmin())
-                            <p>Vous êtes crédits illimités.</p>
+                            <p>Vous avez crédits illimités.</p>
                         @else
                             <p>Vous avez un total de <strong>{{ $user->messages_left }} crédits.</strong></p>
                         @endif
