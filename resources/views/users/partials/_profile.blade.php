@@ -31,10 +31,14 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('users.favorite', $user) }}">
                     <div class="icon"><i class="icofont-user"></i></div>
                     <div class="text">
-                        <p>Ajouter aux favoris</p>
+                        @if($user->isFavoritedBy(auth()->user()))
+                            <p>Retirer des favoris</p>
+                        @else
+                            <p>Ajouter aux favoris</p>
+                        @endif
                     </div>
                 </a>
             </li>

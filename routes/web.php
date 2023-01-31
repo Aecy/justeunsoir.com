@@ -7,6 +7,7 @@ use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
+use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Like\LikeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -21,7 +22,9 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('membres')->group(function () {
         Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
-        Route::get('/{user}/like', [LikeController::class, 'index'])->name('users.like');
+        Route::get('/{user}/favoris', [FavoriteController::class, 'show'])->name('favorites.show');
+        Route::get('/{user}/toggle/like', [LikeController::class, 'index'])->name('users.like');
+        Route::get('/{user}/toggle/favoris', [FavoriteController::class, 'index'])->name('users.favorite');
     });
     Route::prefix('recherches')->group(function () {
         Route::get('/', [SearchController::class, 'index'])->name('search.index');

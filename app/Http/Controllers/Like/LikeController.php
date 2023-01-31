@@ -11,8 +11,7 @@ class LikeController extends Controller
 {
     public function index(User $user): RedirectResponse
     {
-        $auth = $this->getUser();
-        $auth->hasLiked($user) ? $auth->unlike($user) : $auth->like($user);
+        $this->getUser()->toggleLike($user);
         return Redirect::back();
     }
 }

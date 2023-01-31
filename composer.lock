@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6df061685186c1634ad048e7ede7d5df",
+    "content-hash": "4cd27cbe68cc1a79e716bccd347a7944",
     "packages": [
         {
             "name": "brick/math",
@@ -61,76 +61,6 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
-        },
-        {
-            "name": "christiankuri/laravel-favorite",
-            "version": "v1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ChristianKuri/laravel-favorite.git",
-                "reference": "e3e0b9cfc8bbbb5efbf6e6e78ee31cd9646f1b51"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ChristianKuri/laravel-favorite/zipball/e3e0b9cfc8bbbb5efbf6e6e78ee31cd9646f1b51",
-                "reference": "e3e0b9cfc8bbbb5efbf6e6e78ee31cd9646f1b51",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": ">=5.4",
-                "illuminate/support": ">=5.4",
-                "php": ">=5.6.4"
-            },
-            "require-dev": {
-                "orchestra/database": "~3.4",
-                "orchestra/testbench": "~3.4",
-                "phpunit/phpunit": "~5.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ChristianKuri\\LaravelFavorite\\FavoriteServiceProvider"
-                    ]
-                },
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ChristianKuri\\LaravelFavorite\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Kuri",
-                    "email": "christian.kuri.martinez@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Allows Laravel Eloquent models to implement a 'favorite' or 'remember' or 'follow' feature.",
-            "homepage": "https://github.com/ChristianKuri/laravel-favorite",
-            "keywords": [
-                "ChristianKuri",
-                "Follow",
-                "favoritable",
-                "favorite",
-                "favourite",
-                "laravel",
-                "laravel-favorite",
-                "package",
-                "remember"
-            ],
-            "support": {
-                "issues": "https://github.com/ChristianKuri/laravel-favorite/issues",
-                "source": "https://github.com/ChristianKuri/laravel-favorite/tree/master"
-            },
-            "time": "2019-10-28T22:37:14+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -1050,6 +980,125 @@
                 }
             ],
             "time": "2022-05-21T17:30:32+00:00"
+        },
+        {
+            "name": "laravel-interaction/favorite",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-interaction/favorite.git",
+                "reference": "a93bbaa92e448c07992ff692b9ae877d200a6133"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-interaction/favorite/zipball/a93bbaa92e448c07992ff692b9ae877d200a6133",
+                "reference": "a93bbaa92e448c07992ff692b9ae877d200a6133",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^8.13 || ^9.0",
+                "illuminate/support": "^8.0 || ^9.0",
+                "laravel-interaction/support": "^1.0 || ^2.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.3.3 || ^1.4.2",
+                "orchestra/testbench": "^6.0 || ^7.0",
+                "phpunit/phpunit": "^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "LaravelInteraction\\Favorite\\FavoriteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelInteraction\\Favorite\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zingimmick",
+                    "email": "zingimmick@outlook.com"
+                }
+            ],
+            "description": "User favorite/unfavorite behaviour for Laravel.",
+            "homepage": "https://github.com/laravel-interaction/favorite",
+            "keywords": [
+                "Favorites",
+                "favorite",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-interaction/favorite/issues",
+                "source": "https://github.com/laravel-interaction/favorite"
+            },
+            "time": "2022-11-27T13:49:35+00:00"
+        },
+        {
+            "name": "laravel-interaction/support",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-interaction/support.git",
+                "reference": "200839b1e09889bb514e78ee50d00ba3999277c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-interaction/support/zipball/200839b1e09889bb514e78ee50d00ba3999277c3",
+                "reference": "200839b1e09889bb514e78ee50d00ba3999277c3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0 || ^9.0",
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelInteraction\\Support\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zingimmick",
+                    "email": "zingimmick@outlook.com"
+                }
+            ],
+            "description": "The Laravel Interaction Support package",
+            "homepage": "https://github.com/laravel-interaction/support",
+            "keywords": [
+                "interaction",
+                "laravel",
+                "support"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-interaction/support/issues",
+                "source": "https://github.com/laravel-interaction/support"
+            },
+            "time": "2022-04-06T12:16:14+00:00"
         },
         {
             "name": "laravel/framework",

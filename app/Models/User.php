@@ -7,12 +7,13 @@ use App\Traits\User\UserGenderTrait;
 use App\Traits\User\UserMartialTrait;
 use App\Traits\User\UserMorphologyTrait;
 use App\Traits\User\UserSmokingTrait;
-use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use LaravelInteraction\Favorite\Concerns\Favoriteable;
+use LaravelInteraction\Favorite\Concerns\Favoriter;
 use Overtrue\LaravelLike\Traits\Likeable;
 use Overtrue\LaravelLike\Traits\Liker;
 use Spatie\MediaLibrary\HasMedia;
@@ -22,8 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable;
     use InteractsWithMedia;
-    use Likeable, Liker;
-    use Favoriteability;
+    use Likeable, Liker, Favoriter, Favoriteable;
     use UserDrinkingTrait, UserGenderTrait, UserMartialTrait, UserMorphologyTrait, UserSmokingTrait;
 
     /**

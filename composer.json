@@ -6,8 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "christiankuri/laravel-favorite": "^1.4",
         "guzzlehttp/guzzle": "^7.2",
+        "laravel-interaction/favorite": "^3.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
