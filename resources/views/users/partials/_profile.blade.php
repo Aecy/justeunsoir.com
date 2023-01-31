@@ -25,7 +25,7 @@
                         @if(auth()->user()->hasLiked($user))
                             <p>Je n'aime plus</p>
                         @else
-                            <p>J'aime ce profile</p>
+                            <p>Liker ce membre</p>
                         @endif
                     </div>
                 </a>
@@ -34,7 +34,7 @@
                 <a href="#">
                     <div class="icon"><i class="icofont-user"></i></div>
                     <div class="text">
-                        <p>Demander en ami</p>
+                        <p>Ajouter aux favoris</p>
                     </div>
                 </a>
             </li>
