@@ -46,11 +46,11 @@
                                                             </li>
                                                             <li>
                                                                 <p class="info-name">Je suis un(e)</p>
-                                                                <p class="info-details">{{ $user->gender }}</p>
+                                                                <p class="info-details">{{ $user->gender_type }}</p>
                                                             </li>
                                                             <li>
                                                                 <p class="info-name">État civil</p>
-                                                                <p class="info-details">{{ $user->martial ?? 'Non spécifié' }}</p>
+                                                                <p class="info-details">{{ $user->martial_name }}</p>
                                                             </li>
                                                             <li>
                                                                 <p class="info-name">Âge</p>
@@ -91,15 +91,15 @@
                                                         <ul class="info-list">
                                                             <li>
                                                                 <p class="info-name">Intérêts</p>
-                                                                <p class="info-details">{{ $user->interest ?? "Non spécifié" }}</p>
+                                                                <p class="info-details">{{ $user->interest_for ?? "Non spécifié" }}</p>
                                                             </li>
                                                             <li>
                                                                 <p class="info-name">Dépendance à la cigarette</p>
-                                                                <p class="info-details">{{ $user->smoking ?? "Non spécifié" }}</p>
+                                                                <p class="info-details">{{ $user->smoking_type }}</p>
                                                             </li>
                                                             <li>
                                                                 <p class="info-name">Dépendance à l'alcool</p>
-                                                                <p class="info-details">{{ $user->drinking ?? 'Non spécifié' }}</p>
+                                                                <p class="info-details">{{ $user->drinking_type }}</p>
                                                             </li>
                                                         </ul>
                                                     </div>

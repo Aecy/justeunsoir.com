@@ -118,8 +118,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
 
         if (isset($params['start_age']) && isset($params['end_age'])) {
             $query
-                ->whereBetween('age', [$params['start_age'], $params['end_age']])
-                ->orderBy('age', 'asc');
+                ->orderBy('age', 'asc')
+                ->whereBetween('age', [$params['start_age'], $params['end_age']]);
         }
 
         if (isset($params['address'])) {
