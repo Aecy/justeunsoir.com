@@ -10,7 +10,8 @@
                     </div>
                     <ol class="breadcrumb">
                         <li><a href="{{ url('/') }}">Accueil</a></li>
-                        <li class="active">{{ $user->name }}</li>
+                        <li><a href="#">{{ $user->name }}</a></li>
+                        <li class="active">Compte</li>
                     </ol>
                 </div>
             </div>

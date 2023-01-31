@@ -10,7 +10,7 @@
 
                     <div class="profile-details">
 
-                        @include('users.partials._nav', ['active' => "friends"])
+                        @include('users.partials._nav', ['active' => "favorites"])
 
                         <div class="row">
                             <div class="col-xl-8">
@@ -25,7 +25,7 @@
                                                         </div>
                                                         <div class="lab-content">
                                                             <h6>
-                                                                @if(Cache::has('users_online-' . $user->id))
+                                                                @if(Cache::has('users_online-' . $favorite->id))
                                                                     <i class="icofont-ui-press text-success circle pulse"></i>
                                                                 @else
                                                                     <i class="icofont-ui-press text-danger"></i>

@@ -28,7 +28,7 @@ class FavoriteController extends Controller
 
     public function show(User $user): View
     {
-        return view('users.friends', [
+        return view('users.favorites', [
             'user' => $user
         ]);
     }

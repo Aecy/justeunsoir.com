@@ -36,9 +36,9 @@ class AccountController extends Controller
      *
      * @return View
      */
-    public function friends(): View
+    public function favorites(): View
     {
-        return view('account.friends', [
+        return view('account.favorites', [
             'user' => $this->getUser()
         ]);
     }
