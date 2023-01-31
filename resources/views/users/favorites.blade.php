@@ -1,7 +1,7 @@
 @extends('layouts.master', ['title' => "Favoris de {$user->name}"])
 
 @section('content')
-    <section class="profile-section padding-tb">
+    <section class="profile-section" style="padding: 155px 0;">
         <div class="container">
             <div class="section-wrapper">
                 <div class="member-profile">

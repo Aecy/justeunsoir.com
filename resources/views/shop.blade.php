@@ -1,7 +1,7 @@
 @extends('layouts.master', ['title' => 'Accueil'])
 
 @section('content')
-    <section class="pricing-section padding-tb">
+    <section class="pricing-section" style="padding: 155px 0;">
         <div class="container">
             <div class="section-header">
                 <h4 class="theme-color">Nos packs</h4>
