@@ -8,10 +8,6 @@
                     <div class="page-title">
                         <h2>Mot de passe oublié</h2>
                     </div>
-                    <ol class="breadcrumb">
-                        <li><a href="{{ url('/') }}">Accueil</a></li>
-                        <li class="active">Mot de passe oublié</li>
-                    </ol>
                 </div>
             </div>
         </div>
