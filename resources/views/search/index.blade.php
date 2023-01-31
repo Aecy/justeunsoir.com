@@ -2,16 +2,12 @@
 
 @section('content')
     <section class="page-header-section style-1" style="background:url({{ asset('assets/images/page-header.jpg') }})">
-        <div class="container">
+        <div class="container" style="padding-bottom: 30px">
             <div class="page-header-content">
                 <div class="page-header-inner">
                     <div class="page-title">
                         <h2>Recherchez votre match</h2>
                     </div>
-                    <ol class="breadcrumb">
-                        <li><a href="{{ url('/') }}">Accueil</a></li>
-                        <li class="active">Recherchez votre match</li>
-                    </ol>
                 </div>
             </div>
         </div>
