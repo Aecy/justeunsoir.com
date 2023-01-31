@@ -1,22 +1,6 @@
-@extends('layouts.master', ['title' => "Mon compte"])
+@extends('layouts.master', ['title' => "Photos de {$user->name}"])
 
 @section('content')
-    <section class="page-header-section style-1" style="background:url({{ asset('assets/images/page-header.jpg') }})">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="page-header-inner">
-                    <div class="page-title">
-                        <h2>Mon compte</h2>
-                    </div>
-                    <ol class="breadcrumb">
-                        <li><a href="{{ url('/') }}">Accueil</a></li>
-                        <li class="active">{{ $user->name }}</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="profile-section padding-tb">
         <div class="container">
             <div class="section-wrapper">
