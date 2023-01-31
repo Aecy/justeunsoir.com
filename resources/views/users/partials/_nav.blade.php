@@ -4,7 +4,7 @@
             Son compte
         </a>
         <a href="#" class="nav-link {{ $active === 'friends' ? 'active' : '' }}">
-            Ses amis <span class="item-number">158</span>
+            Ses favoris <span class="item-number">158</span>
         </a>
         <a href="#" class="nav-link  {{ $active === 'medias' ? 'active' : '' }}">
             Ses photos <span class="item-number">{{ $user->getMedia()->count() }}</span>

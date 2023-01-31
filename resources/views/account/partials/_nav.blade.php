@@ -7,7 +7,7 @@
             Sécurité
         </a>
         <a href="{{ route('account.friends') }}" class="nav-link {{ $active === 'friends' ? 'active' : '' }}">
-            Amis <span class="item-number">158</span>
+            Favoris <span class="item-number">158</span>
         </a>
         <a href="{{ route('account.medias') }}" class="nav-link  {{ $active === 'medias' ? 'active' : '' }}">
             Photos <span class="item-number">{{ $user->getMedia()->count() }}</span>
