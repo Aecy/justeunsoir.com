@@ -13,12 +13,14 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
 use App\Http\Controllers\Search\SearchController;
+use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\MediaController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/tarifs', [ShopController::class, 'index'])->name('shop');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('membres/{user}')->group(function () {
