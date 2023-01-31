@@ -13,6 +13,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
 use App\Http\Controllers\Search\SearchController;
+use App\Http\Controllers\User\MediaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +21,15 @@ Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::prefix('membres')->group(function () {
-        Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
-        Route::get('/{user}/favoris', [FavoriteController::class, 'show'])->name('favorites.show');
-        Route::get('/{user}/toggle/like', [LikeController::class, 'index'])->name('users.like');
-        Route::get('/{user}/toggle/favoris', [FavoriteController::class, 'index'])->name('users.favorite');
+    Route::prefix('membres/{user}')->group(function () {
+        Route::get('/', [UserController::class, 'show'])->name('users.show');
+        Route::get('/favoris', [FavoriteController::class, 'show'])->name('favorites.show');
+        Route::get('/photos', [MediaController::class, 'show'])->name('medias.show');
+
+        Route::prefix('toggle')->group(function () {
+            Route::get('/like', [LikeController::class, 'index'])->name('users.like');
+            Route::get('/favoris', [FavoriteController::class, 'index'])->name('users.favorite');
+        });
     });
     Route::prefix('recherches')->group(function () {
         Route::get('/', [SearchController::class, 'index'])->name('search.index');

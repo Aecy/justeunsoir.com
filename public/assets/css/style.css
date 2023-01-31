@@ -3607,9 +3607,6 @@ textarea::placeholder {
     padding: 25px 30px;
     border-bottom: 1px solid #391965;
 }
-.widget .widget-title h5 {
-    text-transform: capitalize;
-}
 .widget.like-member .widget-content .col .image-thumb::before {
     top: 0;
     left: 0;

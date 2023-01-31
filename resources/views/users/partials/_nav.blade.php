@@ -6,7 +6,7 @@
         <a href="{{ route('favorites.show', $user) }}" class="nav-link {{ $active === 'friends' ? 'active' : '' }}">
             Ses favoris <span class="item-number">{{ $user->favoriters->count() }}</span>
         </a>
-        <a href="#" class="nav-link  {{ $active === 'medias' ? 'active' : '' }}">
+        <a href="{{ route('medias.show', $user) }}" class="nav-link  {{ $active === 'medias' ? 'active' : '' }}">
             Ses photos <span class="item-number">{{ $user->getMedia()->count() }}</span>
         </a>
     </div>

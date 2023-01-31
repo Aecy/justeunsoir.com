@@ -14,10 +14,11 @@
                 </div>
             </div>
         @endif
+
         <div class="widget like-member">
             <div class="widget-inner">
                 <div class="widget-title">
-                    <h5>Ces membres vous likes</h5>
+                    <h5>Liké ce membre</h5>
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
@@ -30,7 +31,29 @@
                             </div>
                         </div>
                         @empty
-                            <p>Aucun likes.</p>
+                            <p>A reçu encore aucun like.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widget like-member">
+            <div class="widget-inner">
+                <div class="widget-title">
+                    <h5>Ajouté ce membre aux favoris</h5>
+                </div>
+                <div class="widget-content">
+                    <div class="row row-cols-3 row-cols-sm-auto g-3">
+                        @forelse($user->favoriters as $liker)
+                        <div class="col">
+                            <div class="image-thumb">
+                                <a href="{{ route('users.show', $liker) }}">
+                                    <img src="{{ $liker->avatar_url }}" style="height: 90px; width: 90px" alt="img">
+                                </a>
+                            </div>
+                        </div>
+                        @empty
+                            <p>Aucun favoris.</p>
                         @endforelse
                     </div>
                 </div>
