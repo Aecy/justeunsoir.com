@@ -19,7 +19,7 @@
                             <a href="{{ route('reward.index') }}">Récompenses</a>
                         </li>
                         <li>
-                            <a href="#">Tarifs</a>
+                            <a href="{{ route('shop.index') }}">Tarifs</a>
                         </li>
                         @auth
                             <li>

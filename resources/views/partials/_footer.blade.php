@@ -55,7 +55,7 @@
                                     <div class="lab-inner">
                                         <div class="lab-content">
                                             <h6>
-                                                <a href="#">Tarifs</a>
+                                                <a href="{{ route('shop.index') }}">Tarifs</a>
                                             </h6>
                                         </div>
                                     </div>

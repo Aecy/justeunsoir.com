@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
-Route::get('/tarifs', [ShopController::class, 'index'])->name('shop');
+Route::get('/tarifs', [ShopController::class, 'index'])->name('shop.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('membres/{user}')->group(function () {
