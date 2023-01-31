@@ -4248,6 +4248,7 @@ button.lab-btn {
 }
 
 .page-item.active .page-link {
+    text-align: center;
     z-index: 3;
     color: white;
     background-color: #e0344c;
@@ -4255,5 +4256,16 @@ button.lab-btn {
     border-radius: 50%;
     width: 46px;
     height: 46px;
+}
 
+.page-item.disabled > span {
+    color: white;
+    background-color: #210053 !important;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+.page-item.disabled .page-link {
+    text-align: center;
 }
