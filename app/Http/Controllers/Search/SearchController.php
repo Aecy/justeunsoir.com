@@ -14,6 +14,8 @@ class SearchController extends Controller
         $params = $request->except('_token');
         $users = User::orderByDesc('created_at')->filter($params)->paginate(20);
 
+        $users->appends($request->only('looking', 'start_age', 'end_age', 'address'));
+
         return view('search.index', [
             'users' => $users
         ]);

@@ -5,11 +5,15 @@
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                    <span class="page-link" aria-hidden="true"><i class="icofont-rounded-double-left"></i></span>
+                    <span class="page-link" aria-hidden="true">
+                        <i class="icofont-rounded-double-left"></i>
+                    </span>
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')"><i class="icofont-rounded-double-left"></i></a>
+                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
+                        <i class="icofont-rounded-double-left"></i>
+                    </a>
                 </li>
             @endif
 
