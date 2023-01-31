@@ -63,7 +63,7 @@
                         </div>
                         <div class="city">
                             <div class="custom-input right w-100">
-                                <input type="text" name="address" id="address" class="form-control" style="height: 40px; border-radius: 0px; color: white;" placeholder="Ville (BE et FR)" value="{{ request()->address }}">
+                                <input type="text" name="address" id="address" class="form-control" style="height: 40px; border-radius: 0px; color: white;" placeholder="Indiquez la ville" value="{{ request()->address }}">
                             </div>
                         </div>
                         <button class="lab-btn" type="submit">Rechercher <i class="icofont-search-2"></i></button>
@@ -73,7 +73,7 @@
             <div class="member-wrapper">
                 <ul class="member-info mb-4">
                     <li class="all-member">
-                        <p>Membres trouvés</p>
+                        <p>{{ $users->total() > 1 ? 'Membres trouvés' : 'Membre trouvé' }}</p>
                         <p>{{ $users->total() }}</p>
                     </li>
                     <li class="member-cat">
