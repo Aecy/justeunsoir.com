@@ -75,34 +75,7 @@
                                     <div class="lab-inner">
                                         <div class="lab-content">
                                             <h6>
-                                                <a href="{{ url('/') }}">Accueil</a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fm-item-widget lab-item">
-                                    <div class="lab-inner">
-                                        <div class="lab-content">
-                                            <h6>
-                                                <a href="#">Recherches</a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fm-item-widget lab-item">
-                                    <div class="lab-inner">
-                                        <div class="lab-content">
-                                            <h6>
-                                                <a href="{{ route('reward.index') }}">Récompenses</a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fm-item-widget lab-item">
-                                    <div class="lab-inner">
-                                        <div class="lab-content">
-                                            <h6>
-                                                <a href="#">Tarifs</a>
+                                                <a href="{{ route('faq') }}">Foire aux questions</a>
                                             </h6>
                                         </div>
                                     </div>
