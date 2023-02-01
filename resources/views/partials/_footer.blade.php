@@ -113,3 +113,5 @@
 <script src="{{ asset('assets/js/wow.min.js') }}"></script>
 <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('assets/js/functions.js') }}"></script>
+
+@stack('scripts')

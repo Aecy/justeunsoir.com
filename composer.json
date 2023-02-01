@@ -12,7 +12,9 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
+        "musonza/chat": "^6.0",
         "overtrue/laravel-like": "^5.0",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-medialibrary": "^10.0.0"
     },
     "require-dev": {

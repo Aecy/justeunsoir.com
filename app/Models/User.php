@@ -14,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use LaravelInteraction\Favorite\Concerns\Favoriteable;
 use LaravelInteraction\Favorite\Concerns\Favoriter;
+use Musonza\Chat\Traits\Messageable;
 use Overtrue\LaravelLike\Traits\Likeable;
 use Overtrue\LaravelLike\Traits\Liker;
 use Spatie\MediaLibrary\HasMedia;
@@ -25,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     use InteractsWithMedia;
     use Likeable, Liker, Favoriter, Favoriteable;
     use UserDrinkingTrait, UserGenderTrait, UserMartialTrait, UserMorphologyTrait, UserSmokingTrait;
+    use Messageable;
 
     /**
      * Les attributs qui peuvent être remplis par l'User.

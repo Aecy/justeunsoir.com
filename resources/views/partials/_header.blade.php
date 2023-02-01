@@ -33,8 +33,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/') }}">
-                                            Administratif
+                                        <a href="{{ route('conversations.index') }}">
+                                            Mes messages
                                         </a>
                                     </li>
                                     <li>

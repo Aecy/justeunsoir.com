@@ -4266,3 +4266,66 @@ button.lab-btn {
 .page-item.disabled .page-link {
     text-align: center;
 }
+
+.messages {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.messages__time {
+    padding-bottom: 5px;
+    color: gray;
+    font-size: 12px;
+}
+
+.messages__time_self {
+    padding-bottom: 5px;
+    color: gray;
+    font-size: 12px;
+    text-align: right;
+}
+
+.messages__content {
+    background-color: #391965;
+    border-radius: 15px;
+    padding: 10px 10px;
+}
+
+.messages__list {
+    padding: 0px 10px 0px 10px;
+}
+
+.messages__list li {
+    display: flex;
+}
+
+.messages__list > li {
+    padding-bottom: 20px;
+}
+
+.messages__list > li > .messages__time {
+    padding-bottom: 5px;
+}
+
+.messages__item {
+    width: 400px;
+}
+
+.self {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat::-webkit-scrollbar-track {
+    background: #391965;
+    border-radius: 20px;
+}
+
+#chat::-webkit-scrollbar-thumb {
+    background-color: #280454;
+    border-radius: 20px;
+}

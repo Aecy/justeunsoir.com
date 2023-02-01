@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('conversations.store', $user) }}">
+                    <a href="#">
                         <div class="icon"><i class="icofont-envelope"></i></div>
                         <div class="text">
                             <p>Message privé</p>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
+use App\Http\Controllers\Conversation\ConversationController;
 use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Like\LikeController;
 use App\Http\Controllers\PageController;
@@ -23,10 +24,16 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/tarifs', [ShopController::class, 'index'])->name('shop.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('conversations')->group(function () {
+        Route::get('/', [ConversationController::class, 'index'])->name('conversations.index');
+        Route::get('/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
+        Route::post('/{conversation}/message', [ConversationController::class, 'message'])->name('conversations.message');
+    });
     Route::prefix('membres/{user}')->group(function () {
         Route::get('/', [UserController::class, 'show'])->name('users.show');
         Route::get('/favoris', [FavoriteController::class, 'show'])->name('favorites.show');
         Route::get('/photos', [MediaController::class, 'show'])->name('medias.show');
+        Route::get('/conversation', [ConversationController::class, 'store'])->name('conversations.store');
 
         Route::prefix('toggle')->group(function () {
             Route::get('/like', [LikeController::class, 'index'])->name('users.like');
