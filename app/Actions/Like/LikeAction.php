@@ -3,6 +3,8 @@
 namespace App\Actions\Like;
 
 use App\Models\User;
+use App\Notifications\Like\DislikeNotification;
+use App\Notifications\Like\LikeNotification;
 
 final class LikeAction
 {
@@ -13,5 +15,11 @@ final class LikeAction
         }
 
         $sender->toggleLike($receiver);
+
+        if ($sender->hasLiked($receiver)) {
+            $receiver->notify(new LikeNotification($sender));
+        } else {
+            $receiver->notify(new DislikeNotification($sender));
+        }
     }
 }
