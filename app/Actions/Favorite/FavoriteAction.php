@@ -3,6 +3,8 @@
 namespace App\Actions\Favorite;
 
 use App\Models\User;
+use App\Notifications\Favorite\FavoriteAddNotification;
+use App\Notifications\Favorite\FavoriteRemoveNotification;
 
 final class FavoriteAction
 {
@@ -13,5 +15,11 @@ final class FavoriteAction
         }
 
         $sender->toggleFavorite($receiver);
+
+        if ($sender->hasFavorited($receiver)) {
+            $receiver->notify(new FavoriteAddNotification($sender));
+        } else {
+            $receiver->notify(new FavoriteRemoveNotification($sender));
+        }
     }
 }
