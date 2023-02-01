@@ -34,7 +34,7 @@ class RewardController extends Controller
             $user->last_reward = now();
 
             if ($reward > 0) {
-                $user->messages_left += $reward;
+                $user->credits += $reward;
                 $user->save();
 
                 return Redirect::back()->with('success', "Vous avez reçu {$reward} crédits.");

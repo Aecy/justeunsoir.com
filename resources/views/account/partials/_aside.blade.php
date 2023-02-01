@@ -4,14 +4,14 @@
             <div class="widget-inner">
                 <div class="d-flex justify-content-between widget-title">
                     <h5>Vos crédits</h5>
-                    <a href="#">Acheter des crédits</a>
+                    <a href="{{ route('shop.index') }}">Acheter des crédits</a>
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
                         @if($user->isAdmin())
                             <p>Vous avez crédits illimités.</p>
                         @else
-                            <p>Vous avez un total de <strong>{{ $user->messages_left }} crédits.</strong></p>
+                            <p>Vous avez un total de <strong>{{ $user->credits }} crédits.</strong></p>
                         @endif
                     </div>
                 </div>
