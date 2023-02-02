@@ -10,11 +10,6 @@ final class ShopPackService
     {
         return collect([
             [
-                'name' => "Pack Mini",
-                'price' => 10 * 100,
-                'credit' => 15,
-            ],
-            [
                 'name' => "Pack Essentiel",
                 'price' => 30 * 100,
                 'credit' => 50,
