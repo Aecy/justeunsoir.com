@@ -31,5 +31,8 @@ final class MessageAction
                 ->to($conversation)
                 ->send();
         }
+
+        $user->decrement('credits');
+        $user->save();
     }
 }
