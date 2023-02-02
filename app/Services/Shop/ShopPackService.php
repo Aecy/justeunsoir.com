@@ -10,29 +10,29 @@ final class ShopPackService
     {
         return collect([
             [
+                'name' => "Pack Mini",
+                'price' => 10 * 100,
+                'credit' => 15,
+            ],
+            [
                 'name' => "Pack Essentiel",
-                'price' => 2000,
+                'price' => 30 * 100,
                 'credit' => 50,
             ],
             [
                 'name' => "Pack Standard",
-                'price' => 3500,
+                'price' => 55 * 100,
                 'credit' => 100,
             ],
             [
                 'name' => "Pack Professionnel",
-                'price' => 6000,
+                'price' => 100 * 100,
                 'credit' => 200,
             ],
             [
                 'name' => "Pack Entreprise",
-                'price' => 14000,
-                'credit' => 500,
-            ],
-            [
-                'name' => "Pack Maxi",
-                'price' => 25000,
-                'credit' => 1000,
+                'price' => 120 * 100,
+                'credit' => 250,
             ],
         ]);
     }
