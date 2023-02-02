@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Conversation;
 
+use App\Events\MessageCreateEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Conversation\MessageStoreRequest;
 use App\Models\User;

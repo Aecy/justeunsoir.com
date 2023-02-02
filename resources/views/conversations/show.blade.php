@@ -103,10 +103,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-    <script type="text/javascript">
-        let chat = document.getElementById('chat');
-        chat.scrollTop = chat.scrollHeight;
-    </script>
-@endpush

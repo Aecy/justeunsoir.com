@@ -12,5 +12,3 @@ use Illuminate\Support\Facades\Broadcast;
 | used to check if an authenticated user can listen to the channel.
 |
 */
-
-Broadcast::channel('conversation.{conversation}', \App\Broadcasting\ConversationChannel::class);
