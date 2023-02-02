@@ -14,7 +14,7 @@
                                         <div class="info-card-title">
                                             <h6>Vos conversations</h6>
                                         </div>
-                                        @foreach($conversations as $item)
+                                        @forelse($conversations as $item)
                                             <div class="post-item">
                                                 <div class="post-content">
                                                     <div class="post-author">
@@ -30,7 +30,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div>
                                                                     <a href="{{ route('conversations.show', $item->conversation_id) }}">
-                                                                        @foreach($item->conversation->participants as $participant)
+                                                                        @forelse($item->conversation->participants as $participant)
                                                                             @if($participant->messageable->name !== auth()->user()->name)
                                                                                 @if(Cache::has('users_online-' . $participant->messageable->id))
                                                                                     <i class="icofont-ui-press text-success text-sm circle pulse"></i>
@@ -38,19 +38,25 @@
                                                                                     <i class="icofont-ui-press text-danger text-sm"></i>
                                                                                 @endif
                                                                                 <span class="fw-bolder" title="{{ $participant->messageable->name }}">
-                                                    {{ \Illuminate\Support\Str::limit($participant->messageable->name, 20) }}
-                                                </span>
+                                                                                    {{ \Illuminate\Support\Str::limit($participant->messageable->name, 30) }}
+                                                                                </span>
                                                                             @endif
-                                                                        @endforeach
+                                                                            @empty
+                                                                            test
+                                                                        @endforelse
                                                                     </a>
                                                                     <p class="text-muted">
-                                                                        @if($item->conversation->last_message->participation->messageable->id === auth()->user()->id)
-                                                                            Vous:
+                                                                        @if(!is_null($item->conversation->last_message))
+                                                                            @if($item->conversation->last_message->participation->messageable->id === auth()->user()->id)
+                                                                                Vous:
+                                                                            @else
+                                                                                {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}:
+                                                                            @endif
+                                                                            {{ \Illuminate\Support\Str::limit($item->conversation->last_message->body, 30) }} &middot;
+                                                                            {{ $item->conversation->last_message->created_at->diffForHumans() }}
                                                                         @else
-                                                                            {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}:
+                                                                            Nouvelle conversation ! Ne soyez pas timide.
                                                                         @endif
-
-                                                                        {{ \Illuminate\Support\Str::limit($item->conversation->last_message->body, 21) }}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -58,7 +64,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                            @empty
+                                            <div class="p-4">
+                                                Vous n'avez pas de conversation...
+                                                Commencez à discuter en <a href="{{ route('search.index') }}" class="text-primary">cliquant ici</a>
+                                            </div>
+                                        @endforelse
                                     </div>
                                 </article>
                             </div>
