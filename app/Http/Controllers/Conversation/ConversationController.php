@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Conversation;
 
+use App\Actions\Message\MessageAction;
 use App\Events\MessageCreateEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Conversation\MessageStoreRequest;
@@ -42,24 +43,9 @@ class ConversationController extends Controller
         ]);
     }
 
-    public function message(Conversation $conversation, MessageStoreRequest $request): RedirectResponse
+    public function message(Conversation $conversation, MessageStoreRequest $request, MessageAction $action): RedirectResponse
     {
-        if ($request->hasFile('image')) {
-            $fileName = $request->image->getClientOriginalName();
-            $url = $request->image->storeAs("conversations/{$conversation->id}", $fileName, 'public');
-
-            Chat::message($request->get('content'))
-                ->type('image')
-                ->data(['file_name' => $fileName, 'file_url' => $url])
-                ->from($this->getUser())
-                ->to($conversation)
-                ->send();
-        } else {
-            Chat::message($request->get('content'))
-                ->from($this->getUser())
-                ->to($conversation)
-                ->send();
-        }
+        $action->send($this->getUser(), $conversation, $request);
 
         return Redirect::to(
             route('conversations.show', $conversation)
