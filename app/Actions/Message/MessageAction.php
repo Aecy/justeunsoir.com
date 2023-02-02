@@ -11,6 +11,10 @@ final class MessageAction
 {
     public function send(User $user, Conversation $conversation, MessageStoreRequest $request): void
     {
+        if ($user->credits <= 0) {
+            return;
+        }
+
         if ($request->hasFile('image')) {
             $fileName = $request->image->getClientOriginalName();
             $url = $request->image->storeAs("conversations/{$conversation->id}", $fileName, 'public');
