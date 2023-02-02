@@ -11,15 +11,34 @@
                             <div class="col-xl-12">
                                 <article>
                                     <div class="info-card mb-20">
-                                        <div class="d-flex justify-content-between align-items-center info-card-title">
-                                            <h6>Conversation avec
+                                        <div class="d-flex gap-3 align-items-center info-card-title">
+                                            <a class="text-primary" href="{{ route('conversations.index') }}" title="Retourner à vos conversations">
+                                                <i class="icofont-double-left"></i>
+                                            </a>
+                                            <div class="d-flex align-items-center gap-2">
                                                 @foreach($conversation->getParticipants() as $participant)
                                                     @if($participant->name !== auth()->user()->name)
-                                                        {{ $participant->name }}
+                                                        <img src="{{ $participant->avatar_url }}" style="height: 45px; border-radius: 50%" alt="">
+                                                        <div class="d-block">
+                                                            <div class="fw-bolder">
+                                                                @if(Cache::has('users_online-' . $participant->id))
+                                                                    <i class="icofont-ui-press text-success text-sm circle pulse"></i>
+                                                                @else
+                                                                    <i class="icofont-ui-press text-danger text-sm"></i>
+                                                                @endif
+                                                                {{ $participant->name }}
+                                                            </div>
+                                                            <div class="text-muted" style="font-size: 13px;">
+                                                                @if(Cache::has('users_online-' . $participant->id))
+                                                                    En ligne maintenant
+                                                                @else
+                                                                    En ligne {{ $participant->last_seen->diffForHumans() }}
+                                                                @endif
+                                                            </div>
+                                                        </div>
                                                     @endif
-                                                @endforeach et vous
-                                            </h6>
-                                            <a class="btn btn-primary" href="{{ route('conversations.index') }}">Retournez à vos conversations</a>
+                                                @endforeach
+                                            </div>
                                         </div>
                                         <div class="info-card-content">
                                             <div class="messages" id="chat">
