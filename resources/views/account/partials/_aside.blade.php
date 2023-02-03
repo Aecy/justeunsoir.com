@@ -20,7 +20,7 @@
         <div class="widget like-member">
             <div class="widget-inner">
                 <div class="widget-title">
-                    <h5>Ces membres vous likes</h5>
+                    <h5>Ces membres vous aimes</h5>
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         @empty
-                            <p>Vous n'avez aucun likes.</p>
+                            <p>Vous n'avez aucun cœur... <span class="text-danger">💔</span></p>
                         @endforelse
                     </div>
                 </div>
