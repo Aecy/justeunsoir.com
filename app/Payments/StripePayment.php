@@ -3,10 +3,8 @@
 namespace App\Payments;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class StripePayment
 {
