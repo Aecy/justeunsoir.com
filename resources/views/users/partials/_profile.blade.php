@@ -24,9 +24,9 @@
                         <div class="icon"><i class="icofont-heart"></i></div>
                         <div class="text">
                             @if(auth()->user()->hasLiked($user))
-                                <p>Ne plus liker</p>
+                                <p>Retirer votre coeur</p>
                             @else
-                                <p>Liker ce membre</p>
+                                <p>Envoyer un coeur</p>
                             @endif
                         </div>
                     </a>

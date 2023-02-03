@@ -8,7 +8,7 @@
                     </div>
                     <div class="widget-content">
                         <div class="row row-cols-3 row-cols-sm-auto g-3">
-                            <a href="{{ route('dashboard') }}">Modifier votre compte</a>
+                            <a href="{{ route('dashboard') }}" class="purchase-btn">Modifier votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
         <div class="widget like-member">
             <div class="widget-inner">
                 <div class="widget-title">
-                    <h5>Liké ce membre</h5>
+                    <h5>Membres ayant aimés</h5>
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         @empty
-                            <p>A reçu encore aucun like.</p>
+                            <p>A reçu encore aucun cœur... <span class="text-danger">💔</span></p>
                         @endforelse
                     </div>
                 </div>
@@ -40,7 +40,7 @@
         <div class="widget like-member">
             <div class="widget-inner">
                 <div class="widget-title">
-                    <h5>Ajouté ce membre aux favoris</h5>
+                    <h5>Favorisés par les membres</h5>
                 </div>
                 <div class="widget-content">
                     <div class="row row-cols-3 row-cols-sm-auto g-3">
