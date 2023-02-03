@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\Reward\RewardService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class RewardController extends Controller
@@ -48,15 +47,15 @@ class RewardController extends Controller
                 $user->credits += $reward;
                 $user->save();
 
-                return Redirect::back()->with('success', "Vous avez reçu {$reward} crédits.");
+                return redirect()->back()->with('success', "Vous avez reçu ${reward} crédits.");
             }
 
             $user->save();
 
-            return Redirect::back()->with('success', "Vous n'avez pas reçu de crédits malheureusement.");
+            return redirect()->back()->with('success', "Pas de chance ! Vous n'avez pas reçu de crédit.");
         }
 
         $time = $user->last_reward->addHours(24);
-        return Redirect::back()->with('danger', "Revenez le {$time->format('d à H:i')} pour obtenir une nouvelle récompense.");
+        return redirect()->back()->with('danger', "Revenez le {$time->format('d à H:i')} pour obtenir une nouvelle récompense.");
     }
 }
