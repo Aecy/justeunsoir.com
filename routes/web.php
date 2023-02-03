@@ -15,15 +15,25 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
 use App\Http\Controllers\Search\SearchController;
 use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\Shop\StripeController;
 use App\Http\Controllers\User\MediaController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
-Route::get('/tarifs', [ShopController::class, 'index'])->name('shop.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('tarifs')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+
+        Route::prefix('stripe')->group(function () {
+            Route::post('/{product}', [StripeController::class, 'checkout'])->name('stripe.checkout');
+            Route::get('done', [StripeController::class, 'success'])->name('stripe.success');
+            Route::get('cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
+        });
+    });
+
     Route::prefix('conversations')->group(function () {
         Route::get('/', [ConversationController::class, 'index'])->name('conversations.index');
         Route::get('/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');

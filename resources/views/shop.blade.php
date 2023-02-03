@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => 'Accueil'])
+@extends('layouts.master', ['title' => 'Tarifs'])
 
 @section('content')
     <section class="pricing-section" style="padding: 155px 0;">
@@ -10,19 +10,22 @@
             <div class="section-wrapper mt-4">
                 <div class="pricing-plan-wrapper">
                     <div class="row gx-2 gy-3 justify-content-center">
-                        @foreach($packs as $pack)
+                        @foreach($products as $product)
                             <div class="col-lg-4 col-sm-6">
                                 <div class="price-item">
                                     <div class="price-item-inner">
                                         <div class="price-top">
-                                            <h6>{{ $pack['name'] }}</h6>
-                                            <h2>{{ number_format($pack['price'] / 100, 2) }} €</h2>
+                                            <h6>{{ $product->name }}</h6>
+                                            <h2>{{ number_format($product->price / 100, 2) }} €</h2>
                                             <p>
-                                                <strong>{{ number_format($pack['credit']) }} crédits</strong>
+                                                <strong>{{ number_format($product->credits) }} crédits</strong>
                                             </p>
                                         </div>
                                         <div class="price-bottom">
-                                            <a href="#" class="purchase-btn">Acheter</a>
+                                            <a href="#" class="purchase-btn">PayPal</a>
+                                            <a href="#" onclick="document.getElementById('stripe-{{ $product->id }}').submit()" class="purchase-btn">Stripe</a>
+                                            <form id="stripe-{{ $product->id }}" class="d-none" method="post" action="{{ route('stripe.checkout', $product) }}">@csrf</form>
+                                            <form id="paypal-{{ $product->id }}" class="d-none" method="post" action="{{ route('stripe.checkout', $product) }}">@csrf</form>
                                         </div>
                                     </div>
                                 </div>

@@ -3,20 +3,17 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Services\Shop\ShopPackService;
+use App\Models\Product;
 use Illuminate\View\View;
 
 class ShopController extends Controller
 {
-    public function __construct(
-        private ShopPackService $packService
-    ) { }
-
     public function index(): View
     {
-        $packs = $this->packService->getPacks();
+        $products = Product::all();
+
         return view('shop', [
-            'packs' => $packs
+            'products' => $products
         ]);
     }
 }
