@@ -48,19 +48,36 @@
                                             <div class="messages" id="chat">
                                                 <ul class="messages__list">
                                                     @foreach($conversation->messages()->get() as $message)
-                                                        <li class="{{ $message->sender->id == auth()->user()->id ? 'self' : 'other' }}">
-                                                            <div class="messages__item">
-                                                                <div class="{{ $message->sender->id == auth()->user()->id ? 'messages__time_self' : 'messages__time' }}">
-                                                                    {{ $message->created_at->diffForHumans() }}
+                                                        @if($message->type === 'like')
+                                                            <li class="like">
+                                                                <div class="messages__item" style="text-align: center;">
+                                                                    <span class="text-danger">❤</span>
+                                                                    <span>
+                                                                        @if(auth()->user()->id === $message->sender->id)
+                                                                            Vous avez envoyé un coeur
+                                                                        @else
+                                                                            <a href="{{ route('users.show', $message->sender) }}" class="fw-bolder">
+                                                                                {{ $message->sender->name }}
+                                                                            </a> vous a envoyé un coeur
+                                                                        @endif
+                                                                    </span>
                                                                 </div>
-                                                                <div class="messages__content">
-                                                                    <span>{{ $message->body }}</span>
-                                                                    @if($message->type === 'image')
-                                                                        <img style="border-radius: 15px; padding-top: 8px;" src="{{ asset('/storage/' . $message->data['file_url']) }}" alt="">
-                                                                    @endif
+                                                            </li>
+                                                        @else
+                                                            <li class="{{ $message->sender->id == auth()->user()->id ? 'self' : 'other' }}">
+                                                                <div class="messages__item">
+                                                                    <div class="{{ $message->sender->id == auth()->user()->id ? 'messages__time_self' : 'messages__time' }}">
+                                                                        {{ $message->created_at->diffForHumans() }}
+                                                                    </div>
+                                                                    <div class="messages__content">
+                                                                        <span>{{ $message->body }}</span>
+                                                                        @if($message->type === 'image')
+                                                                            <img style="border-radius: 15px; padding-top: 8px;" src="{{ asset('/storage/' . $message->data['file_url']) }}" alt="">
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </li>
+                                                            </li>
+                                                        @endif
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -75,9 +92,19 @@
                                                             <div class="lab-content">
                                                                 <form action="{{ route('conversations.message', $conversation) }}" method="post" class="post-form" enctype="multipart/form-data">
                                                                     @csrf
-                                                                    <input type="text" placeholder="Entrez votre message ici" name="content" autocomplete="off">
+                                                                    <input type="text" class="is-invalid" placeholder="Entrez votre message ici" name="content" autocomplete="off">
                                                                     <div class="content-type">
                                                                         <ul class="content-list">
+                                                                            <li class="text">
+                                                                                <a href="#">
+                                                                                    <i class="icofont-star"></i>
+                                                                                    @if(auth()->user()->role === 'member')
+                                                                                        Vous avez <strong>{{ auth()->user()->credits }} crédits</strong> disponible
+                                                                                    @else
+                                                                                        Vous avez des crédits illimités
+                                                                                    @endif
+                                                                                </a>
+                                                                            </li>
                                                                             <li class="image-video">
                                                                                 <div class="file-btn">
                                                                                     <i class="icofont-camera"></i>

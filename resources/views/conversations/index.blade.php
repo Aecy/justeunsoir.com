@@ -41,19 +41,28 @@
                                                                                     {{ \Illuminate\Support\Str::limit($participant->messageable->name, 30) }}
                                                                                 </span>
                                                                             @endif
-                                                                            @empty
-                                                                            test
+                                                                        @empty
+                                                                            <span>test</span>
                                                                         @endforelse
                                                                     </a>
                                                                     <p class="text-muted">
                                                                         @if(!is_null($item->conversation->last_message))
-                                                                            @if($item->conversation->last_message->participation->messageable->id === auth()->user()->id)
-                                                                                Vous:
+                                                                            @if($item->conversation->last_message->type === 'like')
+                                                                                @if($item->conversation->last_message->participation->messageable->id === auth()->user()->id)
+                                                                                    Vous avez envoyé un coeur
+                                                                                @else
+                                                                                    {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}: A envoyé un coeur
+                                                                                    @endif &middot;
+                                                                                    {{ $item->conversation->last_message->created_at->diffForHumans() }}
                                                                             @else
-                                                                                {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}:
+                                                                                @if($item->conversation->last_message->participation->messageable->id === auth()->user()->id)
+                                                                                    Vous:
+                                                                                @else
+                                                                                    {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}:
+                                                                                    @endif
+                                                                                    {{ \Illuminate\Support\Str::limit($item->conversation->last_message->body, 30) }} &middot;
+                                                                                    {{ $item->conversation->last_message->created_at->diffForHumans() }}
                                                                             @endif
-                                                                            {{ \Illuminate\Support\Str::limit($item->conversation->last_message->body, 30) }} &middot;
-                                                                            {{ $item->conversation->last_message->created_at->diffForHumans() }}
                                                                         @else
                                                                             Nouvelle conversation ! Ne soyez pas timide.
                                                                         @endif
@@ -80,6 +89,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-@endpush
