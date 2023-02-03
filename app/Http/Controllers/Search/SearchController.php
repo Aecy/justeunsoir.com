@@ -9,6 +9,12 @@ use Illuminate\View\View;
 
 class SearchController extends Controller
 {
+    /**
+     * Chercher un utilisateur selon vos préférences et met en place la pagination.
+     *
+     * @param Request $request
+     * @return View
+     */
     public function index(Request $request): View
     {
         $params = $request->except('_token');
