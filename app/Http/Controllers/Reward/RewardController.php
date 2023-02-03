@@ -11,6 +11,11 @@ use Illuminate\View\View;
 
 class RewardController extends Controller
 {
+    /**
+     * Instancie les méthodes de la classe RewardService
+     *
+     * @param RewardService $rewardService
+     */
     public function __construct(
         private RewardService $rewardService
     ) { }
@@ -26,6 +31,12 @@ class RewardController extends Controller
         ]);
     }
 
+    /**
+     * Obtenir la récompense quotidienne pour un utilisateur.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function store(Request $request): RedirectResponse
     {
         $user = $request->user();
