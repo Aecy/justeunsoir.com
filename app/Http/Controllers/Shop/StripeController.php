@@ -13,12 +13,17 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StripeController extends Controller
 {
+    /**
+     * Instancie la classe StripePayment.
+     *
+     * @param StripePayment $payment
+     */
     public function __construct(
         private StripePayment $payment
     ) { }
 
     /**
-     * Call the stripe checkout for payment.
+     * Appelle le paiement de Stripe et l'envoie sur la page correcte.
      *
      * @param Product $product
      * @return RedirectResponse
@@ -30,10 +35,11 @@ class StripeController extends Controller
     }
 
     /**
-     * When the member successes the checkout.
+     * L'utilisateur a bien payé son produit.
      *
      * @param Request $request
      * @return RedirectResponse
+     * @throws \Stripe\Exception\ApiErrorException
      */
     public function success(Request $request): RedirectResponse
     {
@@ -63,6 +69,7 @@ class StripeController extends Controller
     public function cancel(): RedirectResponse
     {
         alert()->info('Achat de crédits annulé !', "Des membres n'attendent que vous pour discutez !");
+
         return redirect()->to(route('shop.index'));
     }
 }
