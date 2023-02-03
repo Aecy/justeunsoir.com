@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="price-bottom">
                                             <a href="#" class="purchase-btn">PayPal</a>
-                                            <a href="#" onclick="document.getElementById('stripe-{{ $product->id }}').submit()" class="purchase-btn">Stripe</a>
+                                            <a href="#" onclick="document.getElementById('stripe-{{ $product->id }}').submit()" class="purchase-btn">Carte bancaire</a>
                                             <form id="stripe-{{ $product->id }}" class="d-none" method="post" action="{{ route('stripe.checkout', $product) }}">@csrf</form>
                                             <form id="paypal-{{ $product->id }}" class="d-none" method="post" action="{{ route('stripe.checkout', $product) }}">@csrf</form>
                                         </div>
