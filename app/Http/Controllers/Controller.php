@@ -14,7 +14,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * Récupère l'utilisateur connecté.
+     * Récupère l'utilisateur connecté ou null.
      *
      * @return User|\Illuminate\Contracts\Auth\Authenticatable|null
      */
@@ -25,6 +25,7 @@ class Controller extends BaseController
         if ($user instanceof User) {
             return $user;
         }
+
         return null;
     }
 }
