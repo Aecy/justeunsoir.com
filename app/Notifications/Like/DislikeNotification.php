@@ -41,9 +41,9 @@ class DislikeNotification extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->greeting("Un membre ne vous like plus")
-            ->subject("Un membre ne vous like plus")
-            ->line("Le membre {$this->user->name} ne vous aime plus ... Qu'avez-vous fait ?")
+            ->greeting("Un membre a retiré son coeur")
+            ->subject("Un membre a retiré son coeur")
+            ->line("Le membre {$this->user->name} a retiré son coeur...")
             ->action("Voir son compte", route('users.show', $this->user))
             ->line("Merci pour votre confiance.");
     }
