@@ -41,9 +41,9 @@ class LikeNotification extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->greeting("Un membre vous like")
-            ->subject("Un membre vous like")
-            ->line("Vous avez reçu un like de {$this->user->name}")
+            ->greeting("Un membre vous a envoyé un coeur")
+            ->subject("Un membre vous a envoyé un coeur")
+            ->line("{$this->user->name} vous à envoyé un coeur")
             ->action("Voir son compte", route('users.show', $this->user))
             ->line("Merci pour votre confiance.");
     }
