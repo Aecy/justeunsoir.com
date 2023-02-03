@@ -4,6 +4,7 @@ namespace App\Actions\Message;
 
 use App\Http\Requests\Conversation\MessageStoreRequest;
 use App\Models\User;
+use App\Notifications\Message\MessageNotification;
 use Musonza\Chat\Facades\ChatFacade as Chat;
 use Musonza\Chat\Models\Conversation;
 
@@ -34,5 +35,7 @@ final class MessageAction
 
         $user->decrement('credits');
         $user->save();
+
+        $user->notify(new MessageNotification($user, $conversation));
     }
 }
