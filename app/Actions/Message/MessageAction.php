@@ -11,7 +11,7 @@ final class MessageAction
 {
     public function send(User $user, Conversation $conversation, MessageStoreRequest $request): void
     {
-        if ($user->credits <= 0) {
+        if ($user->credits <= 0 && $user->role === 'member') {
             return;
         }
 

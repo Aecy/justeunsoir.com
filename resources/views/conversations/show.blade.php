@@ -32,7 +32,11 @@
                                                                 @if(Cache::has('users_online-' . $participant->id))
                                                                     En ligne maintenant
                                                                 @else
-                                                                    En ligne {{ $participant->last_seen->diffForHumans() }}
+                                                                    @if(is_null($participant->last_seen))
+                                                                        N'a encore jamais été connecté
+                                                                    @else
+                                                                        En ligne {{ $participant->last_seen->diffForHumans() }}
+                                                                    @endif
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -60,7 +64,7 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                            @if(auth()->user()->credits === 0)
+                                            @if(auth()->user()->credits === 0 && auth()->user()->role === 'member')
                                                 <div class="alert alert-danger mt-4">
                                                     Vous n'avez pas assez de crédits pour répondre ! <a class="text-primary" href="{{ route('shop.index') }}">Cliquez ici pour en acheter</a>
                                                 </div>
