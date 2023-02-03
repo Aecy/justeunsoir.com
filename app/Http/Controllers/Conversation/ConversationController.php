@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Conversation;
 
 use App\Actions\Message\MessageAction;
-use App\Events\MessageCreateEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Conversation\MessageStoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Musonza\Chat\Facades\ChatFacade as Chat;
 use Musonza\Chat\Models\Conversation;
 
 class ConversationController extends Controller
 {
+    /**
+     * Affiche toutes les conversations de l'utilisateur.
+     *
+     * @return View
+     */
     public function index(): View
     {
         $conversations = Chat::conversations(Chat::conversations()->conversation)
@@ -27,15 +29,27 @@ class ConversationController extends Controller
         ]);
     }
 
+    /**
+     * Créer une conversation entre deux utilisateurs.
+     *
+     * @param User $user
+     * @return RedirectResponse
+     */
     public function store(User $user): RedirectResponse
     {
         $conversation = Chat::createConversation([$this->getUser(), $user]);
 
-        return Redirect::to(
+        return redirect()->to(
             route('conversations.show', $conversation)
         );
     }
 
+    /**
+     * Affiche une conversation en cours avec ses messages.
+     *
+     * @param Conversation $conversation
+     * @return View
+     */
     public function show(Conversation $conversation): View
     {
         return view('conversations.show', [
@@ -43,11 +57,19 @@ class ConversationController extends Controller
         ]);
     }
 
+    /**
+     * Permet d'envoyer un message dans une conversation.
+     *
+     * @param Conversation $conversation
+     * @param MessageStoreRequest $request
+     * @param MessageAction $action
+     * @return RedirectResponse
+     */
     public function message(Conversation $conversation, MessageStoreRequest $request, MessageAction $action): RedirectResponse
     {
         $action->send($this->getUser(), $conversation, $request);
 
-        return Redirect::to(
+        return redirect()->to(
             route('conversations.show', $conversation)
         );
     }
