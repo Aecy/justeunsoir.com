@@ -90,7 +90,7 @@
                                                     <div class="create-post">
                                                         <div class="lab-inner">
                                                             <div class="lab-content">
-                                                                <form action="{{ route('conversations.message', $conversation) }}" method="post" class="post-form" enctype="multipart/form-data">
+                                                                <form action="{{ route('messages.store', $conversation) }}" method="post" class="post-form" enctype="multipart/form-data">
                                                                     @csrf
                                                                     <input type="text" class="is-invalid" placeholder="Entrez votre message ici" name="content" autocomplete="off">
                                                                     <div class="content-type">

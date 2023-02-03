@@ -8,6 +8,7 @@ use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Conversation\ConversationController;
+use App\Http\Controllers\Conversation\MessageController;
 use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Like\LikeController;
 use App\Http\Controllers\PageController;
@@ -37,8 +38,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('conversations')->group(function () {
         Route::get('/', [ConversationController::class, 'index'])->name('conversations.index');
         Route::get('/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
-        Route::post('/{conversation}/message', [ConversationController::class, 'message'])->name('conversations.message');
+        Route::post('/{conversation}/message', [MessageController::class, 'store'])->name('messages.store');
     });
+
     Route::prefix('membres/{user}')->group(function () {
         Route::get('/', [UserController::class, 'show'])->name('users.show');
         Route::get('/favoris', [FavoriteController::class, 'show'])->name('favorites.show');
@@ -50,13 +52,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/favoris', [FavoriteController::class, 'index'])->name('users.favorite');
         });
     });
+
     Route::prefix('recherches')->group(function () {
         Route::get('/', [SearchController::class, 'index'])->name('search.index');
     });
+
     Route::prefix('/recompenses')->group(function() {
         Route::get('/', [RewardController::class, 'index'])->name('reward.index');
         Route::post('/', [RewardController::class, 'store'])->name('reward.store');
     });
+
     Route::prefix('/account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('dashboard');
         Route::get('security', [AccountController::class, 'security'])->name('account.security');

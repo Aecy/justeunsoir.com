@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Conversation;
 
-use App\Actions\Message\MessageAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Conversation\MessageStoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -55,22 +53,5 @@ class ConversationController extends Controller
         return view('conversations.show', [
             'conversation' => $conversation
         ]);
-    }
-
-    /**
-     * Permet d'envoyer un message dans une conversation.
-     *
-     * @param Conversation $conversation
-     * @param MessageStoreRequest $request
-     * @param MessageAction $action
-     * @return RedirectResponse
-     */
-    public function message(Conversation $conversation, MessageStoreRequest $request, MessageAction $action): RedirectResponse
-    {
-        $action->send($this->getUser(), $conversation, $request);
-
-        return redirect()->to(
-            route('conversations.show', $conversation)
-        );
     }
 }
