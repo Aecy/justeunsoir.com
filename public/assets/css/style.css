@@ -4316,6 +4316,11 @@ button.lab-btn {
     align-items: flex-end;
 }
 
+.like {
+    justify-content: center;
+    align-items: center;
+}
+
 #chat::-webkit-scrollbar {
     width: 8px;
 }
