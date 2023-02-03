@@ -9,12 +9,17 @@ use Illuminate\View\View;
 
 class PageController extends Controller
 {
+    /**
+     * Instancie le service permettant de jouer avec l'activité d'un utilisateur.
+     *
+     * @param UserActivityService $activityService
+     */
     public function __construct(
         private UserActivityService $activityService
     ) { }
 
     /**
-     * Page d'arrivée sur le site.
+     * Page principale du site.
      *
      * @return View
      */
@@ -33,6 +38,11 @@ class PageController extends Controller
         ]);
     }
 
+    /**
+     * Affiche la page FAQ.
+     *
+     * @return View
+     */
     public function faq(): View
     {
         return view('faq');
