@@ -12,7 +12,7 @@ final class MessageAction
 {
     public function send(User $user, Conversation $conversation, MessageStoreRequest $request): void
     {
-        if ($user->credits <= 0 && $user->role === 'member') {
+        if ($user->credits <= 0) {
             return;
         }
 
@@ -33,8 +33,12 @@ final class MessageAction
                 ->send();
         }
 
-        $user->decrement('credits');
-        $user->save();
+        if ($user->isMember()) {
+            app(abstract: DecrementUserCreditAction::class)->execute(
+                user: $user,
+                credits: 1
+            );
+        }
 
         $user->notify(new MessageNotification($user, $conversation));
     }
