@@ -51,7 +51,8 @@ class ConversationController extends Controller
     public function show(Conversation $conversation): View
     {
         return view('conversations.show', [
-            'conversation' => $conversation
+            'conversation' => $conversation,
+            'user' => $this->getUser()
         ]);
     }
 }

@@ -17,7 +17,7 @@
                                             </a>
                                             <div class="d-flex align-items-center gap-2">
                                                 @foreach($conversation->getParticipants() as $participant)
-                                                    @if($participant->name !== auth()->user()->name)
+                                                    @if($participant->name !== $user->name)
                                                         <img src="{{ $participant->avatar_url }}" style="height: 45px; border-radius: 50%" alt="">
                                                         <div class="d-block">
                                                             <div class="fw-bolder">
@@ -53,7 +53,7 @@
                                                                 <div class="messages__item" style="text-align: center;">
                                                                     <span class="text-danger">❤</span>
                                                                     <span>
-                                                                        @if(auth()->user()->id === $message->sender->id)
+                                                                        @if($user->id === $message->sender->id)
                                                                             Vous avez envoyé un coeur
                                                                         @else
                                                                             <a href="{{ route('users.show', $message->sender) }}" class="fw-bolder">
@@ -64,9 +64,9 @@
                                                                 </div>
                                                             </li>
                                                         @else
-                                                            <li class="{{ $message->sender->id == auth()->user()->id ? 'self' : 'other' }}">
+                                                            <li class="{{ $message->sender->id == $user->id ? 'self' : 'other' }}">
                                                                 <div class="messages__item">
-                                                                    <div class="{{ $message->sender->id == auth()->user()->id ? 'messages__time_self' : 'messages__time' }}">
+                                                                    <div class="{{ $message->sender->id == $user->id ? 'messages__time_self' : 'messages__time' }}">
                                                                         {{ $message->created_at->diffForHumans() }}
                                                                     </div>
                                                                     <div class="messages__content">
@@ -81,9 +81,33 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                            @if(auth()->user()->credits === 0 && auth()->user()->role === 'member')
-                                                <div class="alert alert-danger mt-4">
-                                                    Vous n'avez pas assez de crédits pour répondre ! <a class="text-primary" href="{{ route('shop.index') }}">Cliquez ici pour en acheter</a>
+                                            @if($user->credits <= 0 && $user->role === \App\Enums\User\UserRolesEnum::MEMBER)
+                                                <div class="activity-tab">
+                                                    <div class="create-post">
+                                                        <div class="lab-inner">
+                                                            <div class="lab-content">
+                                                                <form action="#" class="post-form">
+                                                                    @csrf
+                                                                    <div class="content-type">
+                                                                        <ul class="content-list">
+                                                                            <li class="text">
+                                                                                <a href="#" class="text-danger">
+                                                                                    <i class="icofont-exclamation-tringle"></i>
+                                                                                    Vous n'avez plus de crédit disponible
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="text">
+                                                                                <a href="{{ route('shop.index') }}">
+                                                                                    <i class="icofont-shopping-cart"></i>
+                                                                                    Acheter des crédits
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @else
                                                 <div class="activity-tab">
@@ -98,8 +122,8 @@
                                                                             <li class="text">
                                                                                 <a href="#">
                                                                                     <i class="icofont-star"></i>
-                                                                                    @if(auth()->user()->role === 'member')
-                                                                                        Vous avez <strong>{{ auth()->user()->credits }} crédits</strong> disponible
+                                                                                    @if($user->role === \App\Enums\User\UserRolesEnum::MEMBER)
+                                                                                        Vous avez <strong>{{ $user->credits }} crédits</strong> disponible
                                                                                     @else
                                                                                         Vous avez des crédits illimités
                                                                                     @endif
