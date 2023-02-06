@@ -20,7 +20,11 @@ class MessageController extends Controller
      */
     public function store(Conversation $conversation, MessageStoreRequest $request, MessageAction $action): RedirectResponse
     {
-        $action->send($this->getUser(), $conversation, $request);
+        $action->send(
+            user: $this->getUser(),
+            conversation: $conversation,
+            request: $request
+        );
 
         return redirect()->to(
             route('conversations.show', $conversation)
