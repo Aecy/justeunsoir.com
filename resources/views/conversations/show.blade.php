@@ -33,7 +33,7 @@
                                                                     En ligne maintenant
                                                                 @else
                                                                     @if(is_null($participant->last_seen))
-                                                                        N'a encore jamais été connecté
+                                                                        Hors ligne depuis longtemps
                                                                     @else
                                                                         En ligne {{ $participant->last_seen->diffForHumans() }}
                                                                     @endif
