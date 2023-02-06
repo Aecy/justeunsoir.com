@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\User\UserRolesEnum;
 use App\Traits\User\UserDrinkingTrait;
 use App\Traits\User\UserGenderTrait;
 use App\Traits\User\UserMartialTrait;
@@ -76,6 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'email_verified_at' => 'datetime',
         'last_seen' => 'datetime',
         'last_reward' => 'datetime',
+        'role' => UserRolesEnum::class,
     ];
 
     /**
@@ -85,7 +87,17 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      */
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role === UserRolesEnum::ADMIN;
+    }
+
+    /**
+     * Vérifie si l'User est membre.
+     *
+     * @return bool
+     */
+    public function isMember(): bool
+    {
+        return $this->role === UserRolesEnum::MEMBER;
     }
 
     /**
