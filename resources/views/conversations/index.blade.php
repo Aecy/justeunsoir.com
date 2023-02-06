@@ -22,14 +22,13 @@
                               <div class="author-thumb">
                                 @foreach($item->conversation->participants as $participant)
                                   @if($participant->messageable->name !== auth()->user()->name)
-                                    <img src="{{ $participant->messageable->avatar_url }}" alt="img"
-                                         style="height: 70px; width: 70px;  border-radius: 50%;">
+                                    <img src="{{ $participant->messageable->avatar_url }}" alt="img" style="height: 70px; width: 70px;  border-radius: 50%;">
                                   @endif
                                 @endforeach
                               </div>
                               <div class="d-flex align-items-center">
                                 <div>
-                                  <a href="{{ route('conversations.show', $item->conversation_id) }}">
+                                  <a href="{{ route('conversations.show', $item->conversation_id) }}" class="me-2">
                                     @forelse($item->conversation->participants as $participant)
                                       @if($participant->messageable->name !== auth()->user()->name)
                                         @include('partials._user-online', ['userId' => $participant->messageable->id])
@@ -38,9 +37,12 @@
                                         </span>
                                       @endif
                                     @empty
-                                      <span>test</span>
+                                      <span></span>
                                     @endforelse
                                   </a>
+                                  <form href="#" class="d-inline text-muted" style="font-size: 12px;">
+                                    <i class="icofont-trash"></i> Supprimer la conversation
+                                  </form>
                                   <p class="text-muted">
                                     @if(!is_null($item->conversation->last_message))
                                       @if($item->conversation->last_message->type === 'like')
@@ -55,15 +57,14 @@
                                             @if($item->conversation->last_message->participation->messageable->id === auth()->user()->id)
                                               Vous:
                                             @else
-                                              {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}
-                                              :
-                                              @endif
+                                              {{ $item->conversation->last_message->participation->messageable->gender === 'F' ? "Elle" : "Lui" }}:
+                                            @endif
                                               {{ \Illuminate\Support\Str::limit($item->conversation->last_message->body, 30) }} &middot;
                                               {{ $item->conversation->last_message->created_at->diffForHumans() }}
-                                            @endif
-                                            @else
-                                              Nouvelle conversation ! Ne soyez pas timide.
-                                            @endif
+                                        @endif
+                                      @else
+                                        Nouvelle conversation ! Ne soyez pas timide.
+                                    @endif
                                   </p>
                                 </div>
                               </div>
@@ -73,9 +74,10 @@
                       </div>
                     @empty
                       <div class="p-4">
-                        Vous n'avez pas de conversation...
-                        Commencez à discuter en <a href="{{ route('search.index') }}" class="text-primary">cliquant
-                          ici</a>
+                        Vous n'avez pas de conversation... Commencez à discuter en
+                        <a href="{{ route('search.index') }}" class="text-primary">
+                          cliquant ici
+                        </a>
                       </div>
                     @endforelse
                   </div>
