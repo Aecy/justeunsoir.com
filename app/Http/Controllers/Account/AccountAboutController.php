@@ -19,8 +19,10 @@ class AccountAboutController extends Controller
         $request->user()->fill($request->validated());
         $request->user()->save();
 
+        alert()->success("Votre compte est à jour !", "Merci d'avoir mis à jour vos informations.");
+
         return redirect()->to(
             route('dashboard')
-        )->with('status', 'about-updated');
+        );
     }
 }

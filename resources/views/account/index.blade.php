@@ -238,7 +238,6 @@
                         </div>
                       </article>
                     </div>
-
                     @include('account.partials._aside')
                   </div>
                 </div>
