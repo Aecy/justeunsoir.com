@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Http\Controllers\Controller;
+use App\Actions\User\IncrementUserCreditAction;
+use Stripe\Stripe;
 use App\Models\Product;
-use App\Payments\StripePayment;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
-use Stripe\Stripe;
+use App\Payments\StripePayment;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StripeController extends Controller
@@ -55,8 +56,12 @@ class StripeController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $this->getUser()->increment('credits', $product->credits);
-        alert()->success('Achat de crédits effectué !', "Vous avez acheté des crédits, vous pouvez maintenant les dépenser en discutant avec d'autre membre.");
+        app(IncrementUserCreditAction::class)->execute(
+            $this->getUser(),
+            $product->credits
+        );
+
+        alert()->success('Achat de crédits effectué !', "Vous avez acheté des crédits, vous pouvez discuter tranquillement.");
 
         return redirect()->to(route('shop.index'));
     }

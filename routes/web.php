@@ -15,6 +15,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reward\RewardController;
 use App\Http\Controllers\Search\SearchController;
+use App\Http\Controllers\Shop\PaypalController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\Shop\StripeController;
 use App\Http\Controllers\User\MediaController;
@@ -32,6 +33,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/{product}', [StripeController::class, 'checkout'])->name('stripe.checkout');
             Route::get('done', [StripeController::class, 'success'])->name('stripe.success');
             Route::get('cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
+        });
+
+        Route::prefix('paypal')->group(function () {
+            Route::post('/{product}', [PaypalController::class, 'checkout'])->name('paypal.checkout');
+            Route::get('status', [PaypalController::class, 'status'])->name('paypal.status');
         });
     });
 
