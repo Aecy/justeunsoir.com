@@ -33,7 +33,7 @@
                 @endif
                 {{ $user->name }}
             </h4>
-            <span>Inscrit(e) {{ $user->created_at->diffForHumans() }}</span>
+            <span>{{ $user->gender === 'F' ? 'Inscrite' : 'Inscrit' }} {{ $user->created_at->diffForHumans() }}</span>
         </div>
     </div>
 </div>
