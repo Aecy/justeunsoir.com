@@ -32,7 +32,7 @@
                                   <a href="{{ route('conversations.show', $item->conversation_id) }}">
                                     @forelse($item->conversation->participants as $participant)
                                       @if($participant->messageable->name !== auth()->user()->name)
-                                        @include('partials._useronline', ['userId' => $participant->messageable->id])
+                                        @include('partials._user-online', ['userId' => $participant->messageable->id])
                                         <span class="fw-bolder" title="{{ $participant->messageable->name }}">
                                           {{ \Illuminate\Support\Str::limit($participant->messageable->name, 30) }}
                                         </span>
