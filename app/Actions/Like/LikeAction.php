@@ -18,9 +18,11 @@ final class LikeAction
         $sender->toggleLike($receiver);
 
         if ($sender->hasLiked($receiver)) {
+            alert()->success("Vous avez envoyé un coeur à {$receiver->name}");
             $this->addLikeConversation($sender, $receiver);
             $receiver->notify(new LikeNotification($sender));
         } else {
+            alert()->info("Vous avez retiré votre coeur");
             $this->removeLikeConversation($sender, $receiver);
             $receiver->notify(new DislikeNotification($sender));
         }

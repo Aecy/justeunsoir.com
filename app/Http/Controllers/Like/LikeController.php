@@ -27,6 +27,7 @@ class LikeController extends Controller
     public function index(User $user): RedirectResponse
     {
         $this->action->toggle($this->getUser(), $user);
+
         return redirect()->back();
     }
 }

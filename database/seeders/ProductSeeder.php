@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
     {
         return [
             [
-                'name' => "Pack Essentiel",
+                'name' => "Pack Eco",
                 'price' => 30 * 100,
                 'credits' => 50,
             ],
@@ -38,12 +38,12 @@ class ProductSeeder extends Seeder
                 'credits' => 100,
             ],
             [
-                'name' => "Pack Professionnel",
+                'name' => "Pack Power",
                 'price' => 100 * 100,
                 'credits' => 200,
             ],
             [
-                'name' => "Pack Entreprise",
+                'name' => "Pack Premium",
                 'price' => 120 * 100,
                 'credits' => 250,
             ],
