@@ -28,6 +28,11 @@ class ProductSeeder extends Seeder
     {
         return [
             [
+                'name' => "Pack Mini",
+                'price' => 15 * 100,
+                'credits' => 10,
+            ],
+            [
                 'name' => "Pack Eco",
                 'price' => 30 * 100,
                 'credits' => 50,
