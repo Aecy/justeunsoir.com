@@ -7,6 +7,7 @@ use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Conversation\ConversationController;
 use App\Http\Controllers\Conversation\MessageController;
 use App\Http\Controllers\Favorite\FavoriteController;
@@ -80,6 +81,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('/physical', [AccountPhysicalController::class, 'update'])->name('account.update.physical');
         Route::post('/avatar', [AccountAvatarController::class, 'update'])->name('account.upload.avatar');
         Route::post('/media', [AccountMediaController::class, 'store'])->name('account.store.media');
+    });
+
+    Route::middleware('admin')->prefix('acp')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     });
 });
 
