@@ -22,11 +22,7 @@
                             <img src="{{ $participant->avatar_url }}" style="height: 45px; border-radius: 50%" alt="">
                             <div class="d-block">
                               <div class="fw-bolder">
-                                @if(Cache::has('users_online-' . $participant->id))
-                                  <i class="icofont-ui-press text-success text-sm circle pulse"></i>
-                                @else
-                                  <i class="icofont-ui-press text-danger text-sm"></i>
-                                @endif
+                                @include('partials._user-online', ['userId' => $participant->id])
                                 {{ $participant->name }}
                               </div>
                               <div class="text-muted" style="font-size: 13px;">
@@ -54,14 +50,14 @@
                                 <div class="messages__item" style="text-align: center;">
                                   <span class="text-danger">❤</span>
                                   <span>
-                                                                        @if($user->id === $message->sender->id)
+                                    @if($user->id === $message->sender->id)
                                       Vous avez envoyé un coeur
                                     @else
                                       <a href="{{ route('users.show', $message->sender) }}" class="fw-bolder">
-                                                                                {{ $message->sender->name }}
-                                                                            </a> vous a envoyé un coeur
+                                        {{ $message->sender->name }}
+                                      </a> vous a envoyé un coeur
                                     @endif
-                                                                    </span>
+                                  </span>
                                 </div>
                               </li>
                             @else

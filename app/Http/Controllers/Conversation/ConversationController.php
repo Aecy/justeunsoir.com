@@ -55,4 +55,23 @@ class ConversationController extends Controller
             'user' => $this->getUser()
         ]);
     }
+
+    /**
+     * Supprime une conversation entre deux utilisateurs.
+     *
+     * @param Conversation $conversation
+     * @return RedirectResponse
+     */
+    public function delete(Conversation $conversation): RedirectResponse
+    {
+        if ($conversation->getParticipants()->count() >= 2) {
+            foreach ($conversation->getParticipants() as $user) {
+                Chat::conversation($conversation)->removeParticipants([$user]);
+            }
+        }
+
+        return redirect()->to(
+            route('conversations.index')
+        );
+    }
 }

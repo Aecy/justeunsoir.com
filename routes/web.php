@@ -44,6 +44,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('conversations')->group(function () {
         Route::get('/', [ConversationController::class, 'index'])->name('conversations.index');
         Route::get('/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
+        Route::delete('/{conversation}', [ConversationController::class, 'delete'])->name('conversations.delete');
         Route::post('/{conversation}/message', [MessageController::class, 'store'])->name('messages.store');
     });
 

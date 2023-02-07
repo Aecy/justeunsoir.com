@@ -40,9 +40,13 @@
                                       <span></span>
                                     @endforelse
                                   </a>
-                                  <form href="#" class="d-inline text-muted" style="font-size: 12px;">
-                                    <i class="icofont-trash"></i> Supprimer la conversation
+                                  <form id="conversation_delete-{{ $item->conversation_id }}" action="{{ route('conversations.delete', $item) }}" method="post" style="display: none;">
+                                    @csrf
+                                    @method('delete')
                                   </form>
+                                  <a href="#!" onclick="event.preventDefault(); document.getElementById('conversation_delete-{{ $item->conversation_id }}').submit()" class="text-muted" style="font-size: 12px;">
+                                    <i class="icofont-trash"></i> Supprimer la conversation
+                                  </a>
                                   <p class="text-muted">
                                     @if(!is_null($item->conversation->last_message))
                                       @if($item->conversation->last_message->type === 'like')
