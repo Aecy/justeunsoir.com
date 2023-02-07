@@ -57,6 +57,6 @@ class RewardTest extends TestCase
             route('reward.store')
         );
 
-        $response->assertSessionHas('danger');
+        $response->assertStatus(302);
     }
 }

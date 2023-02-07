@@ -30,12 +30,7 @@
               {{ session('success') }}
             </p>
           @endif
-          @if(session('danger'))
-            <p class="font-bolder text-danger mb-2">
-              {{ session('danger') }}
-            </p>
-          @endif
-          @if($can || is_null($user->last_reward))
+          @if($can)
             <form action="{{ route('reward.store') }}" method="post">
               @csrf
               <button type="submit" class="lab-btn">
