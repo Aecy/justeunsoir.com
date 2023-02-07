@@ -11,6 +11,11 @@ use Illuminate\View\View;
 
 class RewardController extends Controller
 {
+    /**
+     * Affiche la page pour obtenir une récompense.
+     *
+     * @return View
+     */
     public function index(): View
     {
         $can = app(abstract: RewardService::class)->can(
@@ -23,6 +28,12 @@ class RewardController extends Controller
         ]);
     }
 
+    /**
+     * Récupère une récompense quotidienne.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function store(Request $request): RedirectResponse
     {
         app(abstract: RewardUserAction::class)->execute(
