@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reward;
 
+use App\Actions\User\IncrementUserCreditAction;
 use App\Http\Controllers\Controller;
 use App\Services\Reward\RewardService;
 use Illuminate\Http\RedirectResponse;
@@ -44,15 +45,18 @@ class RewardController extends Controller
             $user->last_reward = now();
 
             if ($reward > 0) {
-                $user->credits += $reward;
-                $user->save();
+                app(IncrementUserCreditAction::class)->execute($user, $reward);
 
-                return redirect()->back()->with('success', "Vous avez reçu ${reward} crédits.");
+                alert()->success("Vous avez reçu {$reward} crédits");
+
+                return redirect()->back();
             }
 
             $user->save();
 
-            return redirect()->back()->with('success', "Pas de chance ! Vous n'avez pas reçu de crédit.");
+            alert()->info("Oh non", "Vous n'avez pas reçu de crédit ! Pas de chance...");
+
+            return redirect()->back();
         }
 
         $time = $user->last_reward->addHours(24);
