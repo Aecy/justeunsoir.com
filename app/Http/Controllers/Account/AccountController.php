@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class AccountController extends Controller
@@ -53,5 +56,31 @@ class AccountController extends Controller
         return view('account.medias', [
             'user' => $this->getUser()
         ]);
+    }
+
+    /**
+     * Supprime un compte utilisateur.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current-password'],
+        ]);
+
+        $user = $request->user();
+
+        Auth::logout();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->to(
+            url('/')
+        );
     }
 }

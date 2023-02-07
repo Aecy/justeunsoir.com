@@ -37,7 +37,7 @@
                             <h6>Vos informations basiques</h6>
                           </div>
                           <div class="info-card-content">
-                            <form method="post" action="{{ route('profile.update') }}">
+                            <form method="post" action="{{ route('account.update.information') }}">
                               @csrf
                               @method('patch')
                               <div class="mb-3">
@@ -91,9 +91,6 @@
                                 <button type="submit" class="lab-btn">
                                   <span>Sauvegarder</span>
                                 </button>
-                                @if (session('status') === 'profile-updated')
-                                  <p class="text-success">Votre compte est mis à jour.</p>
-                                @endif
                               </div>
                             </form>
                           </div>

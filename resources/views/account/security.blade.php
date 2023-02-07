@@ -53,9 +53,6 @@
                           <button type="submit" class="lab-btn">
                             <span>Sauvegarder</span>
                           </button>
-                          @if (session('status') === 'password-updated')
-                            <p class="text-success">Votre mot de passe est mis à jour.</p>
-                          @endif
                         </div>
                       </form>
                     </div>
@@ -70,7 +67,7 @@
                         Avant de supprimer votre compte, veuillez télécharger toutes les données ou informations que
                         vous souhaitez conserver.
                       </p>
-                      <form method="post" action="{{ route('profile.destroy') }}">
+                      <form method="post" action="{{ route('account.delete') }}">
                         @csrf
                         @method('delete')
                         <div class="mb-3">

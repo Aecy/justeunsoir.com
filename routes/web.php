@@ -3,6 +3,7 @@
 use App\Http\Controllers\Account\AccountAboutController;
 use App\Http\Controllers\Account\AccountAvatarController;
 use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\AccountInformationController;
 use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
@@ -72,13 +73,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('/account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('dashboard');
+
         Route::get('security', [AccountController::class, 'security'])->name('account.security');
         Route::get('favoris', [AccountController::class, 'favorites'])->name('account.friends');
         Route::get('medias', [AccountController::class, 'medias'])->name('account.medias');
+
+        Route::delete('/', [AccountController::class, 'destroy'])->name('account.delete');
+        Route::patch('/information', [AccountInformationController::class, 'update'])->name('account.update.information');
         Route::patch('/about', [AccountAboutController::class, 'update'])->name('account.update.about');
         Route::patch('/looking', [AccountLookingController::class, 'update'])->name('account.update.looking');
         Route::patch('/interest', [AccountInterestController::class, 'update'])->name('account.update.interest');
         Route::patch('/physical', [AccountPhysicalController::class, 'update'])->name('account.update.physical');
+
         Route::post('/avatar', [AccountAvatarController::class, 'update'])->name('account.upload.avatar');
         Route::post('/media', [AccountMediaController::class, 'store'])->name('account.store.media');
     });
