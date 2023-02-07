@@ -13,8 +13,10 @@ class AccountInterestController extends Controller
         $request->user()->fill($request->validated());
         $request->user()->save();
 
+        alert()->success("Compte mis à jour !", "Vous avez mis à jour votre style de vie.");
+
         return redirect()->to(
             route('dashboard')
-        )->with('status', 'interest-updated');
+        );
     }
 }

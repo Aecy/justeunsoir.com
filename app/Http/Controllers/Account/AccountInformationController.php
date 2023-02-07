@@ -27,6 +27,8 @@ class AccountInformationController extends Controller
 
         alert()->success("Compte mis à jour !", "Vous avez mis à jour vos informations basique.");
 
-        return Redirect::route('dashboard')->with('status', 'profile-updated');
+        return redirect()->to(
+            route('dashboard')
+        );
     }
 }

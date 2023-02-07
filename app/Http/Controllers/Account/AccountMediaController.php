@@ -14,6 +14,8 @@ class AccountMediaController extends Controller
         if ($request->hasFile('media')) {
             $user->addMedia($request->file('media'))->toMediaCollection();
 
+            alert()->success("Nouvelle photo", "Vous avez parfaitement ajouté une nouvelle photo.");
+
             return redirect()->to(
                 route('account.medias')
             );

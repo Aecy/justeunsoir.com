@@ -79,6 +79,8 @@ class AccountController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        alert()->success("Votre compte a été supprimé", "Vous avez supprimé votre compte ! En aucun cas nous pourrons vous retrouvez ces données.");
+
         return redirect()->to(
             url('/')
         );
