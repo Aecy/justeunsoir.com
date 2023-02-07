@@ -3,7 +3,10 @@
 @section('content')
   <section class="profile-section" style="padding: 155px 0;">
     <div class="container">
-      <div class="section-wrapper">
+      <div class="section-header">
+        <h4 class="theme-color">Vos conversations</h4>
+      </div>
+      <div class="section-wrapper mt-4">
         <div class="member-profile">
 
           <div class="profile-details">
@@ -11,9 +14,6 @@
               <div class="col-xl-12">
                 <article>
                   <div class="info-card mb-20">
-                    <div class="info-card-title">
-                      <h6>Vos conversations</h6>
-                    </div>
                     @forelse($conversations as $item)
                       <div class="post-item">
                         <div class="post-content">
