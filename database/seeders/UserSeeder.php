@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
         User::factory()->create([
             'name' => 'Night Lovell',
             'gender' => 'H',
+            'country' => 'FR',
+            'state' => "Champagne-Ardenne",
             'role' => 'admin',
             'email' => 'aecy@dev.fr',
         ]);

@@ -49,7 +49,7 @@
                                 <input type="email" name="email" value="{{ old('email', $user->email) }}" class="form-control" autocomplete="email">
                               </div>
                               <div class="mb-3">
-                                <label for="gender" class="pb-2">Je suis un(e)</label>
+                                <label for="gender" class="pb-2">Genre</label>
                                 <select name="gender" id="gender" class="form-control">
                                   <option value="" selected disabled>Sélectionner votre sexe</option>
                                   <option value="H" {{ old('gender', $user->gender) === 'H' ? 'selected' : '' }}>Homme</option>
@@ -68,7 +68,7 @@
                                 </select>
                               </div>
                               <div class="mb-3">
-                                <label for="age" class="pb-2">Je suis âgé de</label>
+                                <label for="age" class="pb-2">Âge</label>
                                 <select name="age" id="age" class="form-control">
                                   <option value="" selected disabled>Sélectionner votre âge</option>
                                   @foreach(range(18, 99) as $age)
@@ -80,11 +80,20 @@
                                 </select>
                               </div>
                               <div class="mb-3">
-                                <label for="address" class="pb-2">Je viens de</label>
-                                <input type="text" name="address" value="{{ old('address', $user->address) }}" class="form-control" placeholder="Indiquez votre ville (ex: Bruxelles)" autocomplete="state">
+                                <label for="country" class="pb-2">Pays</label>
+                                <select name="country" id="country" class="form-control">
+                                  <option value="FR" {{ old('country', $user->country) == 'FR' ? 'selected' : '' }}>France</option>
+                                  <option value="BE" {{ old('country', $user->country) == 'BE' ? 'selected' : '' }}>Belgique</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="state" class="pb-2">Province</label>
+                                <select name="state" id="state" class="form-control">
+                                  <option value=""></option>
+                                </select>
                               </div>
                               <div class="mb-4">
-                                <label for="birth_at" class="pb-2">Je suis né(e) le</label>
+                                <label for="birth_at" class="pb-2">Date de naissance</label>
                                 <input type="date" name="birth_at" class="form-control" value="{{ old('birth_at', $user->birth_at) }}">
                               </div>
                               <div class="d-inline-flex align-items-center gap-4">
@@ -246,3 +255,96 @@
     </div>
   </section>
 @endsection
+
+@push('scripts')
+  <script type="text/javascript">
+    const france = [
+      {id: 0, name: 'Sélectionner votre province'},
+      {id: 1, name: "Alsace"},
+      {id: 2, name: "Aquitaine"},
+      {id: 3, name: "Auvergne"},
+      {id: 4, name: "Basse-Normandie"},
+      {id: 5, name: "Bourgogne"},
+      {id: 6, name: "Bretagne"},
+      {id: 7, name: "Centre"},
+      {id: 8, name: "Champagne-Ardenne"},
+      {id: 9, name: "Corse"},
+      {id: 10, name: "Franche-Comté"},
+      {id: 11, name: "Haute-Normandie"},
+      {id: 12, name: "Île-de-France"},
+      {id: 13, name: "Languedoc-Roussillon"},
+      {id: 14, name: "Limousin"},
+      {id: 15, name: "Lorraine"},
+      {id: 16, name: "Midi-Pyrénées"},
+      {id: 17, name: "Nord-Pas-de-Calais"},
+      {id: 18, name: "Pays de la Loire"},
+      {id: 19, name: "Picardie"},
+      {id: 20, name: "Poitou-Charentes"},
+      {id: 21, name: "Provence-Alpes-Côte d'Azur"},
+      {id: 22, name: "Rhône-Alpes"},
+    ];
+    const belgium = [
+      {id: 0, name: 'Sélectionner votre province'},
+      {id: 1, name: 'Anvers'},
+      {id: 2, name: 'Limbourg'},
+      {id: 3, name: 'Liège'},
+      {id: 4, name: 'Luxembourg'},
+      {id: 5, name: 'Namur'},
+      {id: 6, name: 'Brabant wallon'},
+      {id: 7, name: 'Brabant flamand'},
+      {id: 8, name: 'Bruxelles'},
+      {id: 9, name: 'Hainaut'},
+      {id: 10, name: 'Flandre orientale'},
+      {id: 11, name: 'Flandre occidentale'},
+    ];
+
+    let stateElement = document.getElementById('state-group');
+    let countryElement = document.getElementById('country');
+    let stateFormEl = document.getElementById('state');
+
+    loadStates(countryElement.value);
+
+    countryElement.addEventListener('change', function (event) {
+      const select = event.target;
+      const value = select.value;
+
+      let options = stateFormEl.getElementsByTagName('option');
+      for (let i = options.length; i--;) {
+        stateFormEl.removeChild(options[i]);
+      }
+
+      loadStates(value);
+    });
+
+    function loadStates(value) {
+      if (value === 'FR') {
+        france.forEach(function (state) {
+          let option = document.createElement('option');
+          option.value = state.name;
+          option.innerText = state.name;
+          option.selected = selectedState(state.name);
+
+          stateFormEl.appendChild(option);
+        });
+      } else if (value === 'BE') {
+        belgium.forEach(function (state) {
+          let option = document.createElement('option');
+          option.value = state.name;
+          option.innerText = state.name;
+          option.selected = selectedState(state.name);
+
+          stateFormEl.appendChild(option);
+        });
+      } else {
+        // Nothing to do.
+      }
+    }
+
+    function selectedState(name) {
+      if (name == "{!! $user->state !!}") {
+        return true;
+      }
+      return false;
+    }
+  </script>
+@endpush

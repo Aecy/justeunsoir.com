@@ -21,7 +21,8 @@ class ProfileUpdateRequest extends FormRequest
             'gender' => ['nullable', 'string', Rule::in('H', 'F', 'A')],
             'martial' => ['nullable', 'string', Rule::in('C', 'E', 'MSE', 'MAE')],
             'age' => ['nullable', 'integer', Rule::in(range(18, 99))],
-            'address' => ['nullable', 'string'],
+            'country' => ['nullable', 'string', 'in:FR,BE'],
+            'state' => ['nullable', 'string'],
             'birth_at' => ['nullable', 'date'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];

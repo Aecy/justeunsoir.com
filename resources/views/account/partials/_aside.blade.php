@@ -33,7 +33,7 @@
                 </div>
               </div>
             @empty
-              <p>Vous n'avez aucun cœur... <span class="text-danger">💔</span></p>
+              <p>Vous n'avez aucun cœur... <i class="icofont-heart text-danger"></i></p>
             @endforelse
           </div>
         </div>

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('member');
+            $table->string('country');
+            $table->string('state');
             $table->string('gender')->nullable();
             $table->string('martial')->nullable();
             $table->longText('about_me')->nullable();
@@ -32,7 +34,6 @@ return new class extends Migration
             $table->string('hair_color')->nullable();
             $table->string('eye_color')->nullable();
             $table->integer('age')->nullable();
-            $table->string('address')->nullable();
             $table->string('avatar')->default('default.jpg');
             $table->bigInteger('credits')->default(10);
             $table->rememberToken();

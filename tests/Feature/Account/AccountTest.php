@@ -31,7 +31,8 @@ class AccountTest extends TestCase
                 'gender' => 'F',
                 'martial' => 'C',
                 'age' => '18',
-                'address' => 'Paris',
+                'country' => 'FR',
+                'state' => "Champagne-Ardenne",
             ]
         );
 
@@ -47,7 +48,8 @@ class AccountTest extends TestCase
         $this->assertSame('F', $user->gender);
         $this->assertSame('C', $user->martial);
         $this->assertSame(18, $user->age);
-        $this->assertSame('Paris', $user->address);
+        $this->assertSame('FR', $user->country);
+        $this->assertSame('Champagne-Ardenne', $user->state);
         $this->assertNull($user->email_verified_at);
     }
 
