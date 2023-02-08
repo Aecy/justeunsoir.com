@@ -227,12 +227,11 @@
                                 <label for="morphology" class="pb-2">Votre morphologie</label>
                                 <select name="morphology" id="morphology" class="form-control">
                                   <option value="" selected disabled>Sélectionner votre morphologie</option>
-                                  <option value="S" {{ old('morphology', $user->morphology) === 'S' ? 'selected' : '' }}>Sportif(ve)</option>
-                                  <option value="M" {{ old('morphology', $user->morphology) === 'M' ? 'selected' : '' }}>Mince</option>
-                                  <option value="D" {{ old('morphology', $user->morphology) === 'D' ? 'selected' : '' }}>Délicate</option>
-                                  <option value="N" {{ old('morphology', $user->morphology) === 'N' ? 'selected' : '' }}>Normal</option>
-                                  <option value="Q" {{ old('morphology', $user->morphology) === 'Q' ? 'selected' : '' }}>Quelque kilos en trop</option>
-                                  <option value="R" {{ old('morphology', $user->morphology) === 'R' ? 'selected' : '' }}>Rond(e)</option>
+                                  @foreach(\App\Enums\User\UserMorphologyEnum::cases() as $morphology)
+                                    <option value="{{ $morphology }}" {{ old('morphology', $user->morphology) === $morphology ? 'selected' : '' }}>
+                                      {{ trans("messages.morphology.{$morphology->value}") }}
+                                    </option>
+                                  @endforeach
                                 </select>
                               </div>
                               <div class="mb-3">

@@ -22,5 +22,13 @@ return [
         "no" => "Non",
         "rarely" => "Rarement",
         "private" => "Préfère ne pas dire"
+    ],
+    "morphology" => [
+        "athlete" => "Sportif/Sportive",
+        "slim" => "Mince",
+        "delicate" => "Délicat(e)",
+        "normal" => "Normal",
+        "extra" => "Quelques kilos en trop",
+        "round" => "Rond(e)",
     ]
 ];

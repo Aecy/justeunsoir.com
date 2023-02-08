@@ -5,12 +5,11 @@ namespace App\Models;
 use App\Enums\User\UserDrinkingEnum;
 use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserMartialsEnum;
+use App\Enums\User\UserMorphologyEnum;
 use App\Enums\User\UserRolesEnum;
 use App\Enums\User\UserSmokingEnum;
 use App\Traits\User\UserDrinkingTrait;
 use App\Traits\User\UserGenderTrait;
-use App\Traits\User\UserMartialTrait;
-use App\Traits\User\UserMorphologyTrait;
 use App\Traits\User\UserSmokingTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,7 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     use HasApiTokens, HasFactory, Notifiable;
     use InteractsWithMedia;
     use Likeable, Liker, Favoriter, Favoriteable;
-    use UserDrinkingTrait, UserGenderTrait, UserMorphologyTrait, UserSmokingTrait;
+    use UserDrinkingTrait, UserGenderTrait, UserSmokingTrait;
     use Messageable;
 
     /**
@@ -85,6 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'martial' => UserMartialsEnum::class,
         'smoking' => UserSmokingEnum::class,
         'drinking' => UserDrinkingEnum::class,
+        'morphology' => UserMorphologyEnum::class,
     ];
 
     /**

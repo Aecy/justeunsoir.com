@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enums\User\UserDrinkingEnum;
 use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserMartialsEnum;
+use App\Enums\User\UserMorphologyEnum;
 use App\Enums\User\UserSmokingEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -31,8 +32,9 @@ class UserFactory extends Factory
             'martial' => UserMartialsEnum::random(),
             'smoking' => UserSmokingEnum::random(),
             'drinking' => UserDrinkingEnum::random(),
+            'morphology' => UserMorphologyEnum::random(),
             'country' => collect(['FR', 'BE'])->random(),
-            'state' => fake()->sta,
+            'state' => fake()->city,
             'gender' => UserGendersEnum::random(),
         ];
     }

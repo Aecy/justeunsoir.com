@@ -109,7 +109,7 @@
                               </li>
                               <li>
                                 <p class="info-name">Morphologie</p>
-                                <p class="info-details">{{ $user->morphologyName }}</p>
+                                <p class="info-details">{{ trans("messages.morphology.{$user->morphology->value}") }}</p>
                               </li>
                               <li>
                                 <p class="info-name">Couleur des cheveux</p>
