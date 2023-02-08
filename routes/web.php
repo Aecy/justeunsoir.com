@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'account.completed'])->group(function () {
     Route::prefix('tarifs')->group(function () {
         Route::get('/', [ShopController::class, 'index'])->name('shop.index');
 
@@ -70,7 +70,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/', [RewardController::class, 'store'])->name('reward.store');
     });
 
-    Route::prefix('/account')->group(function () {
+    Route::prefix('/account')->withoutMiddleware('account.completed')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('dashboard');
 
         Route::get('security', [AccountController::class, 'security'])->name('account.security');
