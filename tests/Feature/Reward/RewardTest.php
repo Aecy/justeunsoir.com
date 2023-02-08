@@ -2,10 +2,9 @@
 
 namespace Tests\Feature\Reward;
 
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RewardTest extends TestCase
 {
