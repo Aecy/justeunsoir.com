@@ -46,8 +46,7 @@ class MessageNotification extends Notification
             ->greeting("Un membre vous a envoyé un message")
             ->subject("Un membre vous a envoyé un message")
             ->line("{$this->user->name} vous a envoyé un message.")
-            ->action("Voir la conversation", route('conversations.show', $this->conversation))
-            ->line("Merci pour votre confiance.");
+            ->action("Voir la conversation", route('conversations.show', $this->conversation));
     }
 
     /**

@@ -44,8 +44,7 @@ class FavoriteAddNotification extends Notification
             ->greeting("Un membre vous a ajouté à ses favoris")
             ->subject("Un membre vous a ajouté à ses favoris")
             ->line("{$this->user->name} vous a ajouté à ses favoris ! N'hésitez pas à discuter avec pour faire connaissance.")
-            ->action("Voir son compte", route('users.show', $this->user))
-            ->line("Merci pour votre confiance.");
+            ->action("Voir son compte", route('users.show', $this->user));
     }
 
     /**

@@ -44,8 +44,7 @@ class LikeNotification extends Notification
             ->greeting("Un membre vous a envoyé un coeur")
             ->subject("Un membre vous a envoyé un coeur")
             ->line("{$this->user->name} vous à envoyé un coeur")
-            ->action("Voir son compte", route('users.show', $this->user))
-            ->line("Merci pour votre confiance.");
+            ->action("Voir son compte", route('users.show', $this->user));
     }
 
     /**

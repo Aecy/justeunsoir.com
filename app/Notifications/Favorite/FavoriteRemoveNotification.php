@@ -44,8 +44,7 @@ class FavoriteRemoveNotification extends Notification
             ->greeting("Un membre vous a retiré de ses favoris")
             ->subject("Un membre vous a retiré de ses favoris")
             ->line("{$this->user->name} vous a retiré de ses favoris !")
-            ->action("Voir son compte", route('users.show', $this->user))
-            ->line("Merci pour votre confiance.");
+            ->action("Voir son compte", route('users.show', $this->user));
     }
 
     /**
