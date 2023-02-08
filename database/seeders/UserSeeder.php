@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\User\UserRolesEnum;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,7 +23,7 @@ class UserSeeder extends Seeder
             'gender' => 'H',
             'country' => 'FR',
             'state' => "Champagne-Ardenne",
-            'role' => 'admin',
+            'role' => UserRolesEnum::ADMIN,
             'email' => 'aecy@dev.fr',
         ]);
     }
