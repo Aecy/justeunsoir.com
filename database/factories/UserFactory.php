@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'smoking' => UserSmokingEnum::random(),
             'drinking' => UserDrinkingEnum::random(),
             'country' => collect(['FR', 'BE'])->random(),
-            'state' => fake()->city,
+            'state' => fake()->sta,
             'gender' => UserGendersEnum::random(),
         ];
     }
