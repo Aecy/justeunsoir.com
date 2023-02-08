@@ -42,8 +42,12 @@
                                   class="info-details">{{ $user->birth_at ? $user->birth_at->format('d-m-Y') : 'Non spécifié' }}</p>
                               </li>
                               <li>
-                                <p class="info-name">Ville</p>
-                                <p class="info-details">{{ $user->address }}</p>
+                                <p class="info-name">Pays</p>
+                                <p class="info-details">{{ $user->country === 'FR' ? 'France' : 'Belgique' }}</p>
+                              </li>
+                              <li>
+                                <p class="info-name">Province</p>
+                                <p class="info-details">{{ $user->state }}</p>
                               </li>
                             </ul>
                           </div>
