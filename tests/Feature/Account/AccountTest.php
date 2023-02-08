@@ -5,6 +5,7 @@ namespace Tests\Feature\Account;
 use App\Enums\User\UserDrinkingEnum;
 use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserMartialsEnum;
+use App\Enums\User\UserMorphologyEnum;
 use App\Enums\User\UserSmokingEnum;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -129,7 +130,7 @@ class AccountTest extends TestCase
         $response = $this->actingAs($user)->patch(
             route('account.update.physical'), [
                 'height' => 180,
-                'morphology' => "S",
+                'morphology' => UserMorphologyEnum::ATHLETE->value,
                 'hair_color' => "Brun",
                 'eye_color' => "Vert",
             ]
@@ -143,7 +144,7 @@ class AccountTest extends TestCase
         $user->refresh();
 
         $this->assertSame(180, $user->height);
-        $this->assertSame("S", $user->morphology);
+        $this->assertSame(UserMorphologyEnum::ATHLETE, $user->morphology);
         $this->assertSame("Brun", $user->hair_color);
         $this->assertSame("Vert", $user->eye_color);
     }
