@@ -1,27 +1,17 @@
 @extends('layouts.master', ['title' => "Mon compte"])
 
 @section('content')
-  <section class="page-header-section style-1" style="background:url({{ asset('assets/images/page-header.jpg') }})">
-    <div class="container">
-      <div class="page-header-content">
-        <div class="page-header-inner">
-          <div class="page-title">
-            <h2>Mon compte</h2>
-          </div>
-          <ol class="breadcrumb">
-            <li><a href="{{ url('/') }}">Accueil</a></li>
-            <li><a href="#">{{ $user->name }}</a></li>
-            <li class="active">Compte</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="profile-section padding-tb">
     <div class="container">
       <div class="section-wrapper">
         <div class="member-profile">
+          @if(! $user->isCompleted())
+            <div class="alert alert-{{ $user->completionPercentage() >= 50 ? 'danger' : 'warning' }}">
+              <strong>
+                Pour profiter pleinement de toutes les possibilités offertes par notre site, veuillez finaliser votre profil. Il est actuellement à {{ $user->completionPercentage() }}% complet.
+              </strong>
+            </div>
+          @endif
           @include('account.partials._profile')
           <div class="profile-details">
             @include('account.partials._nav', ['active' => "index"])

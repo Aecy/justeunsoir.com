@@ -6,7 +6,31 @@ trait UserProfileIsCompleted
 {
     public function isCompleted(): bool
     {
-        $requiredFields = [
+        foreach ($this->getRequiredFields() as $field) {
+            if (is_null($this->$field)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function completionPercentage(): float
+    {
+        $completedFields = 0;
+
+        foreach ($this->getRequiredFields() as $field) {
+            if (!is_null($this->$field)) {
+                $completedFields++;
+            }
+        }
+
+        return $completedFields / count($this->getRequiredFields()) * 100;
+    }
+
+    private function getRequiredFields(): array
+    {
+        return [
             'gender',
             'martial',
             'age',
@@ -20,13 +44,5 @@ trait UserProfileIsCompleted
             'hair_color',
             'eye_color'
         ];
-
-        foreach ($requiredFields as $field) {
-            if (is_null($this->$field)) {
-                return false;
-            }
-        }
-
-        return true;
     }
 }
