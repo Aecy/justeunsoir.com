@@ -13,7 +13,7 @@ class AccountLookingController extends Controller
         $request->user()->fill($request->validated());
         $request->user()->save();
 
-        alert()->success("Compte mis à jour !", "Vous avez mis à jour votre à propos.");
+        toast("Vous avez mis à jour vos informations de recherche, votre profil est à {$request->user()->completionPercentage()}% terminé.", "success");
 
         return redirect()->to(
             route('dashboard')

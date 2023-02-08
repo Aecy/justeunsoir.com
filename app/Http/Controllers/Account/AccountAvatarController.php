@@ -21,7 +21,7 @@ class AccountAvatarController extends Controller
             $request->avatar->storeAs('avatars', $fileName, 'public');
             $request->user()->update(['avatar' => $fileName]);
 
-            alert()->success("Compte mis à jour !", "Vous avez mis à jour votre photo de profil.");
+            toast("Vous avez mis à jour votre avatar, votre profil est à {$request->user()->completionPercentage()}% terminé.", "success");
 
             return redirect()->back();
         }

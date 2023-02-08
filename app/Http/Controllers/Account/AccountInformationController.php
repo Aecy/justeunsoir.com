@@ -25,7 +25,7 @@ class AccountInformationController extends Controller
 
         $request->user()->save();
 
-        alert()->success("Compte mis à jour !", "Vous avez mis à jour vos informations basique.");
+        toast("Vous avez mis à jour vos informations basique, votre profil est à {$request->user()->completionPercentage()}% terminé.", "success");
 
         return redirect()->to(
             route('dashboard')
