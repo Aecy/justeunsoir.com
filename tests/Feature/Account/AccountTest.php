@@ -2,8 +2,10 @@
 
 namespace Tests\Feature\Account;
 
+use App\Enums\User\UserDrinkingEnum;
 use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserMartialsEnum;
+use App\Enums\User\UserSmokingEnum;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -102,8 +104,8 @@ class AccountTest extends TestCase
         $response = $this->actingAs($user)->patch(
             route('account.update.interest'), [
                 'interest_for' => "J'adore les avions",
-                'smoking' => "PDT",
-                'drinking' => "PDT",
+                'smoking' => UserSmokingEnum::NO->value,
+                'drinking' => UserDrinkingEnum::NO->value,
             ]
         );
 
@@ -115,8 +117,8 @@ class AccountTest extends TestCase
         $user->refresh();
 
         $this->assertSame("J'adore les avions", $user->interest_for);
-        $this->assertSame('PDT', $user->smoking);
-        $this->assertSame('PDT', $user->drinking);
+        $this->assertSame(UserSmokingEnum::NO, $user->smoking);
+        $this->assertSame(UserDrinkingEnum::NO, $user->drinking);
     }
 
 

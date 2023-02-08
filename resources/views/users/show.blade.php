@@ -88,11 +88,11 @@
                               </li>
                               <li>
                                 <p class="info-name">Dépendance à la cigarette</p>
-                                <p class="info-details">{{ $user->smoking_type }}</p>
+                                <p class="info-details">{{ trans("messages.smoking.{$user->smoking->value}") }}</p>
                               </li>
                               <li>
                                 <p class="info-name">Dépendance à l'alcool</p>
-                                <p class="info-details">{{ $user->drinking_type }}</p>
+                                <p class="info-details">{{ trans("messages.drinking.{$user->drinking->value}") }}</p>
                               </li>
                             </ul>
                           </div>

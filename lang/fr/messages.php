@@ -11,4 +11,16 @@ return [
         "widowed" => "Veuf/Veuve",
         "complicated" => "C'est compliqué",
     ],
+    "smoking" => [
+        "yes" => "Oui",
+        "no" => "Non",
+        "rarely" => "Rarement",
+        "private" => "Préfère ne pas dire"
+    ],
+    "drinking" => [
+        "yes" => "Oui",
+        "no" => "Non",
+        "rarely" => "Rarement",
+        "private" => "Préfère ne pas dire"
+    ]
 ];

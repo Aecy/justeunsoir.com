@@ -168,28 +168,37 @@
                               <div class="mb-3">
                                 <label for="interest_for" class="pb-2">Quel(s) sont vos intérêt(s) ?</label>
                                 <input type="text" name="interest_for" value="{{ old('interest_for', $user->interest_for) }}" class="form-control" placeholder="ex: les chiens, chats, vacances, ...">
+                                @error('interest_for')
+                                  <span class="invalid-feedback" style="display: block">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="mb-3">
-                                <label for="smoking" class="pb-2">Est-ce que vous fumez ?</label>
+                                <label for="smoking" class="pb-2">Dépendance à la cigarette</label>
                                 <select name="smoking" id="smoking" class="form-control">
-                                  <option value="" selected disabled>Sélectionner une option</option>
-                                  <option value="PDT" {{ old('smoking', $user->smoking) === 'PDT' ? 'selected' : '' }}>Pas du tout</option>
-                                  <option value="OED" {{ old('smoking', $user->smoking) === 'OED' ? 'selected' : '' }}>On en discutera</option>
-                                  <option value="R" {{ old('smoking', $user->smoking) === 'R' ? 'selected' : '' }}>Rarement</option>
-                                  <option value="O" {{ old('smoking', $user->smoking) === 'O' ? 'selected' : '' }}>Occasionnellement</option>
-                                  <option value="RG" {{ old('smoking', $user->smoking) === 'RG' ? 'selected' : '' }}>Régulièrement</option>
+                                  <option value="0" selected disabled>Sélectionner une option</option>
+                                  @foreach(\App\Enums\User\UserSmokingEnum::cases() as $smoking)
+                                    <option value="{{ $smoking }}" {{ old('smoking', $user->smoking) === $smoking ? 'selected' : '' }}>
+                                      {{ trans("messages.smoking.{$smoking->value}") }}
+                                    </option>
+                                  @endforeach
                                 </select>
+                                @error('smoking')
+                                  <span class="invalid-feedback" style="display: block">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="mb-3">
-                                <label for="drinking" class="pb-2">Est-ce que vous buvez de l'alcool ?</label>
+                                <label for="drinking" class="pb-2">Dépendance à l'alcool</label>
                                 <select name="drinking" id="drinking" class="form-control">
                                   <option value="" selected disabled>Sélectionner une option</option>
-                                  <option value="PDT" {{ old('drinking', $user->drinking) === 'PDT' ? 'selected' : '' }}>Pas du tout</option>
-                                  <option value="OED" {{ old('drinking', $user->drinking) === 'OED' ? 'selected' : '' }}>On en discutera</option>
-                                  <option value="R" {{ old('drinking', $user->drinking) === 'R' ? 'selected' : '' }}>Rarement</option>
-                                  <option value="O" {{ old('drinking', $user->drinking) === 'O' ? 'selected' : '' }}>Occasionnellement</option>
-                                  <option value="RG" {{ old('drinking', $user->drinking) === 'RG' ? 'selected' : '' }}>Régulièrement</option>
+                                  @foreach(\App\Enums\User\UserDrinkingEnum::cases() as $drinking)
+                                    <option value="{{ $drinking }}" {{ old('drinking', $user->drinking) === $drinking ? 'selected' : '' }}>
+                                      {{ trans("messages.drinking.{$drinking->value}") }}
+                                    </option>
+                                  @endforeach
                                 </select>
+                                @error('drinking')
+                                  <span class="invalid-feedback" style="display: block">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="d-inline-flex align-items-center gap-4">
                                 <button type="submit" class="lab-btn">

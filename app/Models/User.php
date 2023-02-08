@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Enums\User\UserDrinkingEnum;
 use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserMartialsEnum;
 use App\Enums\User\UserRolesEnum;
+use App\Enums\User\UserSmokingEnum;
 use App\Traits\User\UserDrinkingTrait;
 use App\Traits\User\UserGenderTrait;
 use App\Traits\User\UserMartialTrait;
@@ -81,6 +83,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'role' => UserRolesEnum::class,
         'gender' => UserGendersEnum::class,
         'martial' => UserMartialsEnum::class,
+        'smoking' => UserSmokingEnum::class,
+        'drinking' => UserDrinkingEnum::class,
     ];
 
     /**
