@@ -60,13 +60,14 @@
                                 </select>
                               </div>
                               <div class="mb-3">
-                                <label for="martial" class="pb-2">État civil</label>
+                                <label for="martial" class="pb-2">Statut relationnel</label>
                                 <select name="martial" id="martial" class="form-control">
-                                  <option value="0" selected disabled>Sélectionner votre état civil</option>
-                                  <option value="C" {{ old('martial', $user->martial) === 'C' ? 'selected' : '' }}>Célibataire</option>
-                                  <option value="E" {{ old('martial', $user->martial) === 'E' ? 'selected' : '' }}>En couple</option>
-                                  <option value="MSE" {{ old('martial', $user->martial) === 'MSE' ? 'selected' : '' }}>Marié(e) sans enfant(s)</option>
-                                  <option value="MAE" {{ old('martial', $user->martial) === 'MAE' ? 'selected' : '' }}>Marié(e) avec enfant(s)</option>
+                                  <option value="0" selected disabled>Sélectionner votre statut relationnel</option>
+                                  @foreach(\App\Enums\User\UserMartialsEnum::cases() as $martial)
+                                    <option value="{{ $martial }}" {{ old('martial', $user->martial) === $martial ? 'selected' : '' }}>
+                                      {{ trans("messages.martial.$martial->value") }}
+                                    </option>
+                                  @endforeach
                                 </select>
                               </div>
                               <div class="mb-3">

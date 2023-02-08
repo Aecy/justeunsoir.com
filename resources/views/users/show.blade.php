@@ -29,8 +29,8 @@
                                 <p class="info-details">{{ $user->gender->name }}</p>
                               </li>
                               <li>
-                                <p class="info-name">État civil</p>
-                                <p class="info-details">{{ $user->martial_name }}</p>
+                                <p class="info-name">Statut relationnel</p>
+                                <p class="info-details">{{ trans("messages.martial.{$user->martial->value}") }}</p>
                               </li>
                               <li>
                                 <p class="info-name">Âge</p>

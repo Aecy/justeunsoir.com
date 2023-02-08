@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\User\UserGendersEnum;
+use App\Enums\User\UserMartialsEnum;
 use App\Enums\User\UserRolesEnum;
 use App\Traits\User\UserDrinkingTrait;
 use App\Traits\User\UserGenderTrait;
@@ -27,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     use HasApiTokens, HasFactory, Notifiable;
     use InteractsWithMedia;
     use Likeable, Liker, Favoriter, Favoriteable;
-    use UserDrinkingTrait, UserGenderTrait, UserMartialTrait, UserMorphologyTrait, UserSmokingTrait;
+    use UserDrinkingTrait, UserGenderTrait, UserMorphologyTrait, UserSmokingTrait;
     use Messageable;
 
     /**
@@ -79,6 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'last_reward' => 'datetime',
         'role' => UserRolesEnum::class,
         'gender' => UserGendersEnum::class,
+        'martial' => UserMartialsEnum::class,
     ];
 
     /**

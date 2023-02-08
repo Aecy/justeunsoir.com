@@ -2260,6 +2260,10 @@ textarea::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
+select.disabled-selected {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 /*==== @@@@ Member Section start here  @@@@ ======= */
 .member-button-group {
     margin-top: 40px;
