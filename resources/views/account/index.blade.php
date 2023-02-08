@@ -52,9 +52,11 @@
                                 <label for="gender" class="pb-2">Genre</label>
                                 <select name="gender" id="gender" class="form-control">
                                   <option value="" selected disabled>Sélectionner votre sexe</option>
-                                  <option value="H" {{ old('gender', $user->gender) === 'H' ? 'selected' : '' }}>Homme</option>
-                                  <option value="F" {{ old('gender', $user->gender) === 'F' ? 'selected' : '' }}>Femme</option>
-                                  <option value="A" {{ old('gender', $user->gender) === 'A' ? 'selected' : '' }}>Autre</option>
+                                  @foreach(\App\Enums\User\UserGendersEnum::cases() as $gender)
+                                    <option value="{{ $gender }}" {{ old('gender', $user->gender) === $gender ? 'selected' : '' }}>
+                                      {{ $gender->name }}
+                                    </option>
+                                  @endforeach
                                 </select>
                               </div>
                               <div class="mb-3">

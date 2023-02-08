@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserRolesEnum;
 use App\Traits\User\UserDrinkingTrait;
 use App\Traits\User\UserGenderTrait;
@@ -72,13 +73,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      * @var array<string, string>
      */
     protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
         'birth_at' => 'date',
         'email_verified_at' => 'datetime',
         'last_seen' => 'datetime',
         'last_reward' => 'datetime',
         'role' => UserRolesEnum::class,
+        'gender' => UserGendersEnum::class,
     ];
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Account;
 
+use App\Enums\User\UserGendersEnum;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -28,7 +29,7 @@ class AccountTest extends TestCase
             route('account.update.information'), [
                 'name' => "Test User",
                 'email' => "test@user.com",
-                'gender' => 'F',
+                'gender' => UserGendersEnum::Homme->value,
                 'martial' => 'C',
                 'age' => '18',
                 'country' => 'FR',
@@ -45,7 +46,7 @@ class AccountTest extends TestCase
 
         $this->assertSame('Test User', $user->name);
         $this->assertSame('test@user.com', $user->email);
-        $this->assertSame('F', $user->gender);
+        $this->assertSame(UserGendersEnum::Homme->value, $user->gender->value);
         $this->assertSame('C', $user->martial);
         $this->assertSame(18, $user->age);
         $this->assertSame('FR', $user->country);

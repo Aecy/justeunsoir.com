@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\User\UserGendersEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -25,8 +26,8 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'age' => rand(18, 99),
             'country' => collect(['FR', 'BE'])->random(),
-            'state' => fake()->sentence,
-            'gender' => collect(['H', 'F'])->random(),
+            'state' => fake()->city,
+            'gender' => UserGendersEnum::random(),
         ];
     }
 

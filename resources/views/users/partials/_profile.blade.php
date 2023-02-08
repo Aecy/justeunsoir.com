@@ -7,11 +7,11 @@
       <img src="{{ $user->avatar_url }}" alt="DP">
     </div>
     <div class="profile-name">
-      <h4>
+      <h4 title="{{ $user->name }}">
         @include('partials._user-online', ['userId' => $user->id])
-        {{ $user->name }}
+        {{ \Illuminate\Support\Str::limit($user->name, 21) }}
       </h4>
-      <span>{{ $user->gender === 'F' ? 'Inscrite' : 'Inscrit' }} {{ $user->created_at->diffForHumans() }}</span>
+      <span>{{ $user->gender === \App\Enums\User\UserGendersEnum::Femme ? 'Inscrite' : 'Inscrit' }} {{ $user->created_at->diffForHumans() }}</span>
     </div>
     @if(auth()->user()->id !== $user->id)
       <ul class="profile-contact">

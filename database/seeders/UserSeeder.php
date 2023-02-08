@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Enums\User\UserGendersEnum;
 use App\Enums\User\UserRolesEnum;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Night Lovell',
-            'gender' => 'H',
+            'gender' => UserGendersEnum::Homme,
             'country' => 'FR',
             'state' => "Champagne-Ardenne",
             'role' => UserRolesEnum::ADMIN,

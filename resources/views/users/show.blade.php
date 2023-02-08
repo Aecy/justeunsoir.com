@@ -9,8 +9,7 @@
           <div class="profile-details">
             @include('users.partials._nav', ['active' => "index"])
             <div class="tab-content" id="nav-tabContent">
-              <div class="tab-pane activity-page fade show active" id="profile" role="tabpanel"
-                   aria-labelledby="nav-profile-tab">
+              <div class="tab-pane activity-page fade show active" id="profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div>
                   <div class="row">
                     <div class="col-xl-8">
@@ -26,8 +25,8 @@
                                 <p class="info-details">{{ $user->name }}</p>
                               </li>
                               <li>
-                                <p class="info-name">Je suis un(e)</p>
-                                <p class="info-details">{{ $user->gender_type }}</p>
+                                <p class="info-name">Je suis {{ $user->gender === \App\Enums\User\UserGendersEnum::Femme ? 'une' : 'un' }}</p>
+                                <p class="info-details">{{ $user->gender->name }}</p>
                               </li>
                               <li>
                                 <p class="info-name">État civil</p>
@@ -35,7 +34,7 @@
                               </li>
                               <li>
                                 <p class="info-name">Âge</p>
-                                <p class="info-details">{{ $user->age }}</p>
+                                <p class="info-details">{{ $user->age }} ans</p>
                               </li>
                               <li>
                                 <p class="info-name">Date de naissance</p>
@@ -54,7 +53,11 @@
                             <h6>A propos de moi</h6>
                           </div>
                           <div class="info-card-content">
-                            <p>{{ $user->about_me ?? "N'a encore rien écrit à propos de lui/elle." }}</p>
+                            @if(is_null($user->about_me))
+                              <p>{{ $user->gender === \App\Enums\User\UserGendersEnum::Femme ? "N'a encore rien écrit à propos d'elle." : "N'a encore rien écrit à propos de lui." }}</p>
+                            @else
+                              <p>{{ $user->about_me }}</p>
+                            @endif
                           </div>
                         </div>
                         <div class="info-card mb-20">
@@ -62,7 +65,11 @@
                             <h6>Recherche précise</h6>
                           </div>
                           <div class="info-card-content">
-                            <p>{{ $user->looking_for ?? "N'a encore rien écrit sur ce qu'elle/il recherche ici." }}</p>
+                            @if(is_null($user->looking_for))
+                              <p>{{ $user->gender === \App\Enums\User\UserGendersEnum::Femme ? "N'a encore rien écrit sur ce qu'elle recherche ici." : "N'a encore rien écrit sur ce qu'il recherche ici." }}</p>
+                            @else
+                              <p>{{ $user->looking_for }}</p>
+                            @endif
                           </div>
                         </div>
                         <div class="info-card mb-20">

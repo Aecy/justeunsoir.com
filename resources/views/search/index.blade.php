@@ -22,9 +22,11 @@
               <div class="custom-select right w-100">
                 <select name="gender" id="gender" class="">
                   <option value="0" selected disabled>Je suis un(e)</option>
-                  <option value="H" {{ request()->gender === 'H' ? 'selected' : '' }}>Homme</option>
-                  <option value="F" {{ request()->gender === 'F' ? 'selected' : '' }}>Femme</option>
-                  <option value="A" {{ request()->gender === 'A' ? 'selected' : '' }}>Autre</option>
+                  @foreach(\App\Enums\User\UserGendersEnum::cases() as $gender)
+                    <option value="{{ $gender }}" {{ request()->gender === $gender->value ? 'selected' : '' }}>
+                      {{ $gender->name }}
+                    </option>
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -32,9 +34,11 @@
               <div class="custom-select right w-100">
                 <select name="looking" id="looking" class="">
                   <option value="">Je recherche un(e)</option>
-                  <option value="H" {{ request()->looking === 'H' ? 'selected' : '' }}>Homme</option>
-                  <option value="F" {{ request()->looking === 'F' ? 'selected' : '' }}>Femme</option>
-                  <option value="A" {{ request()->looking === 'A' ? 'selected' : '' }}>Autre</option>
+                  @foreach(\App\Enums\User\UserGendersEnum::cases() as $gender)
+                    <option value="{{ $gender }}" {{ request()->looking === $gender->value ? 'selected' : '' }}>
+                      {{ $gender->name }}
+                    </option>
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -95,7 +99,7 @@
                         {{ $user->name }}
                       </a>
                     </h6>
-                    <p>{{ $user->age }} ans - {{ $user->address }}</p>
+                    <p>{{ $user->age }} ans - {{ $user->state }}</p>
                   </div>
                 </div>
               </div>

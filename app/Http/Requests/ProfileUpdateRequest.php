@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\User\UserGendersEnum;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -18,7 +19,7 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['string', 'max:255'],
-            'gender' => ['nullable', 'string', Rule::in('H', 'F', 'A')],
+            'gender' => ['nullable', 'string', new Enum(UserGendersEnum::class)],
             'martial' => ['nullable', 'string', Rule::in('C', 'E', 'MSE', 'MAE')],
             'age' => ['nullable', 'integer', Rule::in(range(18, 99))],
             'country' => ['nullable', 'string', 'in:FR,BE'],
