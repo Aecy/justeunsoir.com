@@ -8,9 +8,7 @@ use App\Enums\User\UserMartialsEnum;
 use App\Enums\User\UserMorphologyEnum;
 use App\Enums\User\UserRolesEnum;
 use App\Enums\User\UserSmokingEnum;
-use App\Traits\User\UserDrinkingTrait;
-use App\Traits\User\UserGenderTrait;
-use App\Traits\User\UserSmokingTrait;
+use App\Traits\UserProfileIsCompleted;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,8 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     use HasApiTokens, HasFactory, Notifiable;
     use InteractsWithMedia;
     use Likeable, Liker, Favoriter, Favoriteable;
-    use UserDrinkingTrait, UserGenderTrait, UserSmokingTrait;
     use Messageable;
+    use UserProfileIsCompleted;
 
     /**
      * Les attributs qui peuvent être remplis par l'User.
