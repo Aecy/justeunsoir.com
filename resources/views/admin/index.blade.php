@@ -37,8 +37,8 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Ventes uniques</span>
-                <span class="info-box-number">{{ number_format($orders->count(), 0, '.') }}</span>
+                <span class="info-box-text">Ventes</span>
+                <span class="info-box-number">{{ number_format($allOrders->count(), 0, '.') }}</span>
               </div>
             </div>
           </div>
@@ -92,21 +92,46 @@
                       <strong>Objectifs pour fin {{ now()->translatedFormat('F, Y') }}</strong>
                     </p>
                     <div class="progress-group">
-                      @if($data['available_ndd'] >= $data['cost_ndd']) <i class="fas fa-check text-success"></i> @endif Nom de domaine
-                      <span class="float-right"><b>{{ number_format($data['available_ndd'], 2) }} €</b><span class="text-muted"> / 100.00 €</span></span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-{{ $data['available_ndd'] >= 50 ? 'success' : 'warning' }}"
-                             style="width: {{ $data['available_ndd'] }}%"></div>
-                      </div>
+                      @if($data['total_revenu'] >= 100)
+                        <i class="fas fa-check text-success"></i> Nom de domaine
+                        <span class="float-right"><b>100.00 €</b><span class="text-muted"> / 100.00 €</span></span>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar bg-success" style="width: 100%"></div>
+                        </div>
+                      @else
+                        <i class="fas fa-clock text-warning"></i> Nom de domaine
+                        <span class="float-right"><b>{{ number_format($data['total_revenu'], 2) }} €</b><span
+                            class="text-muted"> / 100.00 €</span></span>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar bg-{{ $data['total_revenu'] >= 50 ? 'success' : 'warning' }}"
+                               style="width: {{ $data['total_revenu'] }}%"></div>
+                        </div>
+                      @endif
                     </div>
                     <div class="progress-group">
-                      @if($data['available_host'] >= $data['cost_host']) <i class="fas fa-check text-success"></i> @endif Hébergeur web
-                      <span class="float-right"><b>{{ number_format($data['available_host'], 2) }} €</b><span class="text-muted"> / 100.00 €</span></span>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar bg-{{ $data['available_host'] >= 50 ? 'success' : 'warning' }}"
-                             style="width: {{ $data['available_host'] }}%"></div>
-                      </div>
+                      @if($data['total_revenu'] >= 200)
+                        <i class="fas fa-check text-success"></i> Hébergeur web
+                        <span class="float-right">
+                          <b>100.00 €</b>
+                          <span class="text-muted"> / 100.00 €</span>
+                        </span>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar bg-success"
+                               style="width: {{ $data['available_host'] }}%"></div>
+                        </div>
+                      @else
+                        <i class="fas fa-clock text-warning"></i> Hébergeur web
+                        <span class="float-right">
+                          <b>{{ number_format($data['total_revenu'] - 100, 2) }} €</b>
+                          <span class="text-muted"> / 100.00 €</span>
+                        </span>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar bg-{{ $data['available_host'] >= 50 ? 'success' : 'warning' }}"
+                               style="width: {{ $data['available_host'] }}%"></div>
+                        </div>
+                      @endif
                     </div>
+
                     @if($data['available_host'] >= $data['cost_host'] && $data['available_ndd'] >= $data['cost_ndd'])
                       <p class="text-muted pt-3">
                         La fin du mois de {{ now()->translatedFormat('F, Y') }} a de bon résultat. <br>
@@ -139,7 +164,8 @@
                   </div>
                   <div class="col-sm-3 col-6">
                     <div class="description-block border-right">
-                      <h3>{{ number_format($data['total_revenu'] - ($data['cost_ndd'] + $data['cost_host']), 2) }} €</h3>
+                      <h3>{{ number_format($data['total_revenu'] - ($data['cost_ndd'] + $data['cost_host']), 2) }}
+                        €</h3>
                       <span class="description-text">PROFIT TOTAL</span>
                     </div>
                   </div>
@@ -183,7 +209,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($orders as $order)
+                    @foreach($allOrders as $order)
                       <tr>
                         <td>#{{ $order->id }}</td>
                         <td>{{ $order->product->name }}</td>

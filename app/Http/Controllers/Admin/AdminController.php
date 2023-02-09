@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Order\OrderStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
@@ -20,13 +21,15 @@ class AdminController extends Controller
         $products = Product::all();
         $users = User::all();
         $onlineUsers = $this->activityService->getOnlineUsers();
-        $orders = Order::with('product')->orderByDesc('created_at')->get();
+        $allOrders = Order::with('product')->orderByDesc('created_at')->get();
+        $orders = Order::with('product')->where('status', OrderStatusEnum::VALIDATED)->orderByDesc('created_at')->get();
 
         $costs = $orders->sum('price') / 100;
 
         return view('admin.index', [
             'products' => $products,
             'orders' => $orders,
+            'allOrders' => $allOrders,
             'users' => $users,
             'onlineUsers' => $onlineUsers,
             'user' => $this->getUser(),
