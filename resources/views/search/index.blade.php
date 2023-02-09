@@ -84,24 +84,26 @@
         </ul>
         <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
           @forelse($users as $user)
-            <div class="col">
-              <div class="lab-item member-item style-1 style-2">
-                <div class="lab-inner">
-                  <div class="lab-thumb">
-                    <img src="{{ $user->avatar_url }}" alt="member-img">
-                  </div>
-                  <div class="lab-content">
-                    <h6>
-                      <a href="{{ route('users.show', $user) }}">
-                        @include('partials._user-online', ['userId' => $user->id])
-                        {{ $user->name }}
-                      </a>
-                    </h6>
-                    <p>{{ $user->age }} ans - {{ $user->state }}</p>
+            @if($user->isCompleted())
+              <div class="col">
+                <div class="lab-item member-item style-1 style-2">
+                  <div class="lab-inner">
+                    <div class="lab-thumb">
+                      <img src="{{ $user->avatar_url }}" alt="member-img">
+                    </div>
+                    <div class="lab-content">
+                      <h6>
+                        <a href="{{ route('users.show', $user) }}">
+                          @include('partials._user-online', ['userId' => $user->id])
+                          {{ $user->name }}
+                        </a>
+                      </h6>
+                      <p>{{ $user->age }} ans - {{ $user->state }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            @endif
           @empty
             <div class="text-danger fw-bolder">
               Désolé, nous avons trouvé personne avec ce résultat.

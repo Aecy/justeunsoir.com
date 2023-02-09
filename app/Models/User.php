@@ -154,4 +154,23 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
 
         return $query;
     }
+
+    public function scopeIsCompleted($query): mixed
+    {
+        return $query->where(function ($query) {
+            $query
+                ->whereNotNull('gender')
+                ->whereNotNull('martial')
+                ->whereNotNull('age')
+                ->whereNotNull('about_me')
+                ->whereNotNull('looking_for')
+                ->whereNotNull('interest_for')
+                ->whereNotNull('smoking')
+                ->whereNotNull('drinking')
+                ->whereNotNull('height')
+                ->whereNotNull('morphology')
+                ->whereNotNull('hair_color')
+                ->whereNotNull('eye_color');
+        });
+    }
 }
