@@ -1,6 +1,6 @@
 <div class="profile-item">
   <div class="profile-cover">
-    <img src="{{ asset('assets/images/profile/cover.jpg') }}" alt="cover-pic">
+    <img src="{{ $user->cover_url }}" alt="cover-pic">
   </div>
   <div class="profile-information">
     <div class="profile-pic">
