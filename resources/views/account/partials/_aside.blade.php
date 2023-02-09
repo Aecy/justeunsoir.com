@@ -2,9 +2,11 @@
   <aside class="mt-5 mt-xl-0">
     <div class="widget like-member">
       <div class="widget-inner">
-        <div class="d-flex justify-content-between widget-title">
+        <div class="d-flex justify-content-between widget-title" style="align-items: center;">
           <h5>Vos crédits</h5>
-          <a href="{{ route('shop.index') }}">Acheter des crédits</a>
+          <a class="btn btn-success btn-sm" href="{{ route('shop.index') }}">
+            Acheter des crédits
+          </a>
         </div>
         <div class="widget-content">
           <div class="row row-cols-3 row-cols-sm-auto g-3">
