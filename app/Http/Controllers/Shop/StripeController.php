@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Actions\User\IncrementUserCreditAction;
+use App\Enums\Order\OrderStatusEnum;
+use App\Models\Order;
 use Stripe\Stripe;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -31,7 +33,7 @@ class StripeController extends Controller
      */
     public function checkout(Product $product)
     {
-        $session = $this->payment->createSession($product);
+        $session = $this->payment->createSession($product, $this->getUser());
         return redirect()->to($session->url);
     }
 
@@ -56,10 +58,21 @@ class StripeController extends Controller
             throw new NotFoundHttpException();
         }
 
+        $orderId = \Illuminate\Support\Facades\Session::get('cur_order_id');
+        $order = Order::where('id', $orderId)->where('status', OrderStatusEnum::PENDING)->first();
+        if (! $order) {
+            throw new NotFoundHttpException();
+        }
+
         app(IncrementUserCreditAction::class)->execute(
             $this->getUser(),
             $product->credits
         );
+
+        $order->status = OrderStatusEnum::VALIDATED;
+        $order->save();
+
+        \Illuminate\Support\Facades\Session::forget('cur_order_id');
 
         alert()->success('Achat de crédits effectué !', "Vous avez acheté des crédits, vous pouvez discuter tranquillement.");
 
@@ -73,6 +86,17 @@ class StripeController extends Controller
      */
     public function cancel(): RedirectResponse
     {
+        $orderId = \Illuminate\Support\Facades\Session::get('cur_order_id');
+        $order = Order::where('id', $orderId)->where('status', OrderStatusEnum::PENDING)->first();
+        if (! $order) {
+            throw new NotFoundHttpException();
+        }
+
+        $order->status = OrderStatusEnum::CANCELLED;
+        $order->save();
+
+        \Illuminate\Support\Facades\Session::forget('cur_order_id');
+
         alert()->info('Achat de crédits annulé !', "Des membres n'attendent que vous pour discutez !");
 
         return redirect()->to(route('shop.index'));

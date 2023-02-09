@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Actions\User\IncrementUserCreditAction;
+use App\Enums\Order\OrderProviderEnum;
+use App\Enums\Order\OrderStatusEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -77,6 +80,13 @@ class PaypalController extends Controller
 
         try {
             $payment->create($this->apiContext);
+            $order = Order::create([
+                'provider' => OrderProviderEnum::PAYPAL,
+                'user_id' => $this->getUser()->id,
+                'product_id' => $product->id,
+                'price' => $product->price,
+                'status' => OrderStatusEnum::PENDING,
+            ]);
         } catch (PayPalConnectionException $ex) {
             alert()->error("Vous avez perdu la connexion avec paypal.");
             return redirect()->to(route('shop.index'));
@@ -89,6 +99,7 @@ class PaypalController extends Controller
             }
         }
 
+        Session::put('cur_order_id', $order->id);
         Session::put('pp_payment_id', $payment->getId());
 
         if (isset($redirectUrl)) {
@@ -102,9 +113,19 @@ class PaypalController extends Controller
     public function status(Request $request): RedirectResponse
     {
         $paymentId = Session::get('pp_payment_id');
+        $orderId = Session::get('cur_order_id');
+        Session::forget('cur_order_id');
         Session::forget('pp_payment_id');
 
+        $order = Order::whereId($orderId)->where('status', OrderStatusEnum::PENDING)->first();
+        if (! $order) {
+            throw new NotFoundHttpException();
+        }
+
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
+            $order->status = OrderStatusEnum::CANCELLED;
+            $order->save();
+
             alert()->info("Paiement annulé", "Vous n'avez pas été débité car vous avez annulé le paiement.");
 
             return redirect()->to(
@@ -124,6 +145,7 @@ class PaypalController extends Controller
         if ($result->getState() == 'approved') {
             $amount = intval($result->transactions[0]->getAmount()->total) * 100;
             $product = Product::where('price', $amount)->first();
+
             if (! $product) {
                 throw new NotFoundHttpException();
             }
@@ -133,12 +155,18 @@ class PaypalController extends Controller
                 $product->credits
             );
 
+            $order->status = OrderStatusEnum::VALIDATED;
+            $order->save();
+
             alert()->success('Achat de crédits effectué !', "Vous avez acheté des crédits, vous pouvez discuter tranquillement.");
 
             return redirect()->to(
                 route('shop.index')
             );
         }
+
+        $order->status = OrderStatusEnum::CANCELLED;
+        $order->save();
 
         alert()->info("Paiement annulé", "Vous n'avez pas été débité car vous avez annulé le paiement.");
         return redirect()->to(
