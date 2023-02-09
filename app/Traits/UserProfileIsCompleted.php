@@ -25,7 +25,7 @@ trait UserProfileIsCompleted
             }
         }
 
-        return $completedFields / count($this->getRequiredFields()) * 100;
+        return round($completedFields / count($this->getRequiredFields()) * 100);
     }
 
     private function getRequiredFields(): array
