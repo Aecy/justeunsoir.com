@@ -54,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'morphology',
         'hair_color',
         'eye_color',
+        'referred_by',
         'avatar',
     ];
 

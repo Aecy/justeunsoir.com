@@ -8,7 +8,7 @@
           @if(! $user->isCompleted())
             <div class="alert alert-{{ $user->completionPercentage() >= 50 ? 'danger' : 'warning' }}">
               <strong>
-                Pour profiter pleinement de toutes les possibilités offertes par notre site, veuillez finaliser votre profil. Il est actuellement à {{ $user->completionPercentage() }}% complet.
+                Pour profiter pleinement de toutes les possibilités offertes par notre site, veuillez finaliser votre profil. Il est actuellement complété à {{ $user->completionPercentage() }}%.
               </strong>
             </div>
           @endif

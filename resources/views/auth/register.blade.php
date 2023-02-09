@@ -17,9 +17,16 @@
     <div class="container">
       <div class="account-wrapper">
         <h3 class="title">S'enregistrer</h3>
+        @if($referredUser && request()->referred_by)
+          <div class="alert alert-success">
+            <i class="icofont-exclamation-tringle"></i> En vous inscrivant avec un parrain, vous pouvez bénéficier de 5 crédits en cadeau.
+          </div>
+        @endif
         <form class="account-form" method="post" action="{{ route('register') }}">
           @csrf
-
+          @if($referredUser && request()->referred_by)
+            <input type="hidden" name="referred_by" value="{{ request()->referred_by }}">
+          @endif
           <div class="form-group">
             <input type="text" placeholder="Nom d'utilisateur" name="name" autofocus>
             @error("name")

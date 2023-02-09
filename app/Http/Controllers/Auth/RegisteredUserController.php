@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\User\IncrementUserCreditAction;
+use App\Actions\User\ReferralUserAction;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -20,7 +22,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $referredUser = User::whereId(request()->referred_by)->whereNull('referred_by')->first();
+
+        return view('auth.register', [
+            'referredUser' => $referredUser
+        ]);
     }
 
     /**
@@ -35,7 +41,8 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'country' => ['required', 'string', 'in:FR,BE'],
-            'state' => ['required', 'string']
+            'state' => ['required', 'string'],
+            'referred_by' => ['nullable', 'integer', 'exists:users,id']
         ]);
 
         $user = User::create([
@@ -43,8 +50,20 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'country' => $request->country,
-            'state' => $request->state
+            'state' => $request->state,
         ]);
+
+        if ($request->referred_by) {
+            $referredUser = User::whereId($request->referred_by)->whereNull('referred_by')->first();
+            if ($referredUser) {
+                $user->referred_by = $referredUser->id;
+                $user->increment('credits', 5);
+                $user->save();
+
+                $referredUser->increment('credits', 10);
+                $referredUser->save();
+            }
+        }
 
         event(new Registered($user));
 

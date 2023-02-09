@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('role')->default('member');
             $table->string('country');
             $table->string('state');
+            $table->foreignId('referred_by')->nullable()->references('id')->on('users');
             $table->string('gender')->nullable();
             $table->string('martial')->nullable();
             $table->longText('about_me')->nullable();
