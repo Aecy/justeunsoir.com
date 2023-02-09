@@ -9,22 +9,17 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed">
   <div class="wrapper">
     @include('partials.admin._nav')
     @include('partials.admin._aside')
-    @yield('content')
+      @yield('content')
     @include('partials.admin._footer')
   </div>
   <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
   <script src="{{ asset('admin/js/adminlte.js') }}"></script>
-  <script src="{{ asset('admin/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
-  <script src="{{ asset('admin/plugins/raphael/raphael.min.js') }}"></script>
-  <script src="{{ asset('admin/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
-  <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
-  <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
   @stack('scripts')
 </body>
 </html>

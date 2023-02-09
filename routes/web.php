@@ -11,6 +11,7 @@ use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminQuestionController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Conversation\ConversationController;
 use App\Http\Controllers\Conversation\MessageController;
 use App\Http\Controllers\Favorite\FavoriteController;
@@ -94,6 +95,7 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
 
     Route::middleware('admin')->prefix('control-admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+
         Route::prefix('foire-aux-questions')->group(function () {
             Route::get('/', [AdminQuestionController::class, 'index'])->name('admin.question.index');
             Route::post('/', [AdminQuestionController::class, 'store'])->name('admin.question.store');
@@ -101,6 +103,11 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
             Route::get('/creer', [AdminQuestionController::class, 'create'])->name('admin.question.create');
             Route::patch('/{question}', [AdminQuestionController::class, 'update'])->name('admin.question.update');
             Route::delete('/{question}', [AdminQuestionController::class, 'delete'])->name('admin.question.delete');
+        });
+
+        Route::prefix('utilisateurs')->group(function () {
+            Route::get('/', [AdminUserController::class, 'index'])->name('admin.user.index');
+            Route::get('/achats', [AdminUserController::class, 'buy'])->name('admin.user.buy');
         });
     });
 });

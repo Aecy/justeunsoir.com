@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use App\Services\User\UserActivityService;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
 class AdminController extends Controller
@@ -18,11 +19,11 @@ class AdminController extends Controller
 
     public function index(): View
     {
-        $products = Product::all();
-        $users = User::all();
-        $onlineUsers = $this->activityService->getOnlineUsers();
-        $allOrders = Order::with('product')->orderByDesc('created_at')->get();
-        $orders = Order::with('product')->where('status', OrderStatusEnum::VALIDATED)->orderByDesc('created_at')->get();
+        $products = Product::orderByDesc('price')->get();
+        $orders = Order::with(['product', 'user'])->orderByDesc('created_at');
+        $allOrders = $orders->get();
+        $todayOrders = $orders->whereDate('created_at', Carbon::today())->get();
+        $orders = $orders->where('status', OrderStatusEnum::VALIDATED)->get();
 
         $costs = $orders->sum('price') / 100;
 
@@ -30,8 +31,9 @@ class AdminController extends Controller
             'products' => $products,
             'orders' => $orders,
             'allOrders' => $allOrders,
-            'users' => $users,
-            'onlineUsers' => $onlineUsers,
+            'todayOrders' => $todayOrders,
+            'users' => User::all(),
+            'onlineUsers' => $this->activityService->getOnlineUsers(),
             'user' => $this->getUser(),
             'data' => [
                 'cost_ndd' => 100,

@@ -28,13 +28,13 @@
 
         <li class="nav-header">UTILISATEURS</li>
         <li class="nav-item">
-          <a href="{{ route('admin.index') }}" class="nav-link">
+          <a href="{{ route('admin.user.index') }}" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>Voir les utilisateurs</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.index') }}" class="nav-link">
+          <a href="{{ route('admin.user.buy') }}" class="nav-link">
             <i class="nav-icon fas fa-shopping-bag"></i>
             <p>Achats des utilisateurs</p>
           </a>
