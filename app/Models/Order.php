@@ -6,6 +6,7 @@ use App\Enums\Order\OrderProviderEnum;
 use App\Enums\Order\OrderStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -30,4 +31,9 @@ class Order extends Model
         'provider' => OrderProviderEnum::class,
         'validated_at' => 'datetime',
     ];
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
