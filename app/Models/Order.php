@@ -32,8 +32,23 @@ class Order extends Model
         'validated_at' => 'datetime',
     ];
 
+    /**
+     * Relation entre la facture et le produit.
+     *
+     * @return BelongsTo
+     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * Relation entre la facture et l'utilisateur.
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
