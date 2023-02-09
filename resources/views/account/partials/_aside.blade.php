@@ -4,7 +4,7 @@
       <div class="widget-inner">
         <div class="d-flex justify-content-between widget-title" style="align-items: center;">
           <h5>Vos crédits</h5>
-          <a class="btn btn-success btn-sm" href="{{ route('shop.index') }}">
+          <a class="btn btn-primary btn-sm" href="{{ route('shop.index') }}">
             Acheter des crédits
           </a>
         </div>
