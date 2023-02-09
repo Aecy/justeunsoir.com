@@ -32,6 +32,13 @@
                       Mon compte
                     </a>
                   </li>
+                  @if(auth()->user()->isAdmin())
+                    <li>
+                      <a class="text-warning" href="{{ route('admin.index') }}">
+                        Administration
+                      </a>
+                    </li>
+                  @endif
                   <li>
                     <a href="{{ route('conversations.index') }}">
                       Mes messages
