@@ -123,7 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      */
     public function getAvatarUrlAttribute(): string
     {
-        return $this->avatar == 'default.jpg' ? asset('default.jpg') : asset('/storage/avatars/' . $this->avatar);
+        return $this->avatar == 'default.jpg' ? asset('default.jpg') : asset('/storage/' . $this->avatar);
     }
 
     /**

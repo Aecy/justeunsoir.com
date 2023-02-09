@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use App\Services\Image\ImageAvatarService;
 use Illuminate\Http\Request;
 
 class AccountAvatarController extends Controller
@@ -15,14 +16,17 @@ class AccountAvatarController extends Controller
      */
     public function update(Request $request)
     {
+        $user = $this->getUser();
+
         if ($request->hasFile('avatar')) {
-            $fileName = $request->avatar->getClientOriginalName();
+            if ($user->avatar) {
+                app(ImageAvatarService::class)->unlink($user->avatar);
+            }
 
-            $request->avatar->storeAs('avatars', $fileName, 'public');
-            $request->user()->update(['avatar' => $fileName]);
+            $avatar = app(ImageAvatarService::class)->link($user, $request);
+            $user->update(['avatar' => $avatar ?? $user->avatar]);
 
-            toast("Vous avez mis à jour votre avatar, votre profil est à {$request->user()->completionPercentage()}% terminé.", "success");
-
+            toast("Vous avez mis à jour votre avatar, votre profil est à {$user->completionPercentage()}% terminé.", "success");
             return redirect()->back();
         }
     }
