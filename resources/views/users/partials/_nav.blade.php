@@ -1,7 +1,7 @@
 <nav class="profile-nav">
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a href="{{ route('users.show', $user) }}" class="nav-link {{ $active === 'index' ? 'active' : '' }}">
-      Son profile
+      Son profil
     </a>
     <a href="{{ route('favorites.show', $user) }}" class="nav-link {{ $active === 'favorites' ? 'active' : '' }}">
       Ses favoris <span class="item-number">{{ $user->favoriters->count() }}</span>
