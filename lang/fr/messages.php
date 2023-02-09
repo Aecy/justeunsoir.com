@@ -30,5 +30,9 @@ return [
         "normal" => "Normal",
         "extra" => "Quelques kilos en trop",
         "round" => "Rond(e)",
+    ],
+    "roles" => [
+        'member' => "Membre",
+        'admin' => "Administrateur"
     ]
 ];
