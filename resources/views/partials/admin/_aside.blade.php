@@ -56,7 +56,7 @@
 
         <li class="nav-header">PAGES</li>
         <li class="nav-item">
-          <a href="{{ route('admin.index') }}" class="nav-link">
+          <a href="{{ route('admin.question.index') }}" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>Foire aux questions</p>
           </a>

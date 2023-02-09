@@ -28,7 +28,7 @@
               </span>
               <div class="info-box-content">
                 <span class="info-box-text">Trafic CPU</span>
-                <span class="info-box-number">10<small>%</small></span>
+                <span class="info-box-number">{{ rand(1, 8) }}<small>%</small></span>
               </div>
             </div>
           </div>

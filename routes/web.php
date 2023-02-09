@@ -10,12 +10,13 @@ use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Conversation\ConversationController;
 use App\Http\Controllers\Conversation\MessageController;
 use App\Http\Controllers\Favorite\FavoriteController;
 use App\Http\Controllers\Like\LikeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Reward\RewardController;
 use App\Http\Controllers\Search\SearchController;
 use App\Http\Controllers\Shop\PaypalController;
@@ -91,8 +92,15 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
         Route::post('/media', [AccountMediaController::class, 'store'])->name('account.store.media');
     });
 
-    Route::middleware('admin')->prefix('acp')->group(function () {
+    Route::middleware('admin')->prefix('control-admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+        Route::prefix('foire-aux-questions')->group(function () {
+            Route::get('/', [AdminQuestionController::class, 'index'])->name('admin.question.index');
+            Route::post('/', [AdminQuestionController::class, 'store'])->name('admin.question.store');
+            Route::get('/{question}/modifier', [AdminQuestionController::class, 'edit'])->name('admin.question.edit');
+            Route::get('/creer', [AdminQuestionController::class, 'create'])->name('admin.question.create');
+            Route::patch('/{question}', [AdminQuestionController::class, 'update'])->name('admin.question.update');
+        });
     });
 });
 

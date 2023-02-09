@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Question;
 
+use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\View\View;
 
-class QuestionController
+class QuestionController extends Controller
 {
     public function index(): View
     {

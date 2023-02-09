@@ -11,9 +11,6 @@
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__wobble" src="{{ asset('assets/images/logo/logo.png') }}" alt="AdminLTELogo">
-    </div>
     @include('partials.admin._nav')
     @include('partials.admin._aside')
     @yield('content')
