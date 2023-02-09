@@ -15,6 +15,8 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+            toast("Vous devez être connecté pour accéder à cette fonctionnalité du site.", 'error');
+
             return route('login');
         }
     }
