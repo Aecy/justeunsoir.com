@@ -25,7 +25,6 @@
   <script src="{{ asset('admin/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
   <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
   <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
-  <script src="{{ asset('admin/js/demo.js') }}"></script>
-  <script src="{{ asset('admin/js/pages/dashboard2.js') }}"></script>
+  @stack('scripts')
 </body>
 </html>

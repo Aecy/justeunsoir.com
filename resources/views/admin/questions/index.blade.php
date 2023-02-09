@@ -33,7 +33,11 @@
                   <div class="card-body">{{ $question->content }}</div>
                   <div class="card-footer">
                     <a href="{{ route('admin.question.edit', $question) }}" class="btn btn-info"><i class="fa fa-edit"></i> Modifier</a>
-                    <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                    <form method="post" action="{{ route('admin.question.delete', $question) }}" class="justify-content-end d-inline">
+                      @csrf
+                      @method('delete')
+                      <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -47,3 +51,7 @@
     </section>
   </div>
 @endsection
+
+@push('scripts')
+
+@endpush

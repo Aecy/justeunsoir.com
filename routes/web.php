@@ -100,6 +100,7 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
             Route::get('/{question}/modifier', [AdminQuestionController::class, 'edit'])->name('admin.question.edit');
             Route::get('/creer', [AdminQuestionController::class, 'create'])->name('admin.question.create');
             Route::patch('/{question}', [AdminQuestionController::class, 'update'])->name('admin.question.update');
+            Route::delete('/{question}', [AdminQuestionController::class, 'delete'])->name('admin.question.delete');
         });
     });
 });

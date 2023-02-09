@@ -52,4 +52,13 @@ class AdminQuestionController extends Controller
             route('admin.question.index')
         );
     }
+
+    public function delete(Question $question): RedirectResponse
+    {
+        $question->delete();
+
+        return redirect()->to(
+            route('admin.question.index')
+        );
+    }
 }
