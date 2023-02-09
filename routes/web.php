@@ -70,10 +70,10 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
         Route::post('/', [RewardController::class, 'store'])->name('reward.store');
     });
 
-    Route::prefix('/account')->withoutMiddleware('account.completed')->group(function () {
+    Route::prefix('/mon-compte')->withoutMiddleware('account.completed')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('dashboard');
 
-        Route::get('security', [AccountController::class, 'security'])->name('account.security');
+        Route::get('securiter', [AccountController::class, 'security'])->name('account.security');
         Route::get('favoris', [AccountController::class, 'favorites'])->name('account.friends');
         Route::get('medias', [AccountController::class, 'medias'])->name('account.medias');
 
