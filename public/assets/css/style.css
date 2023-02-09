@@ -3608,7 +3608,7 @@ select.disabled-selected {
     border-radius: 4px;
 }
 .widget .widget-title {
-    padding: 25px 30px;
+    padding: 18px 30px;
     border-bottom: 1px solid #391965;
 }
 .widget.like-member .widget-content .col .image-thumb::before {
