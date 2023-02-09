@@ -79,15 +79,40 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <p class="text-center">
-                      <strong>Ventes faite le {{ now()->translatedFormat('d F Y') }}</strong>
+                      <strong>Ventes faites aujourd'hui ({{ now()->translatedFormat('d F Y') }})</strong>
                     </p>
-                    <div class="chart">
-                      <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
-                    </div>
+                    <table class="table table-stripped">
+                      <tbody>
+                      @foreach($todayOrders->slice(0, 3) as $order)
+                        <tr>
+                          <td>#{{ $order->id }} - {{ $order->product->name }}</td>
+                          <td>{{ number_format($order->price / 100, 2) }} €</td>
+                          <td>
+                            <span class="badge badge-{{ $order->status->color() }}">
+                              {{ $order->status->name }}
+                            </span>
+                          </td>
+                          <td>
+                            <span class="badge badge-secondary">
+                              {{ $order->provider->name }}
+                            </span>
+                          </td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Total de vente: {{ number_format($todayOrders->sum('price') / 100, 2) }} €</td>
+                        </tr>
+                      </tfoot>
+                    </table>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-5">
                     <p class="text-center">
                       <strong>Objectifs pour fin {{ now()->translatedFormat('F, Y') }}</strong>
                     </p>
@@ -215,13 +240,7 @@
                         <td>{{ $order->product->name }}</td>
                         <td>{{ number_format($order->price / 100, 2) }} €</td>
                         <td>
-                          @if($order->status === \App\Enums\Order\OrderStatusEnum::CANCELLED)
-                            <span class="badge badge-danger">Annulé</span>
-                          @elseif($order->status === \App\Enums\Order\OrderStatusEnum::PENDING)
-                            <span class="badge badge-secondary">En attente</span>
-                          @elseif($order->status === \App\Enums\Order\OrderStatusEnum::VALIDATED)
-                            <span class="badge badge-success">Validé</span>
-                          @endif
+                          <span class="badge badge-{{ $order->status->color() }}">{{ $order->status->name }}</span>
                         </td>
                       </tr>
                     @endforeach
