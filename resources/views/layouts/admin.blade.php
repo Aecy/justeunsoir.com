@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed">
+  @include('sweetalert::alert')
   <div class="wrapper">
     @include('partials.admin._nav')
     @include('partials.admin._aside')

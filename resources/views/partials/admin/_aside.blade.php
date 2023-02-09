@@ -42,13 +42,13 @@
 
         <li class="nav-header">PACKS</li>
         <li class="nav-item">
-          <a href="{{ route('admin.index') }}" class="nav-link">
+          <a href="{{ route('admin.product.index') }}" class="nav-link">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>Voir les packs</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.index') }}" class="nav-link">
+          <a href="{{ route('admin.product.create') }}" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
             <p>Créer un pack</p>
           </a>

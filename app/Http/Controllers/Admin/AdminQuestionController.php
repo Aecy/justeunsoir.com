@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\AdminQuestionUpdateRequest;
+use App\Http\Requests\Admin\AdminQuestionUpdateRequest;
 use App\Models\Question;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class AdminQuestionController extends Controller
@@ -41,12 +40,18 @@ class AdminQuestionController extends Controller
         $question->fill($request->validated());
         $question->save();
 
-        return redirect()->back();
+        alert()->success("Vous avez modifier la question $question->title");
+
+        return redirect()->to(
+            route('admin.question.index')
+        );
     }
 
     public function store(AdminQuestionUpdateRequest $request): RedirectResponse
     {
         Question::create($request->validated());
+
+        alert()->success("Vous avez créer une nouvelle question / réponse.");
 
         return redirect()->to(
             route('admin.question.index')
@@ -56,6 +61,8 @@ class AdminQuestionController extends Controller
     public function delete(Question $question): RedirectResponse
     {
         $question->delete();
+
+        alert()->success("Vous avez supprimé une question / réponse.");
 
         return redirect()->to(
             route('admin.question.index')

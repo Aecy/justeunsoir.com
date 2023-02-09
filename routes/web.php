@@ -10,6 +10,7 @@ use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Conversation\ConversationController;
@@ -108,6 +109,15 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
         Route::prefix('utilisateurs')->group(function () {
             Route::get('/', [AdminUserController::class, 'index'])->name('admin.user.index');
             Route::get('/achats', [AdminUserController::class, 'buy'])->name('admin.user.buy');
+        });
+
+        Route::prefix('packs')->group(function () {
+            Route::get('/', [AdminProductController::class, 'index'])->name('admin.product.index');
+            Route::get('/{product}/modifier', [AdminProductController::class, 'edit'])->name('admin.product.edit');
+            Route::patch('/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
+            Route::delete('/{product}', [AdminProductController::class, 'delete'])->name('admin.product.delete');
+            Route::post('/', [AdminProductController::class, 'store'])->name('admin.product.store');
+            Route::get('/creer', [AdminProductController::class, 'create'])->name('admin.product.create');
         });
     });
 });
