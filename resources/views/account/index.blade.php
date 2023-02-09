@@ -259,6 +259,15 @@
 
 @push('scripts')
   <script type="text/javascript">
+    @if($errors->any())
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "{{ $errors->first() }}",
+      })
+    @endif
+  </script>
+  <script type="text/javascript">
     const france = [
       {id: 0, name: 'Sélectionner votre province'},
       {id: 1, name: "Alsace"},

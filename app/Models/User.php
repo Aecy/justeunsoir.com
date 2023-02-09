@@ -56,6 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'eye_color',
         'referred_by',
         'avatar',
+        'cover',
     ];
 
     /**
@@ -124,6 +125,16 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function getAvatarUrlAttribute(): string
     {
         return $this->avatar == 'default.jpg' ? asset('default.jpg') : asset('/storage/' . $this->avatar);
+    }
+
+    /**
+     * Créer un attribut pour la photo de couverture de l'utilisateur.
+     *
+     * @return string
+     */
+    public function getCoverUrlAttribute(): string
+    {
+        return $this->cover == 'cover-default.jpg' ? asset('cover-default.jpg') : asset('/storage/' . $this->cover);
     }
 
     /**

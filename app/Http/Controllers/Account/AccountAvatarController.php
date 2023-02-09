@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\AccountAvatarUpdateRequest;
 use App\Services\Image\ImageAvatarService;
-use Illuminate\Http\Request;
 
 class AccountAvatarController extends Controller
 {
     /**
      * Met à jour l'avatar de l'utilisateur.
      *
-     * @param Request $request
+     * @param AccountAvatarUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse|void
      */
-    public function update(Request $request)
+    public function update(AccountAvatarUpdateRequest $request)
     {
         $user = $this->getUser();
 

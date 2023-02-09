@@ -3,13 +3,13 @@
 namespace App\Services\Image;
 
 use App\Models\User;
-use App\Traits\UploadAvatarTrait;
+use App\Traits\UploadCoverTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-final class ImageAvatarService
+final class ImageCoverService
 {
-    use UploadAvatarTrait;
+    use UploadCoverTrait;
 
     public function unlink($image): void
     {
@@ -20,8 +20,8 @@ final class ImageAvatarService
 
     public function link(User $user, Request $request): mixed
     {
-        return $request->avatar->storeAs(
-            'avatars',
+        return $request->cover->storeAs(
+            'covers',
             $this->getImageName($request),
             'public'
         );

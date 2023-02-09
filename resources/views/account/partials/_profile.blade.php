@@ -1,11 +1,14 @@
 <div class="profile-item">
   <div class="profile-cover">
-    <img src="{{ asset('assets/images/profile/cover.jpg') }}" alt="cover-pic">
+    <img src="{{ $user->cover_url }}" alt="cover-pic">
     <div class="edit-photo custom-upload">
       <div class="file-btn">
         <i class="icofont-camera"></i> Modifier votre couverture
       </div>
-      <input type="file">
+      <form id="cover-form" method="post" action="{{ route('account.upload.cover') }}" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="cover" onchange="event.preventDefault(); document.getElementById('cover-form').submit()">
+      </form>
     </div>
   </div>
   <div class="profile-information">
@@ -22,7 +25,7 @@
         </div>
         <form id="avatar-form" method="post" action="{{ route('account.upload.avatar') }}" enctype="multipart/form-data">
           @csrf
-          <input type="file" name="avatar" onchange="event.preventDefault(); document.getElementById('avatar-form').submit()">
+          <input type="file" name="avatar" onchange="event.preventDefault(); document.getElementById('avatar-form').submit()" style="z-index: 100">
         </form>
       </div>
     </div>

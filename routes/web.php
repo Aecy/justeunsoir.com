@@ -3,6 +3,7 @@
 use App\Http\Controllers\Account\AccountAboutController;
 use App\Http\Controllers\Account\AccountAvatarController;
 use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\AccountCoverController;
 use App\Http\Controllers\Account\AccountInformationController;
 use App\Http\Controllers\Account\AccountInterestController;
 use App\Http\Controllers\Account\AccountLookingController;
@@ -86,6 +87,7 @@ Route::middleware(['auth', 'verified', 'account.completed'])->group(function () 
         Route::patch('/physical', [AccountPhysicalController::class, 'update'])->name('account.update.physical');
 
         Route::post('/avatar', [AccountAvatarController::class, 'update'])->name('account.upload.avatar');
+        Route::post('/cover', [AccountCoverController::class, 'update'])->name('account.upload.cover');
         Route::post('/media', [AccountMediaController::class, 'store'])->name('account.store.media');
     });
 
