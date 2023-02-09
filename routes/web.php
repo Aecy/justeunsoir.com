@@ -9,6 +9,7 @@ use App\Http\Controllers\Account\AccountLookingController;
 use App\Http\Controllers\Account\AccountMediaController;
 use App\Http\Controllers\Account\AccountPhysicalController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Conversation\ConversationController;
 use App\Http\Controllers\Conversation\MessageController;
 use App\Http\Controllers\Favorite\FavoriteController;
@@ -24,7 +25,7 @@ use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
-Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/faq', [QuestionController::class, 'index'])->name('faq');
 
 Route::middleware(['auth', 'verified', 'account.completed'])->group(function () {
     Route::prefix('tarifs')->group(function () {

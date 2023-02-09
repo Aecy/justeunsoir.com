@@ -37,14 +37,4 @@ class PageController extends Controller
             'onlineWomans' => $onlineWomans
         ]);
     }
-
-    /**
-     * Affiche la page FAQ.
-     *
-     * @return View
-     */
-    public function faq(): View
-    {
-        return view('faq');
-    }
 }
