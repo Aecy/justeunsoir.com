@@ -12,25 +12,16 @@
                   <h3>{{ config('app.name') }}</h3>
                   <p>Rencontrer sans engagement, ni attache dans la confidentialité la plus totale.</p>
                   <form action="{{ route('search.index') }}" method="get" class="banner-form">
-                    <div class="gender">
-                      <label for="gender" class="left">Je suis un(e)</label>
-                      <div class="custom-select right">
-                        <select name="gender" id="gender" class="">
-                          <option value="" disabled selected>Sélectionner votre genre</option>
-                          <option value="H">Homme</option>
-                          <option value="A">Femme</option>
-                          <option value="F">Non-binaire</option>
-                        </select>
-                      </div>
-                    </div>
                     <div class="person">
                       <label for="looking" class="left">Je recherche</label>
                       <div class="custom-select right">
                         <select name="looking" id="looking" class="">
                           <option value="" disabled selected>Sélectionner votre recherche</option>
-                          <option value="H">Homme</option>
-                          <option value="F">Femme</option>
-                          <option value="A">Autre</option>
+                          @foreach(\App\Enums\User\UserGendersEnum::cases() as $gender)
+                            <option value="{{ $gender }}">
+                              {{ $gender->name }}
+                            </option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -53,11 +44,22 @@
                           </select>
                         </div>
                       </div>
-
+                    </div>
+                    <div class="gender">
+                      <label for="country" class="left">Pays</label>
+                      <div class="custom-select right">
+                        <select name="country" id="country" class="">
+                          <option value="" disabled selected>Sélectionner le pays</option>
+                          <option value="FR">France</option>
+                          <option value="BE">Belgique</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="city">
-                      <label for="address" class="left">Dans la ville</label>
-                      <input class="right" type="text" id="address" name="address" placeholder="Entrer votre ville...">
+                      <label for="state" class="left">Province</label>
+                      <div class="custom-select right">
+                        <select name="state" id="state" class=""></select>
+                      </div>
                     </div>
                     <button type="submit" class="">Trouver un partenaire</button>
                   </form>
@@ -321,7 +323,7 @@
             <div class="story-item lab-item">
               <div class="lab-inner">
                 <div class="lab-thumb">
-                  <img src="{{ asset('assets/illustrations/pleasure.svg') }}" alt="img">
+                  <img src="{{ asset('assets/illustrations/pleasure.svg') }}" alt="img" style="height: 277px;">
                 </div>
                 <div class="lab-content">
                   <h4>
@@ -424,3 +426,96 @@
     </div>
   </section>
 @endsection
+
+@push('scripts')
+  <script type="text/javascript">
+    const france = [
+      {id: 0, name: 'Dans la province...'},
+      {id: 1, name: "Alsace"},
+      {id: 2, name: "Aquitaine"},
+      {id: 3, name: "Auvergne"},
+      {id: 4, name: "Basse-Normandie"},
+      {id: 5, name: "Bourgogne"},
+      {id: 6, name: "Bretagne"},
+      {id: 7, name: "Centre"},
+      {id: 8, name: "Champagne-Ardenne"},
+      {id: 9, name: "Corse"},
+      {id: 10, name: "Franche-Comté"},
+      {id: 11, name: "Haute-Normandie"},
+      {id: 12, name: "Île-de-France"},
+      {id: 13, name: "Languedoc-Roussillon"},
+      {id: 14, name: "Limousin"},
+      {id: 15, name: "Lorraine"},
+      {id: 16, name: "Midi-Pyrénées"},
+      {id: 17, name: "Nord-Pas-de-Calais"},
+      {id: 18, name: "Pays de la Loire"},
+      {id: 19, name: "Picardie"},
+      {id: 20, name: "Poitou-Charentes"},
+      {id: 21, name: "Provence-Alpes-Côte d'Azur"},
+      {id: 22, name: "Rhône-Alpes"},
+    ];
+    const belgium = [
+      {id: 0, name: 'Dans la province...'},
+      {id: 1, name: 'Anvers'},
+      {id: 2, name: 'Limbourg'},
+      {id: 3, name: 'Liège'},
+      {id: 4, name: 'Luxembourg'},
+      {id: 5, name: 'Namur'},
+      {id: 6, name: 'Brabant wallon'},
+      {id: 7, name: 'Brabant flamand'},
+      {id: 8, name: 'Bruxelles'},
+      {id: 9, name: 'Hainaut'},
+      {id: 10, name: 'Flandre orientale'},
+      {id: 11, name: 'Flandre occidentale'},
+    ];
+
+    let stateElement = document.getElementById('state-group');
+    let countryElement = document.getElementById('country');
+    let stateFormEl = document.getElementById('state');
+
+    loadStates(countryElement.value);
+
+    countryElement.addEventListener('change', function (event) {
+      const select = event.target;
+      const value = select.value;
+
+      let options = stateFormEl.getElementsByTagName('option');
+      for (let i = options.length; i--;) {
+        stateFormEl.removeChild(options[i]);
+      }
+
+      loadStates(value);
+    });
+
+    function loadStates(value) {
+      if (value === 'FR') {
+        france.forEach(function (state) {
+          let option = document.createElement('option');
+          option.value = state.name;
+          option.innerText = state.name;
+          option.selected = selectedState(state.name);
+
+          stateFormEl.appendChild(option);
+        });
+      } else if (value === 'BE') {
+        belgium.forEach(function (state) {
+          let option = document.createElement('option');
+          option.value = state.name;
+          option.innerText = state.name;
+          option.selected = selectedState(state.name);
+
+          stateFormEl.appendChild(option);
+        });
+      } else {
+        // Nothing to do.
+      }
+    }
+
+    function selectedState(name) {
+      if (name == "{{ request()->state }}") {
+        return true;
+      }
+      return false;
+    }
+  </script>
+@endpush
