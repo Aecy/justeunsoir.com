@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-use App\Enums\User\UserDrinkingEnum;
+use Laravel\Sanctum\HasApiTokens;
+use App\Enums\User\UserRolesEnum;
+use Spatie\MediaLibrary\HasMedia;
+use App\Enums\User\UserSmokingEnum;
 use App\Enums\User\UserGendersEnum;
+use Musonza\Chat\Traits\Messageable;
+use App\Enums\User\UserDrinkingEnum;
 use App\Enums\User\UserMartialsEnum;
 use App\Enums\User\UserMorphologyEnum;
-use App\Enums\User\UserRolesEnum;
-use App\Enums\User\UserSmokingEnum;
+use Overtrue\LaravelLike\Traits\Liker;
 use App\Traits\UserProfileIsCompleted;
+use Illuminate\Notifications\Notifiable;
+use Overtrue\LaravelLike\Traits\Likeable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use LaravelInteraction\Favorite\Concerns\Favoriter;
+use LaravelInteraction\Favorite\Concerns\Favoriteable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use LaravelInteraction\Favorite\Concerns\Favoriteable;
-use LaravelInteraction\Favorite\Concerns\Favoriter;
-use Musonza\Chat\Traits\Messageable;
-use Overtrue\LaravelLike\Traits\Likeable;
-use Overtrue\LaravelLike\Traits\Liker;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
 class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
@@ -166,6 +166,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         return $query;
     }
 
+    /**
+     * Vérifie si l'utilisateur dans la requête du model est complet.
+     *
+     * @param $query
+     * @return mixed
+     */
     public function scopeIsCompleted($query): mixed
     {
         return $query->where(function ($query) {
