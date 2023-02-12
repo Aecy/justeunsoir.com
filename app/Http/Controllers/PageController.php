@@ -27,8 +27,8 @@ class PageController extends Controller
     {
         $users = User::orderByDesc('created_at')->get();
         $onlineUsers = $this->activityService->getOnlineUsers();
-        $onlineMens = $this->activityService->getOnlineByGender('H');
-        $onlineWomans = $this->activityService->getOnlineByGender('F');
+        $onlineMens = $this->activityService->getOnlineManUsers();
+        $onlineWomans = $this->activityService->getOnlineWomanUsers();
 
         return view('welcome', [
             'users' => $users,

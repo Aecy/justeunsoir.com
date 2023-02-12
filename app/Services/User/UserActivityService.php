@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Enums\User\UserGendersEnum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -20,14 +21,24 @@ class UserActivityService
     }
 
     /**
-     * Récupère la liste des utilsateurs connectés par leur genre.
+     * Récupère la liste des utilisateurs connectés en tant qu'homme.
      *
-     * @param string $gender
      * @return Collection
      */
-    public function getOnlineByGender(string $gender): Collection
+    public function getOnlineManUsers(): Collection
     {
         $users = User::all();
-        return $users->filter(fn ($user) => $user->gender === $gender && Cache::get('users_online-' . $user->id));
+        return $users->filter(fn ($user) => $user->gender === UserGendersEnum::Homme && Cache::get("users_online-{$user->id}"));
+    }
+
+    /**
+     * Récupère la liste des utilisateurs connectés en tant que femme.
+     *
+     * @return Collection
+     */
+    public function getOnlineWomanUsers(): Collection
+    {
+        $users = User::all();
+        return $users->filter(fn ($user) => $user->gender === UserGendersEnum::Femme && Cache::get("users_online-{$user->id}"));
     }
 }
