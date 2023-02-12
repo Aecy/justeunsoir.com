@@ -23,25 +23,26 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
-            'age' => rand(18, 99),
-            'about_me' => fake()->sentence,
+            'age' => rand(18, 58),
+            'about_me' => "unset",
             'looking_for' => fake()->sentence,
             'interest_for' => fake()->sentence,
             'martial' => UserMartialsEnum::random(),
             'smoking' => UserSmokingEnum::random(),
             'drinking' => UserDrinkingEnum::random(),
-            'height' => rand(130, 210),
-            'hair_color' => fake()->colorName,
-            'eye_color' => fake()->colorName,
+            'height' => rand(150, 210),
+            'hair_color' => fake()->safeColorName,
+            'eye_color' => fake()->safeColorName,
             'morphology' => UserMorphologyEnum::random(),
             'country' => collect(['FR', 'BE'])->random(),
-            'state' => fake()->city,
+            'state' => "unset",
             'gender' => UserGendersEnum::random(),
+            'created_at' => fake()->dateTimeBetween('-3 months', 'now')
         ];
     }
 

@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('avatar')->default('default.jpg');
             $table->string('cover')->default('cover-default.jpg');
             $table->bigInteger('credits')->default(10);
+            $table->boolean('fake_account')->default(0);
             $table->rememberToken();
             $table->date('birth_at')->nullable();
             $table->timestamp('last_reward')->nullable();
