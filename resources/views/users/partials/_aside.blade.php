@@ -16,7 +16,7 @@
                 </div>
               </div>
             @empty
-              <p>A reçu encore aucun cœur... <span class="text-danger">💔</span></p>
+              <p>A reçu encore aucun cœur... <i class="icofont-heart text-muted"></i></p>
             @endforelse
           </div>
         </div>
