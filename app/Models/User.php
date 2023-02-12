@@ -57,6 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'referred_by',
         'avatar',
         'cover',
+        'fake_account',
     ];
 
     /**
