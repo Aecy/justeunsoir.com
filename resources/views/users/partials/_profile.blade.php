@@ -9,7 +9,7 @@
     <div class="profile-name">
       <h4 title="{{ $user->name }}">
         @include('partials._user-online', ['userId' => $user->id])
-        {{ \Illuminate\Support\Str::limit($user->name, 21) }}
+        {{ \Illuminate\Support\Str::limit($user->name, 18) }}
       </h4>
       <span>{{ $user->gender === \App\Enums\User\UserGendersEnum::Femme ? 'Inscrite' : 'Inscrit' }} {{ $user->created_at->diffForHumans() }}</span>
     </div>
