@@ -14,6 +14,7 @@ final class MessageAction
     public function send(User $user, Conversation $conversation, MessageStoreRequest $request): void
     {
         if ($user->credits <= 0) {
+            toast("Vous n'avez pas assez de crédit pour envoyer un message privé !", 'error');
             return;
         }
 
