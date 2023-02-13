@@ -271,7 +271,7 @@
                         <img src="{{ asset('admin/img/default-150x150.png') }}" alt="Product Image" class="img-size-50">
                       </div>
                       <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">{{ $product->name }}
+                        <a href="{{ route('admin.product.edit', $product) }}" class="product-title">{{ $product->name }}
                           <span
                             class="badge badge-warning float-right">{{ number_format($product->price / 100, 2) }} €</span>
                         </a>
