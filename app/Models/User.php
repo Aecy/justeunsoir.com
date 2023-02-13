@@ -191,4 +191,17 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
                 ->whereNotNull('eye_color');
         });
     }
+
+    /**
+     * Vérifie si l'utilisateur dans la requête du model est complet.
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeNotFakeAccount($query): mixed
+    {
+        return $query->where(function ($query) {
+            $query->whereRole(UserRolesEnum::ADMIN);
+        });
+    }
 }

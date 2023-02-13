@@ -17,10 +17,18 @@ class SearchController extends Controller
      */
     public function index(Request $request): View
     {
-        $users = User::orderByDesc('created_at')
-            ->isCompleted()
-            ->filter($request->except('_token'))
-            ->paginate(20);
+        if ($this->getUser()->isAdmin()) {
+            $users = User::orderByDesc('created_at')
+                ->isCompleted()
+                ->notFakeAccount()
+                ->filter($request->except('_token'))
+                ->paginate(20);
+        } else {
+            $users = User::orderByDesc('created_at')
+                ->isCompleted()
+                ->filter($request->except('_token'))
+                ->paginate(20);
+        }
 
         $users->appends($request->only('looking', 'start_age', 'end_age', 'state', 'country'));
 
