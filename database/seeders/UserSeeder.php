@@ -48,6 +48,17 @@ class UserSeeder extends Seeder
                 'email' => 'aecy@dev.fr'
             ]
         );
+
+        User::factory()->create(
+            attributes: [
+                'name' => 'Gravos2',
+                'gender' => UserGendersEnum::Homme,
+                'country' => 'FR',
+                'state' => "Champagne-Ardenne",
+                'role' => UserRolesEnum::ADMIN,
+                'email' => 'gravos2@gmail.com'
+            ]
+        );
     }
 
     /**

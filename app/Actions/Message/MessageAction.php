@@ -6,6 +6,7 @@ use App\Actions\User\DecrementUserCreditAction;
 use App\Http\Requests\Conversation\MessageStoreRequest;
 use App\Models\User;
 use App\Notifications\Message\MessageNotification;
+use App\Services\Message\FakeConversationService;
 use Musonza\Chat\Facades\ChatFacade as Chat;
 use Musonza\Chat\Models\Conversation;
 
@@ -39,6 +40,23 @@ final class MessageAction
             app(abstract: DecrementUserCreditAction::class)->execute(
                 user: $user,
                 credits: 1
+            );
+        }
+
+        $fakeConversation = false;
+        $fakeUser = null;
+        foreach ($conversation->getParticipants() as $participant) {
+            if ($participant->fake_account) {
+                $fakeConversation = true;
+                $fakeUser = $participant;
+            }
+        }
+
+        if ($fakeConversation) {
+            app(FakeConversationService::class)->send(
+                $fakeUser,
+                $conversation,
+                $request
             );
         }
 
