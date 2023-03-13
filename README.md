@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://i.imgur.com/ANS314x.png" width="200" alt="Juste un soir logo"></a></p>
+![logo](https://i.imgur.com/ANS314x.png)
 
 ## A propos de Juste un soir
 
